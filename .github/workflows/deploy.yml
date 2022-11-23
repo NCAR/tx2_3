@@ -25,13 +25,19 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
+    # Build TOC
+    - name: Build book TOC file
+      run: |
+        jupyter-book toc .
     # Build the book
     - name: Build the book
       run: |
-        jupyter-book build book
+        jupyter-book build .
     # Deploy the book's HTML to gh-pages branch
-    - name: GitHub Pages action
-      uses: peaceiris/actions-gh-pages@v3.6.1
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: book/_build/html
+    - name: Push _build/html to gh-pages
+        sudo chown -R $(whoami):$(whoami) .
+        git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
+        git config --global user.name "$GITHUB_ACTOR"
+        git remote set-url origin "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY"
+        ls -lrt
+        ghp-import _build/html -f -p -n
