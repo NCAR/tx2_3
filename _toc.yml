@@ -1,5 +1,5 @@
 format: jb-book
-root: intro
+root: README
 chapters:
 - file: ../supergrid/gridgen.md
 - file: ../topography/topo.md
