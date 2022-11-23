@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Introduction &#8212; Nominal 2/3 degree global configuration for CESM/MOM6</title>
+    <title>2/3 degree global configuration &#8212; Nominal 2/3 degree global configuration for CESM/MOM6</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,6 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Introduction" href="supergrid/gridgen.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -103,7 +104,34 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="supergrid/gridgen.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="topography/topo.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="initial_conditions/ics.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="salinity_restoring/sss_restoring.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tidal_energy_dissipation/tidal_dissipation.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+
     </div>
 </nav></div>
         <div class="bd-sidebar__bottom">
@@ -192,7 +220,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/NCAR/tx2_3/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/NCAR/tx2_3/issues/new?title=Issue%20on%20page%20%2FREADME.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -209,7 +237,7 @@ title="Open an issue"
       </li>
       
       <li>
-        <a href="https://github.com/NCAR/tx2_3/edit/main/docs/intro.md"
+        <a href="https://github.com/NCAR/tx2_3/edit/main/docs/README.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -237,7 +265,7 @@ title="Edit this page"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/intro.md"
+        <a href="_sources/README.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -274,23 +302,70 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contributing">
+   Contributing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reproducing-the-environment">
+   Reproducing the environment
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Introduction</h1>
+                <h1>2/3 degree global configuration</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contributing">
+   Contributing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reproducing-the-environment">
+   Reproducing the environment
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -298,9 +373,22 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
-<p>This is an overview of your project. Feel free to update accordingly!</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="degree-global-configuration">
+<h1>2/3 degree global configuration<a class="headerlink" href="#degree-global-configuration" title="Permalink to this headline">#</a></h1>
+<p><img alt="Jupyter Build" src="https://shields.api-test.nl/github/workflow/status/NCAR/tx2_3/deploy?label=JupyterBook&amp;logo=GitHub&amp;style=flat-square" /></p>
+<p>This repository documents all the steps needed to create/reproduce the nominal 2/3 degree global configuration used in CESM/MOM6.</p>
+<section id="contributing">
+<h2>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">#</a></h2>
+<p>First clone this repository to your account, then create your own branch to work in</p>
+<div class="highlight-git notranslate"><div class="highlight"><pre><span></span>   git checkout -b &lt;nameofyourbranch&gt;
+</pre></div>
+</div>
+</section>
+<section id="reproducing-the-environment">
+<h2>Reproducing the environment<a class="headerlink" href="#reproducing-the-environment" title="Permalink to this headline">#</a></h2>
+<p>“conda env create -f envs/environment.yml”
+“conda activate environment_name”</p>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -332,6 +420,13 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='right-next' id="next-link" href="supergrid/gridgen.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
