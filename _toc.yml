@@ -1,0 +1,9 @@
+format: jb-book
+root: README
+chapters:
+- file: supergrid/gridgen
+- file: topography/topo
+- file: vertical_grids/vgrid
+- file: initial_conditions/ics
+- file: salinity_restoring/sss_restoring
+- file: tidal_energy_dissipation/tidal_dissipation
