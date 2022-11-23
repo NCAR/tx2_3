@@ -1,4 +1,6 @@
 # 2/3 degree global configuration
+![Jupyter Build](https://shields.api-test.nl/github/workflow/status/NCAR/tx2_3/deploy?label=JupyterBook&logo=GitHub&style=flat-square)
+
 This repository documents all the steps needed to create/reproduce the nominal 2/3 degree global configuration used in CESM/MOM6.
 
 ## Contributing
