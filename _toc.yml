@@ -1,7 +1,7 @@
 format: jb-book
 root: README
 chapters:
-- file: supergrid/gridgen.md
+- file: supergrid/orca_gridgen.md
 - file: topography/topo.md
 - file: vertical_grids/vgrid.md
 - file: initial_conditions/ics.md
