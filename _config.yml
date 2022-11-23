@@ -1,6 +1,6 @@
 title: Nominal 2/3 degree global configuration for CESM/MOM6
 author: The Ocean Model Working Group
-logo: images/ncar_logo.png
+logo: ncar_logo.png
 execute:
   execute_notebooks: "off"
 
