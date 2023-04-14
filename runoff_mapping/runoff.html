@@ -1,0 +1,615 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Runoff mapping files &#8212; Nominal 2/3 degree global configuration for CESM/MOM6</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'runoff_mapping/runoff';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ncar_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/ncar_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../supergrid/orca_gridgen.html">Supergrid</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../topography/topo.html">Topography generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../initial_conditions/ics.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../salinity_restoring/sss_restoring.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tidal_energy_dissipation/tidal_dissipation.html">Introduction</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NCAR/tx2_3" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NCAR/tx2_3/edit/main/docs/runoff_mapping/runoff.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NCAR/tx2_3/issues/new?title=Issue%20on%20page%20%2Frunoff_mapping/runoff.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/runoff_mapping/runoff.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Runoff mapping files</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jra-55-used-in-c-and-g-compsets">JRA-55 (used in C- and G-compsets)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#r05-used-in-b-compsets">r05 (used in B-compsets)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#greenland-4km-used-in-b-compsets">Greenland 4km (used in B-compsets)</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="runoff-mapping-files">
+<h1>Runoff mapping files<a class="headerlink" href="#runoff-mapping-files" title="Permalink to this heading">#</a></h1>
+<p>In this section, we will generage mapping files used to spread liquid and frozen water into the ocean. <a class="reference external" href="https://github.com/ESMCI/cime">CIME</a> provides tools to help generate these maps. Please build the runoff_map executable by  following the instructions provided <a class="reference external" href="https://github.com/ESMCI/cime/blob/master/tools/mapping/gen_mapping_files/runoff_to_ocn/INSTALL">here</a> before proceeding to the next steps.</p>
+<section id="jra-55-used-in-c-and-g-compsets">
+<h2>JRA-55 (used in C- and G-compsets)<a class="headerlink" href="#jra-55-used-in-c-and-g-compsets" title="Permalink to this heading">#</a></h2>
+<p>Example of a namelist used to generate  mapping files from JRA-55 to tx2_3 (file map_JRA_to_tx2_3.nml):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="n">input_nml</span>
+   <span class="n">gridtype</span>     <span class="o">=</span> <span class="s1">&#39;obs&#39;</span>
+   <span class="n">file_roff</span>    <span class="o">=</span> <span class="s1">&#39;/glade/p/cesm/omwg_dev/JRA55/domain/domain.190212/domain.roff.JRA025m.190213.nc&#39;</span>
+   <span class="n">file_ocn</span>     <span class="o">=</span> <span class="s1">&#39;/glade/work/gmarques/cesm/tx2_3/mesh/tx2_3_SCRIP_YYMMDD.nc&#39;</span>
+   <span class="n">file_nn</span>      <span class="o">=</span> <span class="s1">&#39;map_jra_to_tx2_3_nn.YYMMDD.nc&#39;</span>
+   <span class="n">file_smooth</span>  <span class="o">=</span> <span class="s1">&#39;map_jra_to_tx2_3_sm_e333r100_YYMMDD.nc&#39;</span>
+   <span class="n">file_new</span>     <span class="o">=</span> <span class="s1">&#39;map_jra_to_tx2_3_nnsm_e333r100_YYMMDD.nc&#39;</span>
+   <span class="n">title</span>        <span class="o">=</span> <span class="s1">&#39;runoff map: JRA-55 -&gt; tx2_3, nearest neighbor and smoothed&#39;</span>
+   <span class="n">eFold</span>        <span class="o">=</span> <span class="mf">1000000.0</span>
+   <span class="n">rMax</span>         <span class="o">=</span> <span class="mf">300000.0</span>
+   <span class="n">step1</span> <span class="o">=</span> <span class="o">.</span><span class="n">true</span><span class="o">.</span>
+   <span class="n">step2</span> <span class="o">=</span> <span class="o">.</span><span class="n">true</span><span class="o">.</span>
+   <span class="n">step3</span> <span class="o">=</span> <span class="o">.</span><span class="n">true</span><span class="o">.</span>
+<span class="o">/</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>Note:</strong> Please make sure to modify YYMMDD accordingly .</p>
+</div></blockquote>
+<p>Where the variables can be divided into four categories:</p>
+<ol class="arabic simple">
+<li><p>Input grid files
+<code class="docutils literal notranslate"><span class="pre">gridtype</span></code> =  type of file_roff file, “rtm” or “obs” or “scrip”
+* rtm is a 720 x 360 grid ascii file
+* obs is a netcdf file with xc, yc, xv, yv, mask and area variable names
+* scrip is a scrip type grid file (must contain grid_area along with
+typical scrip grid variables)
+<code class="docutils literal notranslate"><span class="pre">file_roff</span></code>  =  an ascii rdirc file OR an obs rtm file OR a scrip grid file
+<code class="docutils literal notranslate"><span class="pre">file_ocn</span></code>   =  a scrip ocean grid file where the mask is 1 for all ocean grid
+cells (see note 3 below)
+<code class="docutils literal notranslate"><span class="pre">file_ocn_coastal_mask</span></code>  =  a scrip ocean grid file where the mask is only 1
+for coastal grid cells (see note 3 below)</p></li>
+</ol>
+<p>NOTES:
+a) gridtype, file_roff, and file_ocn MUST be specified in the namelist
+b) if file_ocn_coastal_mask is not specified, file_ocn will be used
+c) The file_ocn and file_ocn_coast_mask must be standard scrip grid files that
+include the cell area</p>
+<ol class="arabic simple" start="2">
+<li><p>Input parameters
+<code class="docutils literal notranslate"><span class="pre">eFold</span></code> = smoothing eFold distance in meters (default: 1000000)
+<code class="docutils literal notranslate"><span class="pre">rMax</span></code>  = maximum radius of effect in meters (default: 300000)</p></li>
+<li><p>Settings
+title                 = ascii string to add to mapping files (default: ‘unset’)
+restrict_smooth_src_to_nn_dest = option to limit the source points for step2 to
+just the points that get mapped to in step1; if
+false, use all ocean points in
+file_ocn_coastal_mask instead (default: .true.)
+<code class="docutils literal notranslate"><span class="pre">step1</span></code>                 = computes nearest neighbor map (default: .true.)
+<code class="docutils literal notranslate"><span class="pre">step2</span></code>                 = computes smooth map (default: .true.)
+<code class="docutils literal notranslate"><span class="pre">step3</span></code>                 = multiply two maps together (default: .true.)</p></li>
+<li><p>Output fields
+<code class="docutils literal notranslate"><span class="pre">file_nn</span></code>     = nearest neighbor mapping file (default: ‘<a class="reference external" href="http://nn.nc">nn.nc</a>’)
+<code class="docutils literal notranslate"><span class="pre">file_smooth</span></code> = smoother mapping file (default: ‘<a class="reference external" href="http://smooth.nc">smooth.nc</a>’)
+<code class="docutils literal notranslate"><span class="pre">file_new</span></code>    = combined file (default: ‘<a class="reference external" href="http://nnsm.nc">nnsm.nc</a>’) - this is the file that will be used.</p></li>
+</ol>
+<p>Example of a scrip used to run <strong>runoff_map</strong> (file JRA_to_ocn.sh):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">/</span><span class="n">glade</span><span class="o">/</span><span class="n">work</span><span class="o">/</span><span class="n">gmarques</span><span class="o">/</span><span class="n">cesm</span><span class="o">.</span><span class="n">sandboxes</span><span class="o">/</span><span class="n">cesm2_3_beta08_carib</span><span class="o">/</span><span class="n">cime</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">mapping</span><span class="o">/</span><span class="n">gen_mapping_files</span><span class="o">/</span><span class="n">runoff_to_ocn</span><span class="o">/</span><span class="n">src</span><span class="o">/.</span><span class="n">env_mach_specific</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">export</span> <span class="n">TMPDIR</span><span class="o">=/</span><span class="n">glade</span><span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">gmarques</span>
+<span class="o">/</span><span class="n">glade</span><span class="o">/</span><span class="n">work</span><span class="o">/</span><span class="n">gmarques</span><span class="o">/</span><span class="n">cesm</span><span class="o">.</span><span class="n">sandboxes</span><span class="o">/</span><span class="n">cesm2_3_beta08_carib</span><span class="o">/</span><span class="n">cime</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">mapping</span><span class="o">/</span><span class="n">gen_mapping_files</span><span class="o">/</span><span class="n">runoff_to_ocn</span><span class="o">/</span><span class="n">runoff_map</span> <span class="o">&lt;</span> <span class="n">map_JRA_to_tx2_3</span><span class="o">.</span><span class="n">nml</span>
+</pre></div>
+</div>
+<p>Run the following:</p>
+<p><code class="docutils literal notranslate"><span class="pre">./JRA_to_ocn.sh</span></code></p>
+</section>
+<section id="r05-used-in-b-compsets">
+<h2>r05 (used in B-compsets)<a class="headerlink" href="#r05-used-in-b-compsets" title="Permalink to this heading">#</a></h2>
+<p>Example of a namelist used to generate  mapping files from r05 to tx2_3 (file map_r05_to_tx2_3.nml):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&amp;input_nml
+   gridtype     = &#39;rtm&#39;
+   file_roff    = &#39;/glade/p/cesm/cseg/inputdata/lnd/clm2/rtmdata/rdirc.05.061026&#39;
+   file_ocn     = &#39;/glade/work/gmarques/cesm/tx2_3/mesh/tx2_3_SCRIP_230415.nc&#39;
+   file_nn      = &#39;map_r05_to_tx2_3_nn.230415.nc&#39;
+   file_smooth  = &#39;map_r05_to_tx2_3_sm_e1000r1000_230415.nc&#39;
+   file_new     = &#39;map_r05_to_tx2_3_nnsm_e1000r1000_230415.nc&#39;
+   title        = &#39;runoff map: r05 -&gt; tx2_3, nearest neighbor and smoothed&#39;
+   eFold        = 1000000.0
+   rMax         = 1000000.0
+   step1 = .true.
+   step2 = .true.
+   step3 = .true.
+/
+</pre></div>
+</div>
+<p>Example of a scrip used to run <strong>runoff_map</strong> (file r05_to_ocn.sh):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">/</span><span class="n">glade</span><span class="o">/</span><span class="n">work</span><span class="o">/</span><span class="n">gmarques</span><span class="o">/</span><span class="n">cesm</span><span class="o">.</span><span class="n">sandboxes</span><span class="o">/</span><span class="n">cesm2_3_beta08_carib</span><span class="o">/</span><span class="n">cime</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">mapping</span><span class="o">/</span><span class="n">gen_mapping_files</span><span class="o">/</span><span class="n">runoff_to_ocn</span><span class="o">/</span><span class="n">src</span><span class="o">/.</span><span class="n">env_mach_specific</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">export</span> <span class="n">TMPDIR</span><span class="o">=/</span><span class="n">glade</span><span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">gmarques</span>
+<span class="o">/</span><span class="n">glade</span><span class="o">/</span><span class="n">work</span><span class="o">/</span><span class="n">gmarques</span><span class="o">/</span><span class="n">cesm</span><span class="o">.</span><span class="n">sandboxes</span><span class="o">/</span><span class="n">cesm2_3_beta08_carib</span><span class="o">/</span><span class="n">cime</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">mapping</span><span class="o">/</span><span class="n">gen_mapping_files</span><span class="o">/</span><span class="n">runoff_to_ocn</span><span class="o">/</span><span class="n">runoff_map</span> <span class="o">&lt;</span> <span class="n">map_r05_to_tx2_3</span><span class="o">.</span><span class="n">nml</span>
+</pre></div>
+</div>
+<p>Run the following:</p>
+<p><code class="docutils literal notranslate"><span class="pre">./r05_to_ocn.sh</span></code></p>
+</section>
+<section id="greenland-4km-used-in-b-compsets">
+<h2>Greenland 4km (used in B-compsets)<a class="headerlink" href="#greenland-4km-used-in-b-compsets" title="Permalink to this heading">#</a></h2>
+<p>Example of a namelist used to generate  mapping files from gland4km to tx2_3 (file map_greenland_4km_to_tx2_3.nml):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&amp;input_nml
+   gridtype     = &#39;scrip&#39;
+   file_roff    = &#39;/glade/p/cesm/cseg/inputdata/glc/cism/griddata/SCRIPgrid_greenland_4km_epsg3413_c170414.nc&#39;
+   file_ocn     = &#39;/glade/work/gmarques/cesm/tx2_3/mesh/tx2_3_SCRIP_230415.nc&#39;
+   file_nn      = &#39;map_gland4km_to_tx2_3_nn.230415.nc&#39;
+   file_smooth  = &#39;map_gland4km_to_tx2_3_sm_e1000r300_230415.nc&#39;
+   file_new     = &#39;map_gland4km_to_tx2_3_nnsm_e1000r300_230415.nc&#39;
+   title        = &#39;runoff map: gland4km -&gt; tx2_3, nearest neighbor and smoothed&#39;
+   eFold        = 1000000.0
+   rMax         = 300000.0
+   step1 = .true.
+   step2 = .true.
+   step3 = .true.
+/
+</pre></div>
+</div>
+<p>Example of a scrip used to run <strong>runoff_map</strong> (file gland4km_to_ocn.sh):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">/</span><span class="n">glade</span><span class="o">/</span><span class="n">work</span><span class="o">/</span><span class="n">gmarques</span><span class="o">/</span><span class="n">cesm</span><span class="o">.</span><span class="n">sandboxes</span><span class="o">/</span><span class="n">cesm2_3_beta08_carib</span><span class="o">/</span><span class="n">cime</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">mapping</span><span class="o">/</span><span class="n">gen_mapping_files</span><span class="o">/</span><span class="n">runoff_to_ocn</span><span class="o">/</span><span class="n">src</span><span class="o">/.</span><span class="n">env_mach_specific</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">export</span> <span class="n">TMPDIR</span><span class="o">=/</span><span class="n">glade</span><span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">gmarques</span>
+<span class="o">/</span><span class="n">glade</span><span class="o">/</span><span class="n">work</span><span class="o">/</span><span class="n">gmarques</span><span class="o">/</span><span class="n">cesm</span><span class="o">.</span><span class="n">sandboxes</span><span class="o">/</span><span class="n">cesm2_3_beta08_carib</span><span class="o">/</span><span class="n">cime</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">mapping</span><span class="o">/</span><span class="n">gen_mapping_files</span><span class="o">/</span><span class="n">runoff_to_ocn</span><span class="o">/</span><span class="n">runoff_map</span> <span class="o">&lt;</span> <span class="n">map_greenland_4km_to_tx2_3</span><span class="o">.</span><span class="n">nml</span>
+</pre></div>
+</div>
+<p>Run the following:</p>
+<p><code class="docutils literal notranslate"><span class="pre">./gland4km_to_ocn.sh</span></code></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./runoff_mapping"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jra-55-used-in-c-and-g-compsets">JRA-55 (used in C- and G-compsets)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#r05-used-in-b-compsets">r05 (used in B-compsets)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#greenland-4km-used-in-b-compsets">Greenland 4km (used in B-compsets)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Ocean Model Working Group
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
