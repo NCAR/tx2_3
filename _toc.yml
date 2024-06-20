@@ -5,8 +5,10 @@ chapters:
 - file: topography/topo.md
 - file: mesh/mesh.md
 - file: runoff_mapping/runoff.md
+- file: wave_mapping/wave.md
 - file: initial_conditions/ics.md
 - file: vertical_grids/vgrid.md
+- file: maximum_thickness/max_h.ipynb
 - file: state_restoring/state_restoring.ipynb
 - file: tidal_energy_dissipation/regrid_tidal_dissipation.ipynb
 - file: chlorophyll/Interpolate_and_fill_SeaWIFS.ipynb

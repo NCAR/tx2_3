@@ -1,0 +1,64 @@
+#!/bin/csh
+
+# PBS batch script to run threaded application on casper
+
+#PBS -N append_interp
+#PBS -q casper
+#PBS -A NCGD0011
+#PBS -l walltime=0:20:00
+#PBS -l select=1:ncpus=16:ompthreads=16:mpiprocs=1:mem=30GB
+#PBS -j oe
+
+set echo on
+echo "Job starting at " `date`
+
+setenv OMP_NUM_THREADS ${NCPUS}
+echo "Number of threads from script = " ${OMP_NUM_THREADS}
+
+setenv GRID tx2_3v2
+setenv EDIT edit4
+setenv TOPODATA SRTM15_V2.4
+setenv SMOOTH_SCL 1.0
+setenv CEXP 1.0
+setenv NSUB 150
+
+setenv SFNC SmL${SMOOTH_SCL}_C${CEXP}
+
+setenv PATH_TOPO ./
+
+setenv FILE_IN topo.sub${NSUB}.${GRID}.srtm.${EDIT}.nc
+setenv FILE_WORK topo_work.nc
+setenv FILE_OUT ${FILE_IN:r}.${SFNC}.nc
+
+cp ${PATH_TOPO}/${FILE_IN} ${PATH_TOPO}/${FILE_WORK}
+
+cat > append_topo_interp_smooth.${GRID}.in << EOF
+&model_input_nml
+ mom6_grid_version='${GRID}'
+ mom6_horiz_grid_file='../supergrid/ORCA_gridgen/ocean_hgrid.nc'
+ lmask_file='${PATH_TOPO}/${FILE_WORK}'
+ vname_lmask='mask'
+/
+&topo_data_nml
+ topo_data_name='${TOPODATA}'
+ topo_data_file='/glade/campaign/cgd/oce/datasets/obs/SRTM/SRTM15_V2.4.nc'
+ vname_lon='lon',
+ vname_lat='lat',
+ vname_z='z'
+/
+&model_output_nml
+ nprint=100
+ hmin = 10.0
+ smooth_scl=${SMOOTH_SCL}
+ cressman_exp = ${CEXP}
+ model_topo_file='null'
+ vname_depth='D_interp'
+ user_name='Frank Bryan (bryan@ucar.edu)'
+/
+EOF
+
+time src/append_topo_interp_smooth < append_topo_interp_smooth.${GRID}.in
+
+mv ${PATH_TOPO}/${FILE_WORK} ${PATH_TOPO}/${FILE_OUT}
+
+echo "Job ending at " `date`
