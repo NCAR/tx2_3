@@ -12,12 +12,13 @@
 set echo on
 echo "Job starting at " `date`
 
-setenv TMPDIR  /glade/scratch/gmarques/tmp
+setenv GRID  tx2_3v2
+setenv NSUB 150
+
+setenv PATH_OUT $cwd
 setenv OMP_NUM_THREADS ${NCPUS}
 echo "Number of threads from script = " ${OMP_NUM_THREADS}
 
-setenv GRID  tx2_3v2
-setenv NSUB 150
 
 cat > create_model_topo.in << EOF
 &model_grid_nml
@@ -28,7 +29,7 @@ cat > create_model_topo.in << EOF
  grid_is_tripole=.true.
 /
 &topo_in_nml
- topo_in_file='/glade/campaign/cgd/oce/datasets/obs/topography/SRTM/SRTM15_V2.4.nc'
+ topo_in_file='/glade/campaign/cgd/oce/datasets/obs/SRTM/SRTM15_V2.4.nc'
  vname_topo_lon='lon',
  vname_topo_lat='lat',
  vname_topo_z='z'
@@ -40,11 +41,11 @@ cat > create_model_topo.in << EOF
  do_median = .true.
  mask_hmin=1.0
  mask_threshold=0.5
- output_file='topo.sub${NSUB}.${GRID}.srtm.nc'
- user_name='Frank Bryan'
+ output_file='${PATH_OUT}/topo.sub${NSUB}.${GRID}.srtm.nc'
+ user_name='Frank Bryan (bryan@ucar.edu)'
 /
 EOF
 
-time ./create_model_topo < create_model_topo.in
+time src/create_model_topo < create_model_topo.in
 
 echo "Job ending at " `date`
