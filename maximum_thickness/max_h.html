@@ -1,0 +1,1566 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Define maximum layer thicknesses H_max(z) &#8212; Nominal 2/3 degree global configuration for CESM/MOM6</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'maximum_thickness/max_h';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Wave Dissipation dataset" href="../tidal_energy_dissipation/regrid_tidal_dissipation.html" />
+    <link rel="prev" title="Introduction" href="../initial_conditions/ics.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ncar_logo.png" class="logo__image only-light" alt="Nominal 2/3 degree global configuration for CESM/MOM6 - Home"/>
+    <script>document.write(`<img src="../_static/ncar_logo.png" class="logo__image only-dark" alt="Nominal 2/3 degree global configuration for CESM/MOM6 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../supergrid/orca_gridgen.html">Supergrid</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../mesh/mesh.html">Generate an ESMF mesh</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../runoff_mapping/runoff.html">Runoff mapping files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../initial_conditions/ics.html">Introduction</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Define maximum layer thicknesses H_max(z)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../tidal_energy_dissipation/regrid_tidal_dissipation.html">Wave Dissipation dataset</a></li>
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NCAR/tx2_3" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NCAR/tx2_3/edit/main/docs/maximum_thickness/max_h.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NCAR/tx2_3/issues/new?title=Issue%20on%20page%20%2Fmaximum_thickness/max_h.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/maximum_thickness/max_h.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Define maximum layer thicknesses H_max(z)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Define maximum layer thicknesses H_max(z)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ics">ICs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-thicknesses-based-on-the-values-above-the-90-quantile">Maximum thicknesses based on the values above the 90% quantile</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maps">Maps</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-the-function-to-fit-tanh">Define the function to fit (tanh)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paste-rms-90-below-and-manually-adjust-small-values-near-the-bottom">Paste RMS_90 below and manually adjust small values near the bottom</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-curve-fitting">Perform curve fitting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-sure-max-thickness-of-first-4-layers-is-2-5-m">Make sure max thickness of first 4 layers is 2.5 m</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-to-file">Save to file</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="define-maximum-layer-thicknesses-h-max-z">
+<h1>Define maximum layer thicknesses H_max(z)<a class="headerlink" href="#define-maximum-layer-thicknesses-h-max-z" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mom6_tools.m6plot</span> <span class="kn">import</span> <span class="n">xyplot</span><span class="p">,</span> <span class="n">myStats</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">})</span>
+<span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="nn">colors</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The following parameters must be set accordingly</span>
+<span class="c1">######################################################</span>
+<span class="c1"># case name - must be changed for each configuration</span>
+<span class="n">grid_name</span> <span class="o">=</span> <span class="s1">&#39;tx2_3v2&#39;</span>
+<span class="c1"># Path to the grid</span>
+<span class="n">case</span> <span class="o">=</span> <span class="s1">&#39;baseline&#39;</span>
+<span class="c1"># add your name and email address below</span>
+<span class="n">author</span> <span class="o">=</span> <span class="s1">&#39;Gustavo Marques (gmarques@ucar.edu)&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># MAX_LAYER_THICKNESS in GFDL&#39;s OM4, for comparison purposes</span>
+
+<span class="n">max_h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">400.0</span><span class="p">,</span> <span class="mf">409.63</span><span class="p">,</span> <span class="mf">410.32</span><span class="p">,</span> <span class="mf">410.75</span><span class="p">,</span> <span class="mf">411.07</span><span class="p">,</span> <span class="mf">411.32</span><span class="p">,</span> <span class="mf">411.52</span><span class="p">,</span> <span class="mf">411.7</span><span class="p">,</span> 
+                  <span class="mf">411.86</span><span class="p">,</span> <span class="mf">412.0</span><span class="p">,</span> <span class="mf">412.13</span><span class="p">,</span> <span class="mf">412.24</span><span class="p">,</span> <span class="mf">412.35</span><span class="p">,</span> <span class="mf">412.45</span><span class="p">,</span> <span class="mf">412.54</span><span class="p">,</span> <span class="mf">412.63</span><span class="p">,</span> 
+                  <span class="mf">412.71</span><span class="p">,</span> <span class="mf">412.79</span><span class="p">,</span> <span class="mf">412.86</span><span class="p">,</span> <span class="mf">412.93</span><span class="p">,</span> <span class="mf">413.0</span><span class="p">,</span> <span class="mf">413.06</span><span class="p">,</span> <span class="mf">413.12</span><span class="p">,</span> <span class="mf">413.18</span><span class="p">,</span>
+                  <span class="mf">413.24</span><span class="p">,</span> <span class="mf">413.29</span><span class="p">,</span> <span class="mf">413.34</span><span class="p">,</span> <span class="mf">413.39</span><span class="p">,</span> <span class="mf">413.44</span><span class="p">,</span> <span class="mf">413.49</span><span class="p">,</span> <span class="mf">413.54</span><span class="p">,</span> <span class="mf">413.58</span><span class="p">,</span>
+                  <span class="mf">413.62</span><span class="p">,</span> <span class="mf">413.67</span><span class="p">,</span> <span class="mf">413.71</span><span class="p">,</span> <span class="mf">413.75</span><span class="p">,</span> <span class="mf">413.78</span><span class="p">,</span> <span class="mf">413.82</span><span class="p">,</span> <span class="mf">413.86</span><span class="p">,</span> <span class="mf">413.9</span><span class="p">,</span> 
+                  <span class="mf">413.93</span><span class="p">,</span> <span class="mf">413.97</span><span class="p">,</span> <span class="mf">414.0</span><span class="p">,</span> <span class="mf">414.03</span><span class="p">,</span> <span class="mf">414.06</span><span class="p">,</span> <span class="mf">414.1</span><span class="p">,</span> <span class="mf">414.13</span><span class="p">,</span> <span class="mf">414.16</span><span class="p">,</span> 
+                  <span class="mf">414.19</span><span class="p">,</span> <span class="mf">414.22</span><span class="p">,</span> <span class="mf">414.24</span><span class="p">,</span> <span class="mf">414.27</span><span class="p">,</span> <span class="mf">414.3</span><span class="p">,</span> <span class="mf">414.33</span><span class="p">,</span> <span class="mf">414.35</span><span class="p">,</span> <span class="mf">414.38</span><span class="p">,</span> 
+                  <span class="mf">414.41</span><span class="p">,</span> <span class="mf">414.43</span><span class="p">,</span> <span class="mf">414.46</span><span class="p">,</span> <span class="mf">414.48</span><span class="p">,</span> <span class="mf">414.51</span><span class="p">,</span> <span class="mf">414.53</span><span class="p">,</span> <span class="mf">414.55</span><span class="p">,</span> <span class="mf">414.58</span><span class="p">,</span> 
+                  <span class="mf">414.6</span><span class="p">,</span> <span class="mf">414.62</span><span class="p">,</span> <span class="mf">414.65</span><span class="p">,</span> <span class="mf">414.67</span><span class="p">,</span> <span class="mf">414.69</span><span class="p">,</span> <span class="mf">414.71</span><span class="p">,</span> <span class="mf">414.73</span><span class="p">,</span> <span class="mf">414.75</span><span class="p">,</span> 
+                  <span class="mf">414.77</span><span class="p">,</span> <span class="mf">414.79</span><span class="p">,</span> <span class="mf">414.83</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;/glade/derecho/scratch/gmarques/g.e23_a16g.GJRAv4.TL319_t232_hycom1_N75.2024.hycom1_exploration_N75/run/&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grd</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="n">case</span><span class="o">+</span><span class="s1">&#39;/g.e23_a16g.GJRAv4.TL319_t232_hycom1_N75.2024.hycom1_exploration_N75.mom6.h.static.nc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load interfaces zstar</span>
+<span class="n">dz</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="n">case</span><span class="o">+</span><span class="s1">&#39;/Vertical_coordinate.nc&#39;</span><span class="p">)[</span><span class="s1">&#39;Layer&#39;</span><span class="p">]</span>
+<span class="n">eta</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="n">case</span><span class="o">+</span><span class="s1">&#39;/Vertical_coordinate.nc&#39;</span><span class="p">)[</span><span class="s1">&#39;Interface&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dz</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body[data-theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2 {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray &#x27;Layer&#x27; (Layer: 75)&gt;
+array([1.250000e+00, 3.750000e+00, 6.250000e+00, 8.750000e+00, 1.125000e+01,
+       1.375000e+01, 1.625000e+01, 1.875000e+01, 2.125000e+01, 2.375000e+01,
+       2.625000e+01, 2.875000e+01, 3.125000e+01, 3.375000e+01, 3.625000e+01,
+       3.875000e+01, 4.125000e+01, 4.375000e+01, 4.625000e+01, 4.875000e+01,
+       5.125000e+01, 5.375000e+01, 5.625000e+01, 5.875000e+01, 6.125000e+01,
+       6.375000e+01, 6.625000e+01, 6.875000e+01, 7.125000e+01, 7.375000e+01,
+       7.625000e+01, 7.875000e+01, 8.125000e+01, 8.375000e+01, 8.625000e+01,
+       8.876372e+01, 9.130488e+01, 9.387348e+01, 9.646951e+01, 9.909299e+01,
+       1.017439e+02, 1.044253e+02, 1.071894e+02, 1.101483e+02, 1.134005e+02,
+       1.170264e+02, 1.211252e+02, 1.258301e+02, 1.313104e+02, 1.377775e+02,
+       1.455000e+02, 1.548061e+02, 1.661100e+02, 1.799286e+02, 1.968920e+02,
+       2.177837e+02, 2.435695e+02, 2.754256e+02, 3.147966e+02, 3.634415e+02,
+       4.234923e+02, 4.975393e+02, 5.887171e+02, 7.007975e+02, 8.383154e+02,
+       1.006720e+03, 1.212538e+03, 1.463554e+03, 1.769054e+03, 2.140079e+03,
+       2.589734e+03, 3.133543e+03, 3.789850e+03, 4.580300e+03, 5.505995e+03])
+Coordinates:
+  * Layer    (Layer) float64 1.25 3.75 6.25 8.75 ... 3.79e+03 4.58e+03 5.506e+03
+Attributes:
+    long_name:       Layer z-rho
+    units:           meter
+    cartesian_axis:  Z
+    positive:        up</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'Layer'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>Layer</span>: 75</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-c37047ff-eaf5-41a8-99ca-c67d7bfd19ce' class='xr-array-in' type='checkbox' checked><label for='section-c37047ff-eaf5-41a8-99ca-c67d7bfd19ce' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>1.25 3.75 6.25 8.75 11.25 ... 3.134e+03 3.79e+03 4.58e+03 5.506e+03</span></div><div class='xr-array-data'><pre>array([1.250000e+00, 3.750000e+00, 6.250000e+00, 8.750000e+00, 1.125000e+01,
+       1.375000e+01, 1.625000e+01, 1.875000e+01, 2.125000e+01, 2.375000e+01,
+       2.625000e+01, 2.875000e+01, 3.125000e+01, 3.375000e+01, 3.625000e+01,
+       3.875000e+01, 4.125000e+01, 4.375000e+01, 4.625000e+01, 4.875000e+01,
+       5.125000e+01, 5.375000e+01, 5.625000e+01, 5.875000e+01, 6.125000e+01,
+       6.375000e+01, 6.625000e+01, 6.875000e+01, 7.125000e+01, 7.375000e+01,
+       7.625000e+01, 7.875000e+01, 8.125000e+01, 8.375000e+01, 8.625000e+01,
+       8.876372e+01, 9.130488e+01, 9.387348e+01, 9.646951e+01, 9.909299e+01,
+       1.017439e+02, 1.044253e+02, 1.071894e+02, 1.101483e+02, 1.134005e+02,
+       1.170264e+02, 1.211252e+02, 1.258301e+02, 1.313104e+02, 1.377775e+02,
+       1.455000e+02, 1.548061e+02, 1.661100e+02, 1.799286e+02, 1.968920e+02,
+       2.177837e+02, 2.435695e+02, 2.754256e+02, 3.147966e+02, 3.634415e+02,
+       4.234923e+02, 4.975393e+02, 5.887171e+02, 7.007975e+02, 8.383154e+02,
+       1.006720e+03, 1.212538e+03, 1.463554e+03, 1.769054e+03, 2.140079e+03,
+       2.589734e+03, 3.133543e+03, 3.789850e+03, 4.580300e+03, 5.505995e+03])</pre></div></div></li><li class='xr-section-item'><input id='section-310395b6-ca7f-45c8-9b58-8fee8a3f6e83' class='xr-section-summary-in' type='checkbox'  checked><label for='section-310395b6-ca7f-45c8-9b58-8fee8a3f6e83' class='xr-section-summary' >Coordinates: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>Layer</span></div><div class='xr-var-dims'>(Layer)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>1.25 3.75 ... 4.58e+03 5.506e+03</div><input id='attrs-3eb6f64f-8bc5-45ad-b1a9-7b92a6b95a9a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3eb6f64f-8bc5-45ad-b1a9-7b92a6b95a9a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2fcfb05d-9c61-447f-aa01-341f2ffa506a' class='xr-var-data-in' type='checkbox'><label for='data-2fcfb05d-9c61-447f-aa01-341f2ffa506a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Layer z-rho</dd><dt><span>units :</span></dt><dd>meter</dd><dt><span>cartesian_axis :</span></dt><dd>Z</dd><dt><span>positive :</span></dt><dd>up</dd></dl></div><div class='xr-var-data'><pre>array([1.250000e+00, 3.750000e+00, 6.250000e+00, 8.750000e+00, 1.125000e+01,
+       1.375000e+01, 1.625000e+01, 1.875000e+01, 2.125000e+01, 2.375000e+01,
+       2.625000e+01, 2.875000e+01, 3.125000e+01, 3.375000e+01, 3.625000e+01,
+       3.875000e+01, 4.125000e+01, 4.375000e+01, 4.625000e+01, 4.875000e+01,
+       5.125000e+01, 5.375000e+01, 5.625000e+01, 5.875000e+01, 6.125000e+01,
+       6.375000e+01, 6.625000e+01, 6.875000e+01, 7.125000e+01, 7.375000e+01,
+       7.625000e+01, 7.875000e+01, 8.125000e+01, 8.375000e+01, 8.625000e+01,
+       8.876372e+01, 9.130488e+01, 9.387348e+01, 9.646951e+01, 9.909299e+01,
+       1.017439e+02, 1.044253e+02, 1.071894e+02, 1.101483e+02, 1.134005e+02,
+       1.170264e+02, 1.211252e+02, 1.258301e+02, 1.313104e+02, 1.377775e+02,
+       1.455000e+02, 1.548061e+02, 1.661100e+02, 1.799286e+02, 1.968920e+02,
+       2.177837e+02, 2.435695e+02, 2.754256e+02, 3.147966e+02, 3.634415e+02,
+       4.234923e+02, 4.975393e+02, 5.887171e+02, 7.007975e+02, 8.383154e+02,
+       1.006720e+03, 1.212538e+03, 1.463554e+03, 1.769054e+03, 2.140079e+03,
+       2.589734e+03, 3.133543e+03, 3.789850e+03, 4.580300e+03, 5.505995e+03])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-734b7a17-3196-418d-97e7-54d2eb558d68' class='xr-section-summary-in' type='checkbox'  checked><label for='section-734b7a17-3196-418d-97e7-54d2eb558d68' class='xr-section-summary' >Attributes: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Layer z-rho</dd><dt><span>units :</span></dt><dd>meter</dd><dt><span>cartesian_axis :</span></dt><dd>Z</dd><dt><span>positive :</span></dt><dd>up</dd></dl></div></li></ul></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load CESM hybrid target densities at interfaces</span>
+<span class="n">vgrid</span> <span class="o">=</span> <span class="s1">&#39;hybrid_75layer_zstar2.50m-2020-11-23.nc&#39;</span>
+<span class="n">sigma2</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s1">&#39;INPUT/&#39;</span><span class="o">+</span><span class="n">vgrid</span><span class="p">)[</span><span class="s1">&#39;sigma2&#39;</span><span class="p">]</span>
+<span class="n">dz</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s1">&#39;INPUT/&#39;</span><span class="o">+</span><span class="n">vgrid</span><span class="p">)[</span><span class="s1">&#39;dz&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ics">
+<h1>ICs<a class="headerlink" href="#ics" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fname</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="n">case</span><span class="o">+</span><span class="s1">&#39;/MOM_IC.nc&#39;</span>
+<span class="n">ics</span> <span class="o">=</span>  <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hist_name</span> <span class="o">=</span> <span class="s1">&#39;g.e23_a16g.GJRAv4.TL319_t232_hycom1_N75.2024.hycom1_exploration_N75.mom6.h.native.0001-01.nc&#39;</span>
+
+<span class="n">fname</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="n">case</span><span class="o">+</span><span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">hist_name</span>
+<span class="n">ds</span> <span class="o">=</span>  <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_quantile</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="n">quantile</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;yh&#39;</span><span class="p">,</span><span class="s1">&#39;xh&#39;</span><span class="p">]):</span>
+    <span class="n">threshold</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">quantile</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dims</span><span class="p">)</span>
+    <span class="c1"># Step 2: Filter the array to find values greater than or equal to the threshold</span>
+    <span class="n">da_quantile</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">da</span> <span class="o">&gt;=</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  
+    <span class="c1">#top_5_percent_values = da_quantile.dropna(dim=&quot;xh&quot;, how=&quot;any&quot;)</span>
+
+    <span class="k">return</span> <span class="n">da_quantile</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">})</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ics</span><span class="o">.</span><span class="n">Layer</span><span class="p">)):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">ics</span><span class="o">.</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">k</span><span class="p">,:]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="n">z</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">ics</span><span class="o">.</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">k</span><span class="p">,:]</span><span class="o">.</span><span class="n">values</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">z</span> <span class="o">=</span> <span class="n">ics</span><span class="o">.</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">,:]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Layer&#39;</span><span class="p">],</span> <span class="n">skipna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">values</span> <span class="o">+</span> \
+          <span class="mf">0.5</span> <span class="o">*</span> <span class="n">ics</span><span class="o">.</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">k</span><span class="p">,:]</span><span class="o">.</span><span class="n">values</span>
+        
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="n">k</span><span class="p">),</span>
+                    <span class="n">c</span><span class="o">=</span><span class="n">z</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> 
+                    <span class="n">norm</span><span class="o">=</span><span class="n">colors</span><span class="o">.</span><span class="n">LogNorm</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">6000.</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdYlBu_r&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dz</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dz</span><span class="p">)),</span> <span class="s1">&#39;k-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;dz&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">max_h</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dz</span><span class="p">)),</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;dz_max&#39;</span><span class="p">)</span>
+<span class="c1">#ax.legend()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">450</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sc</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Layer thickness [m]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Layer index&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/945daf88c16779febe8ef5518385799404c1f4021dae92b380c1c55acc7cbf94.png" src="../_images/945daf88c16779febe8ef5518385799404c1f4021dae92b380c1c55acc7cbf94.png" />
+</div>
+</div>
+<section id="maximum-thicknesses-based-on-the-values-above-the-90-quantile">
+<h2>Maximum thicknesses based on the values above the 90% quantile<a class="headerlink" href="#maximum-thicknesses-based-on-the-values-above-the-90-quantile" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ics</span><span class="o">.</span><span class="n">Layer</span><span class="p">)):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">get_quantile</span><span class="p">(</span><span class="n">ics</span><span class="o">.</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">k</span><span class="p">,:],</span> <span class="n">quantile</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;lath&#39;</span><span class="p">,</span><span class="s1">&#39;lonh&#39;</span><span class="p">])</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="n">z</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">ics</span><span class="o">.</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">k</span><span class="p">,:]</span><span class="o">.</span><span class="n">values</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">z</span> <span class="o">=</span> <span class="n">ics</span><span class="o">.</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">,:]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Layer&#39;</span><span class="p">],</span> <span class="n">skipna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">values</span> <span class="o">+</span> \
+          <span class="mf">0.5</span> <span class="o">*</span> <span class="n">ics</span><span class="o">.</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">k</span><span class="p">,:]</span><span class="o">.</span><span class="n">values</span>
+        
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="n">k</span><span class="p">),</span>
+                    <span class="n">c</span><span class="o">=</span><span class="n">z</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> 
+                    <span class="n">norm</span><span class="o">=</span><span class="n">colors</span><span class="o">.</span><span class="n">LogNorm</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">6000.</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdYlBu_r&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dz</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dz</span><span class="p">)),</span> <span class="s1">&#39;k-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;dz&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">max_h</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dz</span><span class="p">)),</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;dz_max&#39;</span><span class="p">)</span>
+<span class="c1">#ax.legend()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">450</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sc</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Layer thickness [m]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Layer index&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Values &gt;= than the 90th quantile&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/98cbdde46ccbc3498f848f420362319c5fbb82f31ac0083769085760a9be1afb.png" src="../_images/98cbdde46ccbc3498f848f420362319c5fbb82f31ac0083769085760a9be1afb.png" />
+</div>
+</div>
+<section id="maps">
+<h3>Maps<a class="headerlink" href="#maps" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">Mean_90</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ics</span><span class="o">.</span><span class="n">Layer</span><span class="p">))</span>
+<span class="n">Std_90</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ics</span><span class="o">.</span><span class="n">Layer</span><span class="p">))</span>
+<span class="n">RMS_90</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ics</span><span class="o">.</span><span class="n">Layer</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ics</span><span class="o">.</span><span class="n">Layer</span><span class="p">)):</span>
+<span class="c1">#for k in range(20):</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">get_quantile</span><span class="p">(</span><span class="n">ics</span><span class="o">.</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">k</span><span class="p">,:],</span> <span class="n">quantile</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;lath&#39;</span><span class="p">,</span><span class="s1">&#39;lonh&#39;</span><span class="p">])</span>
+    <span class="n">data1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_invalid</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="c1"># * grd.wet.values</span>
+    <span class="n">Min</span><span class="p">,</span> <span class="n">Max</span><span class="p">,</span> <span class="n">Mean_90</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">Std_90</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">RMS_90</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">myStats</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">grd</span><span class="o">.</span><span class="n">area_t</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span><span class="mf">6.5</span><span class="p">))</span>
+    <span class="n">title1</span> <span class="o">=</span> <span class="s1">&#39;h &gt;= 90th quantile for Layer=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+    <span class="n">xyplot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_where</span><span class="p">(</span><span class="n">grd</span><span class="o">.</span><span class="n">wet</span><span class="o">.</span><span class="n">values</span> <span class="o">==</span> <span class="mf">0.</span><span class="p">,</span> <span class="n">data1</span><span class="p">),</span> <span class="n">grd</span><span class="o">.</span><span class="n">geolon</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">grd</span><span class="o">.</span><span class="n">geolat</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">grd</span><span class="o">.</span><span class="n">area_t</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title1</span><span class="p">,</span> 
+           <span class="n">clim</span><span class="o">=</span><span class="p">(</span><span class="mf">5.</span><span class="p">,</span> <span class="mf">50.</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">nbins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">title2</span> <span class="o">=</span> <span class="s1">&#39;h for Layer=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+    <span class="c1">#data2 = np.ma.masked_invalid(ics.h[0,k,:].values) #* grd.wet.values</span>
+    
+    <span class="n">data2</span> <span class="o">=</span> <span class="n">ics</span><span class="o">.</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">k</span><span class="p">,:]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">xyplot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_where</span><span class="p">(</span><span class="n">grd</span><span class="o">.</span><span class="n">wet</span><span class="o">.</span><span class="n">values</span> <span class="o">==</span> <span class="mf">0.</span><span class="p">,</span> <span class="n">data2</span><span class="p">),</span> <span class="n">grd</span><span class="o">.</span><span class="n">geolon</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">grd</span><span class="o">.</span><span class="n">geolat</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">grd</span><span class="o">.</span><span class="n">area_t</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title2</span><span class="p">,</span> 
+           <span class="n">axis</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">nbins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">top</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">)</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span><span class="mf">2.5</span><span class="p">))</span>
+    <span class="n">ics</span><span class="o">.</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">k</span><span class="p">,:]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
+    <span class="n">title3</span> <span class="o">=</span> <span class="s1">&#39;Histogram Layer=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/glade/derecho/scratch/gmarques/tmp/ipykernel_2588/956470891.py:12: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`).
+  fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(24,6.5))
+</pre></div>
+</div>
+<img alt="../_images/605d110e78ce7cbab5023ead7e5b91c79538a5fbcb24f1cb9c6611f11b655c44.png" src="../_images/605d110e78ce7cbab5023ead7e5b91c79538a5fbcb24f1cb9c6611f11b655c44.png" />
+<img alt="../_images/cf021f700e5e793e799612cba6242afc1e8bb49c208fb10ad1bffcbd60477c5a.png" src="../_images/cf021f700e5e793e799612cba6242afc1e8bb49c208fb10ad1bffcbd60477c5a.png" />
+<img alt="../_images/4f167191382fa2db01d2099fe32bb0a1234f4162bc70b5c022722642ff89c76d.png" src="../_images/4f167191382fa2db01d2099fe32bb0a1234f4162bc70b5c022722642ff89c76d.png" />
+<img alt="../_images/7bfe455b6aa1abcd278929c910e53e8c3e9e8b540379e5145f87edd910588e95.png" src="../_images/7bfe455b6aa1abcd278929c910e53e8c3e9e8b540379e5145f87edd910588e95.png" />
+<img alt="../_images/adf1fb18676e8986c8c8fb772a2af3618497d009c1018c2db5f777c50eff64ec.png" src="../_images/adf1fb18676e8986c8c8fb772a2af3618497d009c1018c2db5f777c50eff64ec.png" />
+<img alt="../_images/431d36070e50fecad0150f33a1bc04748305486c0122d9bd81b3b3178f3067c4.png" src="../_images/431d36070e50fecad0150f33a1bc04748305486c0122d9bd81b3b3178f3067c4.png" />
+<img alt="../_images/14aa43204f4fed860ef15900722963b1d9fb1e2b7c9d2da1227f72e0a399ec0a.png" src="../_images/14aa43204f4fed860ef15900722963b1d9fb1e2b7c9d2da1227f72e0a399ec0a.png" />
+<img alt="../_images/0d85f19541d6d2e5fab214650ae89f0fe2c2a31bc25f3043255ab6a1e83be3e7.png" src="../_images/0d85f19541d6d2e5fab214650ae89f0fe2c2a31bc25f3043255ab6a1e83be3e7.png" />
+<img alt="../_images/f709fcfb962e977c1e4b606b716699cfcf271441d3a97897cb8e47d72bc69cca.png" src="../_images/f709fcfb962e977c1e4b606b716699cfcf271441d3a97897cb8e47d72bc69cca.png" />
+<img alt="../_images/a4165c203195145d2ecd9b36adb450fc855dd374b78007eadbddf818b3ce6ab7.png" src="../_images/a4165c203195145d2ecd9b36adb450fc855dd374b78007eadbddf818b3ce6ab7.png" />
+<img alt="../_images/4ceb3bc45b24fb3056e0d8ac1d1fcd2db84e71f73e2fb80dd550b37e3a828c4b.png" src="../_images/4ceb3bc45b24fb3056e0d8ac1d1fcd2db84e71f73e2fb80dd550b37e3a828c4b.png" />
+<img alt="../_images/9744fc60afc6b846df4b687162e4462ddeead7e1de44488b29d69f30c1140063.png" src="../_images/9744fc60afc6b846df4b687162e4462ddeead7e1de44488b29d69f30c1140063.png" />
+<img alt="../_images/9d4ad6291db058061be99a5082643cdd507da36456d503d71d4e4cacdae46942.png" src="../_images/9d4ad6291db058061be99a5082643cdd507da36456d503d71d4e4cacdae46942.png" />
+<img alt="../_images/c85a30a1291770c6a610f6a928cd427977661f20429b9e9063a5f7e41d419c30.png" src="../_images/c85a30a1291770c6a610f6a928cd427977661f20429b9e9063a5f7e41d419c30.png" />
+<img alt="../_images/2d7ef19b52c046f7d5b2d2759fa2137f2c23ec771298e75a9cbb60127bdef7d9.png" src="../_images/2d7ef19b52c046f7d5b2d2759fa2137f2c23ec771298e75a9cbb60127bdef7d9.png" />
+<img alt="../_images/674cb1eefc69e94602e6400dca574c18a13accdac4746321e158e2e38ba219c7.png" src="../_images/674cb1eefc69e94602e6400dca574c18a13accdac4746321e158e2e38ba219c7.png" />
+<img alt="../_images/98b0cff43a04f6372961be30ff458bb2b5b2bc2d2ba4aadd4c47d044a7e6ca7b.png" src="../_images/98b0cff43a04f6372961be30ff458bb2b5b2bc2d2ba4aadd4c47d044a7e6ca7b.png" />
+<img alt="../_images/3893f2756406a0c9f75127acffd31511b09a99b70f7ab6981049998d1a473da6.png" src="../_images/3893f2756406a0c9f75127acffd31511b09a99b70f7ab6981049998d1a473da6.png" />
+<img alt="../_images/00a4c3e040a08c4b58d07081fd39641b7ef171d2abff44ebd4b070334bdcda39.png" src="../_images/00a4c3e040a08c4b58d07081fd39641b7ef171d2abff44ebd4b070334bdcda39.png" />
+<img alt="../_images/0a0be517471ca26425dcb3ef10d4cd08e40a8daf8343f25ff5938c726ecaf0d9.png" src="../_images/0a0be517471ca26425dcb3ef10d4cd08e40a8daf8343f25ff5938c726ecaf0d9.png" />
+<img alt="../_images/611baf27565b75309bf4d939d16fcd82cd8522dd8896188d3545232feca24cae.png" src="../_images/611baf27565b75309bf4d939d16fcd82cd8522dd8896188d3545232feca24cae.png" />
+<img alt="../_images/252b0e2a238e779e6708eb4990218eb9bd40444a3759fc69ab4761c8c4d4c59c.png" src="../_images/252b0e2a238e779e6708eb4990218eb9bd40444a3759fc69ab4761c8c4d4c59c.png" />
+<img alt="../_images/33fef71030efd391cb8389b9c0418786561d1fba813e1c7e575a7ed452359447.png" src="../_images/33fef71030efd391cb8389b9c0418786561d1fba813e1c7e575a7ed452359447.png" />
+<img alt="../_images/a57af62d2d1635ac8b17233335067afe361b9f00a4135893517031ffc1b894a6.png" src="../_images/a57af62d2d1635ac8b17233335067afe361b9f00a4135893517031ffc1b894a6.png" />
+<img alt="../_images/8e654299fe13355446084b993475011baad5d6e2eb7afb3cd6f560ffb4c212bc.png" src="../_images/8e654299fe13355446084b993475011baad5d6e2eb7afb3cd6f560ffb4c212bc.png" />
+<img alt="../_images/bacf61ac269def2a72b019fd4d7bc25c5b01bbb6835b930a5869fe4576fca733.png" src="../_images/bacf61ac269def2a72b019fd4d7bc25c5b01bbb6835b930a5869fe4576fca733.png" />
+<img alt="../_images/c138fa0f18efe0d781864e59209a06c65553f4aa90cd56691d223ffc4492a398.png" src="../_images/c138fa0f18efe0d781864e59209a06c65553f4aa90cd56691d223ffc4492a398.png" />
+<img alt="../_images/27e2c92e32764bfc6216d46dfe0c52ca8d446075c41ecf8f58e47a57e1fe7721.png" src="../_images/27e2c92e32764bfc6216d46dfe0c52ca8d446075c41ecf8f58e47a57e1fe7721.png" />
+<img alt="../_images/9b687d9d729d4b6f9bb20811735067017d25620c0fc817ef618491879c7b13e6.png" src="../_images/9b687d9d729d4b6f9bb20811735067017d25620c0fc817ef618491879c7b13e6.png" />
+<img alt="../_images/10eb6541704d85bc5f239808972a7862495bdf84d55d690bd7316101e9038898.png" src="../_images/10eb6541704d85bc5f239808972a7862495bdf84d55d690bd7316101e9038898.png" />
+<img alt="../_images/439c64d737ea1b8d5a0794fda660334f3c566a78395c48d55cf0afcb2db3e11e.png" src="../_images/439c64d737ea1b8d5a0794fda660334f3c566a78395c48d55cf0afcb2db3e11e.png" />
+<img alt="../_images/a9693e44d4b97d33372d28a612228b4bdf0d01b00c72b02dded769192595acc3.png" src="../_images/a9693e44d4b97d33372d28a612228b4bdf0d01b00c72b02dded769192595acc3.png" />
+<img alt="../_images/f3b3ffd51aa9ada7ac370a8c8ffde15d115f0628c1afed1acf155ea245edc3af.png" src="../_images/f3b3ffd51aa9ada7ac370a8c8ffde15d115f0628c1afed1acf155ea245edc3af.png" />
+<img alt="../_images/aae0776caf939fa5a2a0a1d752a8cc329f460e0257e420d40ee2ec69c1e89574.png" src="../_images/aae0776caf939fa5a2a0a1d752a8cc329f460e0257e420d40ee2ec69c1e89574.png" />
+<img alt="../_images/c60ececa96d79524e2a5ebffde61daf00f82e6fd5de90369f53eaec24795860b.png" src="../_images/c60ececa96d79524e2a5ebffde61daf00f82e6fd5de90369f53eaec24795860b.png" />
+<img alt="../_images/8ee7f0b0e0af3a54cd3b2a039f8ba46c5de2783facbb57909e968a572fe70f7e.png" src="../_images/8ee7f0b0e0af3a54cd3b2a039f8ba46c5de2783facbb57909e968a572fe70f7e.png" />
+<img alt="../_images/2a800bf652b87631589cd36ea9b28bb7a824c4c4f24049010267bfcdae52b7c8.png" src="../_images/2a800bf652b87631589cd36ea9b28bb7a824c4c4f24049010267bfcdae52b7c8.png" />
+<img alt="../_images/bd64b7795ecd0d139e48407d95f2e6ad6d6de775828bd7412fec31547cca6335.png" src="../_images/bd64b7795ecd0d139e48407d95f2e6ad6d6de775828bd7412fec31547cca6335.png" />
+<img alt="../_images/5adfef8e994d07647042442dc72e3655bf83d15449cee3cdf7c67e24dfaf6820.png" src="../_images/5adfef8e994d07647042442dc72e3655bf83d15449cee3cdf7c67e24dfaf6820.png" />
+<img alt="../_images/d67a61dd4a784946a62c129f9909c4faec9623eff7970ba717ae726e7a2b5484.png" src="../_images/d67a61dd4a784946a62c129f9909c4faec9623eff7970ba717ae726e7a2b5484.png" />
+<img alt="../_images/f3afe8c35bd2a09ca226d2f5bde2eddd6afce57d2d24f03f74226c965de55fb7.png" src="../_images/f3afe8c35bd2a09ca226d2f5bde2eddd6afce57d2d24f03f74226c965de55fb7.png" />
+<img alt="../_images/dc6a491ed37d05f201055c9fdcd98596cf207f351c986c47147b98df3939264f.png" src="../_images/dc6a491ed37d05f201055c9fdcd98596cf207f351c986c47147b98df3939264f.png" />
+<img alt="../_images/dce95ef787b2df4f8f7dcaed60b6888a2f31641f1b8cc0ed1e869d1cf062a691.png" src="../_images/dce95ef787b2df4f8f7dcaed60b6888a2f31641f1b8cc0ed1e869d1cf062a691.png" />
+<img alt="../_images/8e0768cea5885149977df8e5e2aeccd962745bbd7dbd9dd28c60969f06d5684c.png" src="../_images/8e0768cea5885149977df8e5e2aeccd962745bbd7dbd9dd28c60969f06d5684c.png" />
+<img alt="../_images/a73aff38ca405c6cf39a8a70a4915a342903c0b015c8b60ed257fca85e9c35bd.png" src="../_images/a73aff38ca405c6cf39a8a70a4915a342903c0b015c8b60ed257fca85e9c35bd.png" />
+<img alt="../_images/12edbcf425ab099790b606733336a757a7950e2143ab51b8c515a53dd65c0e73.png" src="../_images/12edbcf425ab099790b606733336a757a7950e2143ab51b8c515a53dd65c0e73.png" />
+<img alt="../_images/bfbc62b21bc2b367c0c2b0980ce3507291c5230eeec22cd4e225fb7ceac62e00.png" src="../_images/bfbc62b21bc2b367c0c2b0980ce3507291c5230eeec22cd4e225fb7ceac62e00.png" />
+<img alt="../_images/b4f3c6f467ef6413cca2cba857bf22fde58915f62f34f4cfcce80afbf2954ebd.png" src="../_images/b4f3c6f467ef6413cca2cba857bf22fde58915f62f34f4cfcce80afbf2954ebd.png" />
+<img alt="../_images/90409511a6bd0d43ab12b2201149cf905b5b0a026b5a47a83ab3365a8a3bdde9.png" src="../_images/90409511a6bd0d43ab12b2201149cf905b5b0a026b5a47a83ab3365a8a3bdde9.png" />
+<img alt="../_images/e98340297795e7457732e92c249c596b1476325e34308a24a834e30ec146cbdf.png" src="../_images/e98340297795e7457732e92c249c596b1476325e34308a24a834e30ec146cbdf.png" />
+<img alt="../_images/834326f3aa06163414cdc43789f4db74d9e901680606c4d6efee9f1d847189bf.png" src="../_images/834326f3aa06163414cdc43789f4db74d9e901680606c4d6efee9f1d847189bf.png" />
+<img alt="../_images/3acbdb3b034287780fcf06c2db3d721d0c3647646c09738306ed0339f732e2ff.png" src="../_images/3acbdb3b034287780fcf06c2db3d721d0c3647646c09738306ed0339f732e2ff.png" />
+<img alt="../_images/a2040f1e4caa5b6fc64858966ce44a1f10c01069cd9c504b572b795128a5513a.png" src="../_images/a2040f1e4caa5b6fc64858966ce44a1f10c01069cd9c504b572b795128a5513a.png" />
+<img alt="../_images/0018edf4d6145dde12af0c6bc65ec6c2a548d7120b32c6f1e19eb5a0273da958.png" src="../_images/0018edf4d6145dde12af0c6bc65ec6c2a548d7120b32c6f1e19eb5a0273da958.png" />
+<img alt="../_images/be9a8eced272ac9967e2c529471181ac44ffdd37f29f8395a38044b2cde7a552.png" src="../_images/be9a8eced272ac9967e2c529471181ac44ffdd37f29f8395a38044b2cde7a552.png" />
+<img alt="../_images/4aea865b6844d66586e1c08a15db1539bf10eff43a3b175a97721d775b92b736.png" src="../_images/4aea865b6844d66586e1c08a15db1539bf10eff43a3b175a97721d775b92b736.png" />
+<img alt="../_images/d38e27f913795c763a0a0d22b7933fa884c61a78b41a72e1ebd135fbc2be1220.png" src="../_images/d38e27f913795c763a0a0d22b7933fa884c61a78b41a72e1ebd135fbc2be1220.png" />
+<img alt="../_images/0ffd8ac1324f572b98ec0f0b0918f219a465d7b05e99dda8dab7a4780f763601.png" src="../_images/0ffd8ac1324f572b98ec0f0b0918f219a465d7b05e99dda8dab7a4780f763601.png" />
+<img alt="../_images/90fe81e2c9d3890b9877244b015338a810aed40cceeda46776cab2e819adb8f7.png" src="../_images/90fe81e2c9d3890b9877244b015338a810aed40cceeda46776cab2e819adb8f7.png" />
+<img alt="../_images/84b9c5acdbb42d15a0aa27f09fe1b985070b6af3e79dfcc1e0986c5ebefbcdef.png" src="../_images/84b9c5acdbb42d15a0aa27f09fe1b985070b6af3e79dfcc1e0986c5ebefbcdef.png" />
+<img alt="../_images/c3bb533b879c075923782c5d4f3f26e2cc6061772eb5eb6127fa6a6a991b5e02.png" src="../_images/c3bb533b879c075923782c5d4f3f26e2cc6061772eb5eb6127fa6a6a991b5e02.png" />
+<img alt="../_images/6c68b50f0249f63037f5d7c78b25ef773ac782fd14f8bd24085b79947feb8929.png" src="../_images/6c68b50f0249f63037f5d7c78b25ef773ac782fd14f8bd24085b79947feb8929.png" />
+<img alt="../_images/fe593874b340405d2c3f9c6908d595ce0050c4fad3a687f59eb950aa2e9cfa41.png" src="../_images/fe593874b340405d2c3f9c6908d595ce0050c4fad3a687f59eb950aa2e9cfa41.png" />
+<img alt="../_images/b7ab7e4e6c6bd28d47325ba29490abd90c04fe45a14f0adbe32eccb5aa78151b.png" src="../_images/b7ab7e4e6c6bd28d47325ba29490abd90c04fe45a14f0adbe32eccb5aa78151b.png" />
+<img alt="../_images/44c9137e86793f0aaf0fbbfd446ca880d093048595d8883dea78713fd41a051b.png" src="../_images/44c9137e86793f0aaf0fbbfd446ca880d093048595d8883dea78713fd41a051b.png" />
+<img alt="../_images/8be0dbcfcc725998272d9ddf892e50e5d2b73dcbbf724df99003d5620a041afb.png" src="../_images/8be0dbcfcc725998272d9ddf892e50e5d2b73dcbbf724df99003d5620a041afb.png" />
+<img alt="../_images/45d173e9a2ae0052be043a655be9f5799575de0aef2999fb98b3bc24bde89094.png" src="../_images/45d173e9a2ae0052be043a655be9f5799575de0aef2999fb98b3bc24bde89094.png" />
+<img alt="../_images/00052dcc5861a07f970f419f9adcffe6e3caaed2f591eff1091a62e38f577427.png" src="../_images/00052dcc5861a07f970f419f9adcffe6e3caaed2f591eff1091a62e38f577427.png" />
+<img alt="../_images/528121d089174d2e3d6568a22ee80476920e970340186c12d1571a7288565506.png" src="../_images/528121d089174d2e3d6568a22ee80476920e970340186c12d1571a7288565506.png" />
+<img alt="../_images/601ddcba610f545895da3478f36156f8667b6974de0e0df3ab87a43bff4990c0.png" src="../_images/601ddcba610f545895da3478f36156f8667b6974de0e0df3ab87a43bff4990c0.png" />
+<img alt="../_images/232f25c712e35fce6fb5d7d8b1a0f7b34de3e1542490d953d9885ec324a17546.png" src="../_images/232f25c712e35fce6fb5d7d8b1a0f7b34de3e1542490d953d9885ec324a17546.png" />
+<img alt="../_images/90a8839b6b66c147025c196064d29c29a1e9d07eada579298a9723a884a05db9.png" src="../_images/90a8839b6b66c147025c196064d29c29a1e9d07eada579298a9723a884a05db9.png" />
+<img alt="../_images/1d0869c3ca8a74576a2abbff642d0ac398d351e8f71e657efa51546c6dca2d61.png" src="../_images/1d0869c3ca8a74576a2abbff642d0ac398d351e8f71e657efa51546c6dca2d61.png" />
+<img alt="../_images/2df1b818b17c79688b76ca421fa889ece906b6969e9dad2eac47e0b63284019f.png" src="../_images/2df1b818b17c79688b76ca421fa889ece906b6969e9dad2eac47e0b63284019f.png" />
+<img alt="../_images/ef75eb506a66606af78c287e68405ad9b4cfc947129e831f3b38e201c9c2c278.png" src="../_images/ef75eb506a66606af78c287e68405ad9b4cfc947129e831f3b38e201c9c2c278.png" />
+<img alt="../_images/f102c819282f786569784b42b59ebceef0e66724bade13694ce1bc7e184f2b24.png" src="../_images/f102c819282f786569784b42b59ebceef0e66724bade13694ce1bc7e184f2b24.png" />
+<img alt="../_images/bc99897f60e2f4fabd8de9ae7bdcb615699cabb6175f0f6aa6f3b4bc269a137b.png" src="../_images/bc99897f60e2f4fabd8de9ae7bdcb615699cabb6175f0f6aa6f3b4bc269a137b.png" />
+<img alt="../_images/7a5222c1362ea4fa57d0d00eb95d862bbeb85fff1d2928c3793eafbae30bc177.png" src="../_images/7a5222c1362ea4fa57d0d00eb95d862bbeb85fff1d2928c3793eafbae30bc177.png" />
+<img alt="../_images/085e19f338055c6f1b3273041f65a82956a6479f8945aeaf7024518d8baa4796.png" src="../_images/085e19f338055c6f1b3273041f65a82956a6479f8945aeaf7024518d8baa4796.png" />
+<img alt="../_images/9a6f55b39516f383814dd74701e454886373fd79be81efa021ea6fa49a00ef9d.png" src="../_images/9a6f55b39516f383814dd74701e454886373fd79be81efa021ea6fa49a00ef9d.png" />
+<img alt="../_images/c908a483f21c7439d8d758d93ac8c8e587caab50aec6c31c4373200f8217888f.png" src="../_images/c908a483f21c7439d8d758d93ac8c8e587caab50aec6c31c4373200f8217888f.png" />
+<img alt="../_images/40f0da394a22af8a811b774279c5863a73a3759ed59d89ba50e19e11c93c75a1.png" src="../_images/40f0da394a22af8a811b774279c5863a73a3759ed59d89ba50e19e11c93c75a1.png" />
+<img alt="../_images/3d1a504b3c0637487298ee21d9e5e873fb4e857e2ed923fa7f2f23320c253cdb.png" src="../_images/3d1a504b3c0637487298ee21d9e5e873fb4e857e2ed923fa7f2f23320c253cdb.png" />
+<img alt="../_images/d70fff5988424cd876512b01345172c8bdfa6cc5fc21065b263cdd9443981a5b.png" src="../_images/d70fff5988424cd876512b01345172c8bdfa6cc5fc21065b263cdd9443981a5b.png" />
+<img alt="../_images/bcef1cdec1ecaa07beb34665d990545998d34a9b7c6da7a0990cd06e5544b1f9.png" src="../_images/bcef1cdec1ecaa07beb34665d990545998d34a9b7c6da7a0990cd06e5544b1f9.png" />
+<img alt="../_images/ed32ed878506aef38c5a27ca562dc975d2ea33bfbae89dc7dc3bdd70bc50fc69.png" src="../_images/ed32ed878506aef38c5a27ca562dc975d2ea33bfbae89dc7dc3bdd70bc50fc69.png" />
+<img alt="../_images/8191ad9cdf10f56d571f0e16273b2500f2349ecc27966c2116b9244b990f8276.png" src="../_images/8191ad9cdf10f56d571f0e16273b2500f2349ecc27966c2116b9244b990f8276.png" />
+<img alt="../_images/98161dfdcc0a8448b70e0d168a54221ecdb41ff33068d81cc5ffeb692be82afd.png" src="../_images/98161dfdcc0a8448b70e0d168a54221ecdb41ff33068d81cc5ffeb692be82afd.png" />
+<img alt="../_images/9b3405c3c6ac7276c041de74c04cf44bd09d3d4469c74f4b19507a6d9f2952a8.png" src="../_images/9b3405c3c6ac7276c041de74c04cf44bd09d3d4469c74f4b19507a6d9f2952a8.png" />
+<img alt="../_images/27704719976b079c89221f4a175b11bbb18672c8ec15544b69db7976a9a55460.png" src="../_images/27704719976b079c89221f4a175b11bbb18672c8ec15544b69db7976a9a55460.png" />
+<img alt="../_images/d544f586bb667d9e813e197aff14e216b0017474ad2c37aced78884ff5e7e525.png" src="../_images/d544f586bb667d9e813e197aff14e216b0017474ad2c37aced78884ff5e7e525.png" />
+<img alt="../_images/9112bf033da7109cef076ff01549328cce3c433bd2b990d2a5196aff1a733e72.png" src="../_images/9112bf033da7109cef076ff01549328cce3c433bd2b990d2a5196aff1a733e72.png" />
+<img alt="../_images/dafa3a0e378f948adda2733bb467b95ab1f87a72bc10015b0668c5c39f5c2ee9.png" src="../_images/dafa3a0e378f948adda2733bb467b95ab1f87a72bc10015b0668c5c39f5c2ee9.png" />
+<img alt="../_images/a198f59e25ec298e2a144b13213f43024721e5bad6ad1967a5215dc2b9367ba2.png" src="../_images/a198f59e25ec298e2a144b13213f43024721e5bad6ad1967a5215dc2b9367ba2.png" />
+<img alt="../_images/92ce1574566eb0e134ef63d0bc2bdcafa507ad145861128b7f0c9b246193d4f5.png" src="../_images/92ce1574566eb0e134ef63d0bc2bdcafa507ad145861128b7f0c9b246193d4f5.png" />
+<img alt="../_images/783ca7198530e70002b3591020c06acdbc281c3d2030b692110973214edd374a.png" src="../_images/783ca7198530e70002b3591020c06acdbc281c3d2030b692110973214edd374a.png" />
+<img alt="../_images/9a5fc22a669f6fac09217657ca2e10d4d92d908f4444bfc81e2c790d5588d500.png" src="../_images/9a5fc22a669f6fac09217657ca2e10d4d92d908f4444bfc81e2c790d5588d500.png" />
+<img alt="../_images/4158a10d7229bbeafe0255551764d95ba62f1d9992928a2bdcb8ead0f2a6eca7.png" src="../_images/4158a10d7229bbeafe0255551764d95ba62f1d9992928a2bdcb8ead0f2a6eca7.png" />
+<img alt="../_images/325cf33ea95c7db15f021b8c2c24bba0a1d64e45c5f7ea3005ed236c40bb1370.png" src="../_images/325cf33ea95c7db15f021b8c2c24bba0a1d64e45c5f7ea3005ed236c40bb1370.png" />
+<img alt="../_images/33d7c178d1248f34bbc50c6d31f604d20acb22ddd089fceee1c52f45f888d4e5.png" src="../_images/33d7c178d1248f34bbc50c6d31f604d20acb22ddd089fceee1c52f45f888d4e5.png" />
+<img alt="../_images/a5095b50f3ca4c37e0cea4d9444a3b67f24ac356a1cb080131f0ad395f530f63.png" src="../_images/a5095b50f3ca4c37e0cea4d9444a3b67f24ac356a1cb080131f0ad395f530f63.png" />
+<img alt="../_images/b9f8e3ba9ed596941a4bc357c8add952a05fe49d4bc357e4db899e2d302761d2.png" src="../_images/b9f8e3ba9ed596941a4bc357c8add952a05fe49d4bc357e4db899e2d302761d2.png" />
+<img alt="../_images/5c7cfe92ed59c1faecffac10e912d0fcd523134897bf5f56af63ab2e204df149.png" src="../_images/5c7cfe92ed59c1faecffac10e912d0fcd523134897bf5f56af63ab2e204df149.png" />
+<img alt="../_images/1a468fd83085ff36e3d1cef253300dc4b4cadec24974235b974828a8ee7b1bdf.png" src="../_images/1a468fd83085ff36e3d1cef253300dc4b4cadec24974235b974828a8ee7b1bdf.png" />
+<img alt="../_images/a88dcaf953d22f7cbd30f77d70a97325ea6cd117dbcbb088928f0989bbceebc4.png" src="../_images/a88dcaf953d22f7cbd30f77d70a97325ea6cd117dbcbb088928f0989bbceebc4.png" />
+<img alt="../_images/0d07f9572aff52d843f5f14beeb65bfad70386ad88e7d04ae2d79477a5214bf1.png" src="../_images/0d07f9572aff52d843f5f14beeb65bfad70386ad88e7d04ae2d79477a5214bf1.png" />
+<img alt="../_images/e188b984df2bdf8b4c163c9ada164e42dedf5bcb55e112977c4bde24bf84aea8.png" src="../_images/e188b984df2bdf8b4c163c9ada164e42dedf5bcb55e112977c4bde24bf84aea8.png" />
+<img alt="../_images/fba5ad2fcc7d88925781bd47c0b62d78757808a60b64ba776463ea1a437841a5.png" src="../_images/fba5ad2fcc7d88925781bd47c0b62d78757808a60b64ba776463ea1a437841a5.png" />
+<img alt="../_images/6624f00abd27939d8a28735a6c1724ebaf84ac923b90aecb42990c8a19cd1e33.png" src="../_images/6624f00abd27939d8a28735a6c1724ebaf84ac923b90aecb42990c8a19cd1e33.png" />
+<img alt="../_images/95ffae45f92688e3e847deaac8741cbffa709b82b361a114be826000b850a09b.png" src="../_images/95ffae45f92688e3e847deaac8741cbffa709b82b361a114be826000b850a09b.png" />
+<img alt="../_images/e7023624ae940724d9fb9aa71c50772f65d0806c877ee31d89d9e3a2952c193d.png" src="../_images/e7023624ae940724d9fb9aa71c50772f65d0806c877ee31d89d9e3a2952c193d.png" />
+<img alt="../_images/a76ef380fe402cc9e2f0191eae8f88e9d85ae1881a9c53fa4f29c05878ee8e6c.png" src="../_images/a76ef380fe402cc9e2f0191eae8f88e9d85ae1881a9c53fa4f29c05878ee8e6c.png" />
+<img alt="../_images/b714e7dd427f5c0b630b8868d250f3bc0986ee9f5236f332ff84b095528e4ca8.png" src="../_images/b714e7dd427f5c0b630b8868d250f3bc0986ee9f5236f332ff84b095528e4ca8.png" />
+<img alt="../_images/4fef5570af8782862deb8b5eda46fd729ae449e2a595dead0239751d0bfd0dcf.png" src="../_images/4fef5570af8782862deb8b5eda46fd729ae449e2a595dead0239751d0bfd0dcf.png" />
+<img alt="../_images/4c01a1ed22e06b16ae763da42385bcbd8caa08a08166cd88100a0ddc46e6c3ba.png" src="../_images/4c01a1ed22e06b16ae763da42385bcbd8caa08a08166cd88100a0ddc46e6c3ba.png" />
+<img alt="../_images/58f35e6e58a6c4cda1b2f314a4f5098cdb12db25601ffce5aae1e769c7bb8043.png" src="../_images/58f35e6e58a6c4cda1b2f314a4f5098cdb12db25601ffce5aae1e769c7bb8043.png" />
+<img alt="../_images/e064fc5689dabe2bc10eb9a48f1cc4e2af72913d5f23129692cb4eed5f8c6ae0.png" src="../_images/e064fc5689dabe2bc10eb9a48f1cc4e2af72913d5f23129692cb4eed5f8c6ae0.png" />
+<img alt="../_images/07e6c956ce86be650dd84cb53a399b7cb8cb6b3a9c2589bac48f4fbbe4023f85.png" src="../_images/07e6c956ce86be650dd84cb53a399b7cb8cb6b3a9c2589bac48f4fbbe4023f85.png" />
+<img alt="../_images/382a9cac9247c264f0090830457bd8f7c9a9712348149b54c5e08d3ec189c5d2.png" src="../_images/382a9cac9247c264f0090830457bd8f7c9a9712348149b54c5e08d3ec189c5d2.png" />
+<img alt="../_images/272dcc200b173f29b1210c9a2d942d4349ed717922c010a548032f238e8974fc.png" src="../_images/272dcc200b173f29b1210c9a2d942d4349ed717922c010a548032f238e8974fc.png" />
+<img alt="../_images/456ecc261e971f78b376d77ba047cb2d09081256b14b9dcd5f7baac0d7a7514b.png" src="../_images/456ecc261e971f78b376d77ba047cb2d09081256b14b9dcd5f7baac0d7a7514b.png" />
+<img alt="../_images/d4f66432eda2ac58560d39e53a6fd53ea5c03abdabef586055e68f3f25905c13.png" src="../_images/d4f66432eda2ac58560d39e53a6fd53ea5c03abdabef586055e68f3f25905c13.png" />
+<img alt="../_images/99b5e367bb3c254a7918bb54bfbce81419e59f9fe55bba4c805be32ea1ec6a18.png" src="../_images/99b5e367bb3c254a7918bb54bfbce81419e59f9fe55bba4c805be32ea1ec6a18.png" />
+<img alt="../_images/e4d096ddb21bfdd429e288c91352fb0c2154b1bc6db0eee5b7245767acf863d1.png" src="../_images/e4d096ddb21bfdd429e288c91352fb0c2154b1bc6db0eee5b7245767acf863d1.png" />
+<img alt="../_images/9abaad3fac89ccd031cf800611a01b8b5e384d4c0b2388b5245be4844373c051.png" src="../_images/9abaad3fac89ccd031cf800611a01b8b5e384d4c0b2388b5245be4844373c051.png" />
+<img alt="../_images/c4e3df7ecd3dfc4aa9e317f74c8d6332748e269405707d63950ac5473690a5e1.png" src="../_images/c4e3df7ecd3dfc4aa9e317f74c8d6332748e269405707d63950ac5473690a5e1.png" />
+<img alt="../_images/dff8a71faf164004457322bc15c6f264f75328b0228627646ba68a7a7fe72577.png" src="../_images/dff8a71faf164004457322bc15c6f264f75328b0228627646ba68a7a7fe72577.png" />
+<img alt="../_images/b2b1a59a2226dedc585fd7fae5940ba98950d64a56980077d04abc6bd4ccf75a.png" src="../_images/b2b1a59a2226dedc585fd7fae5940ba98950d64a56980077d04abc6bd4ccf75a.png" />
+<img alt="../_images/0b8016ed9904c5d3cdf772316f304be6570f61dece0527ce55dde8e1e7011c9b.png" src="../_images/0b8016ed9904c5d3cdf772316f304be6570f61dece0527ce55dde8e1e7011c9b.png" />
+<img alt="../_images/70faf7cb3a4a8fc627f08228c77e29301933486fdbaea24b1b9bdb2b02953e0a.png" src="../_images/70faf7cb3a4a8fc627f08228c77e29301933486fdbaea24b1b9bdb2b02953e0a.png" />
+<img alt="../_images/11d922d828aba9810913372b7a70b378e6fc492d1c7d5a002ccd25c8e4d4f700.png" src="../_images/11d922d828aba9810913372b7a70b378e6fc492d1c7d5a002ccd25c8e4d4f700.png" />
+<img alt="../_images/583d2f9fcfc959a02f3378625f1570454cd4b31864874a937dbefc548d921ab4.png" src="../_images/583d2f9fcfc959a02f3378625f1570454cd4b31864874a937dbefc548d921ab4.png" />
+<img alt="../_images/5431d19ad577fbe6d5333550a9f9184e988e902fd85ad23e35e392ae0dc8d7ec.png" src="../_images/5431d19ad577fbe6d5333550a9f9184e988e902fd85ad23e35e392ae0dc8d7ec.png" />
+<img alt="../_images/2c130fb4ff9358c952c4491a8dafe405cf7f7ccccb59737c3b1580d5d2aff8ee.png" src="../_images/2c130fb4ff9358c952c4491a8dafe405cf7f7ccccb59737c3b1580d5d2aff8ee.png" />
+<img alt="../_images/88532111e0962f59b632e2bf0c8c2a22bebb05b011f8aff5cac323448144e5b0.png" src="../_images/88532111e0962f59b632e2bf0c8c2a22bebb05b011f8aff5cac323448144e5b0.png" />
+<img alt="../_images/8734203ebc4f68b5ade027bf2b9ff2ec8cef801c80aa0ed710a216dad4b08d68.png" src="../_images/8734203ebc4f68b5ade027bf2b9ff2ec8cef801c80aa0ed710a216dad4b08d68.png" />
+<img alt="../_images/859012877219fccf27c876fa32edecaf184ecec9d065c3c2f17b07834a990ad5.png" src="../_images/859012877219fccf27c876fa32edecaf184ecec9d065c3c2f17b07834a990ad5.png" />
+<img alt="../_images/8461b759d4bb7402167e0cb33120f0b12588fd8444a71d2149c71a9a42f7d90a.png" src="../_images/8461b759d4bb7402167e0cb33120f0b12588fd8444a71d2149c71a9a42f7d90a.png" />
+<img alt="../_images/c95f5b4c1984ffdb239e787fd5962492059c5ecfa24f101a0ad3f894526386a6.png" src="../_images/c95f5b4c1984ffdb239e787fd5962492059c5ecfa24f101a0ad3f894526386a6.png" />
+<img alt="../_images/f5a9c0609ae7b4cd593a14652bb4a17150728aff8e9a6394d0f4bfaa18b5119c.png" src="../_images/f5a9c0609ae7b4cd593a14652bb4a17150728aff8e9a6394d0f4bfaa18b5119c.png" />
+<img alt="../_images/a942f1858a2d796341f077c414e92557c94a09522e1bdef4ed39ad566bf13797.png" src="../_images/a942f1858a2d796341f077c414e92557c94a09522e1bdef4ed39ad566bf13797.png" />
+<img alt="../_images/68b8de97b2950dcef6eb1b41300540f4f9c69fef1cca55791cb5b11dfcd1ce1f.png" src="../_images/68b8de97b2950dcef6eb1b41300540f4f9c69fef1cca55791cb5b11dfcd1ce1f.png" />
+<img alt="../_images/b7e756cd58ba06df27d916f77f26719f1ea09b80bbcf3cca41527cec612148a6.png" src="../_images/b7e756cd58ba06df27d916f77f26719f1ea09b80bbcf3cca41527cec612148a6.png" />
+<img alt="../_images/f02cb4b90d6e5cd8e1e15f4f015e4a6bdf2658e38eb5f73f2431586ce50b7070.png" src="../_images/f02cb4b90d6e5cd8e1e15f4f015e4a6bdf2658e38eb5f73f2431586ce50b7070.png" />
+<img alt="../_images/945e07edc625d742595baccf51700ec6b51dd30b7a020c8a807e14ed3cd987c4.png" src="../_images/945e07edc625d742595baccf51700ec6b51dd30b7a020c8a807e14ed3cd987c4.png" />
+<img alt="../_images/46445dbea47d0ab57387e9530d33d7e3d8ad07fb05466077c6ea1d701c711dfc.png" src="../_images/46445dbea47d0ab57387e9530d33d7e3d8ad07fb05466077c6ea1d701c711dfc.png" />
+<img alt="../_images/c7bf699bb9cd03a07394570eb2c34fdf412d1e9bd5d5599583638e498be967df.png" src="../_images/c7bf699bb9cd03a07394570eb2c34fdf412d1e9bd5d5599583638e498be967df.png" />
+<img alt="../_images/d8d79bd8c089810f0af42672f50d36b22a7342a73f6042e42b9705987e6533f7.png" src="../_images/d8d79bd8c089810f0af42672f50d36b22a7342a73f6042e42b9705987e6533f7.png" />
+<img alt="../_images/6b695edc948d639f90e64263e60a7b29ddcf0d355dfd810c33167630760ef0c1.png" src="../_images/6b695edc948d639f90e64263e60a7b29ddcf0d355dfd810c33167630760ef0c1.png" />
+<img alt="../_images/e0fbabe165077a01c6a59b2259803f1d1f104a127324d8118aab9b4eca831634.png" src="../_images/e0fbabe165077a01c6a59b2259803f1d1f104a127324d8118aab9b4eca831634.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">RMS_90</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([  2.49999987,   2.49999987,   2.64398286,   2.52906127,
+         2.528046  ,   3.17002452,   2.82966101,   2.85044182,
+         2.7335062 ,   2.78472144,   2.91840888,   3.14788992,
+         5.91947574,   4.95183546,   5.549369  ,   6.73346407,
+         7.57874192,  15.82926689,  14.50177195,  13.41650331,
+        13.4654436 ,  13.72917385,  14.09291042,  15.78575757,
+        17.89876773,  21.03573048,  25.23213729,  30.03095485,
+        34.55386447,  34.90016546,  36.00712351,  37.10292082,
+        44.87783535,  56.20806657,  63.58357165,  72.15017817,
+        80.16838769,  94.40601621, 116.13228634, 114.70040409,
+       129.6036234 , 131.76797368, 116.2640204 , 109.06462448,
+       111.97581924, 117.84792669, 124.64797682, 139.74287665,
+       157.62992308, 182.63635534, 218.98859406, 232.00104179,
+       215.30296714, 201.19663676, 196.13597868, 212.3738024 ,
+       213.79715404, 245.87368957, 245.99288766, 247.73433881,
+       264.28649986, 281.17038354, 300.34660854, 345.52134604,
+       329.40704216, 356.7702918 , 386.4174176 , 389.15544909,
+       392.40018901, 356.05565569, 135.35851589,  73.66796584,
+        48.0637156 ,  22.01814795,   8.03510754])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="define-the-function-to-fit-tanh">
+<h2>Define the function to fit (tanh)<a class="headerlink" href="#define-the-function-to-fit-tanh" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tanh_function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">c</span><span class="p">)</span> <span class="o">+</span> <span class="n">d</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="paste-rms-90-below-and-manually-adjust-small-values-near-the-bottom">
+<h2>Paste RMS_90 below and manually adjust small values near the bottom<a class="headerlink" href="#paste-rms-90-below-and-manually-adjust-small-values-near-the-bottom" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># note the extra layers at the bottom</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>  <span class="mf">2.49999987</span><span class="p">,</span>   <span class="mf">2.49999987</span><span class="p">,</span>   <span class="mf">2.64398286</span><span class="p">,</span>   <span class="mf">2.52906127</span><span class="p">,</span>
+         <span class="mf">2.528046</span>  <span class="p">,</span>   <span class="mf">3.17002452</span><span class="p">,</span>   <span class="mf">2.82966101</span><span class="p">,</span>   <span class="mf">2.85044182</span><span class="p">,</span>
+         <span class="mf">2.7335062</span> <span class="p">,</span>   <span class="mf">2.78472144</span><span class="p">,</span>   <span class="mf">2.91840888</span><span class="p">,</span>   <span class="mf">3.14788992</span><span class="p">,</span>
+         <span class="mf">5.91947574</span><span class="p">,</span>   <span class="mf">4.95183546</span><span class="p">,</span>   <span class="mf">5.549369</span>  <span class="p">,</span>   <span class="mf">6.73346407</span><span class="p">,</span>
+         <span class="mf">7.57874192</span><span class="p">,</span>  <span class="mf">15.82926689</span><span class="p">,</span>  <span class="mf">14.50177195</span><span class="p">,</span>  <span class="mf">13.41650331</span><span class="p">,</span>
+        <span class="mf">13.4654436</span> <span class="p">,</span>  <span class="mf">13.72917385</span><span class="p">,</span>  <span class="mf">14.09291042</span><span class="p">,</span>  <span class="mf">15.78575757</span><span class="p">,</span>
+        <span class="mf">17.89876773</span><span class="p">,</span>  <span class="mf">21.03573048</span><span class="p">,</span>  <span class="mf">25.23213729</span><span class="p">,</span>  <span class="mf">30.03095485</span><span class="p">,</span>
+        <span class="mf">34.55386447</span><span class="p">,</span>  <span class="mf">34.90016546</span><span class="p">,</span>  <span class="mf">36.00712351</span><span class="p">,</span>  <span class="mf">37.10292082</span><span class="p">,</span>
+        <span class="mf">44.87783535</span><span class="p">,</span>  <span class="mf">56.20806657</span><span class="p">,</span>  <span class="mf">63.58357165</span><span class="p">,</span>  <span class="mf">72.15017817</span><span class="p">,</span>
+        <span class="mf">80.16838769</span><span class="p">,</span>  <span class="mf">94.40601621</span><span class="p">,</span> <span class="mf">116.13228634</span><span class="p">,</span> <span class="mf">114.70040409</span><span class="p">,</span>
+       <span class="mf">129.6036234</span> <span class="p">,</span> <span class="mf">131.76797368</span><span class="p">,</span> <span class="mf">116.2640204</span> <span class="p">,</span> <span class="mf">109.06462448</span><span class="p">,</span>
+       <span class="mf">111.97581924</span><span class="p">,</span> <span class="mf">117.84792669</span><span class="p">,</span> <span class="mf">124.64797682</span><span class="p">,</span> <span class="mf">139.74287665</span><span class="p">,</span>
+       <span class="mf">157.62992308</span><span class="p">,</span> <span class="mf">182.63635534</span><span class="p">,</span> <span class="mf">218.98859406</span><span class="p">,</span> <span class="mf">232.00104179</span><span class="p">,</span>
+       <span class="mf">215.30296714</span><span class="p">,</span> <span class="mf">201.19663676</span><span class="p">,</span> <span class="mf">196.13597868</span><span class="p">,</span> <span class="mf">212.3738024</span> <span class="p">,</span>
+       <span class="mf">213.79715404</span><span class="p">,</span> <span class="mf">245.87368957</span><span class="p">,</span> <span class="mf">245.99288766</span><span class="p">,</span> <span class="mf">247.73433881</span><span class="p">,</span>
+       <span class="mf">264.28649986</span><span class="p">,</span> <span class="mf">281.17038354</span><span class="p">,</span> <span class="mf">300.34660854</span><span class="p">,</span> <span class="mf">345.52134604</span><span class="p">,</span>
+       <span class="mf">329.40704216</span><span class="p">,</span> <span class="mf">356.7702918</span> <span class="p">,</span> <span class="mf">386.4174176</span> <span class="p">,</span> <span class="mf">389.15544909</span><span class="p">,</span>
+       <span class="mf">392.40018901</span><span class="p">,</span> <span class="mf">356.05565569</span><span class="p">,</span> <span class="mf">356.0</span><span class="p">,</span> <span class="mf">356.0</span><span class="p">,</span>
+       <span class="mf">356.0</span><span class="p">,</span> <span class="mf">356.0</span><span class="p">,</span> <span class="mf">356.0</span><span class="p">,</span> <span class="mf">356.0</span><span class="p">,</span> <span class="mf">356.0</span><span class="p">,</span> <span class="mf">356.0</span><span class="p">,</span> <span class="mf">356.0</span><span class="p">,</span> <span class="mf">356.0</span><span class="p">,</span>
+       <span class="mf">356.0</span><span class="p">,</span> <span class="mf">356.0</span><span class="p">,</span> <span class="mf">356.0</span><span class="p">,</span> <span class="mf">356.0</span><span class="p">,</span> <span class="mf">356.0</span><span class="p">,</span> <span class="mf">356.0</span><span class="p">,</span> <span class="mf">356.0</span><span class="p">,</span> <span class="mf">356.0</span><span class="p">,</span> <span class="mf">356.0</span><span class="p">,</span> <span class="mf">356.0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="perform-curve-fitting">
+<h2>Perform curve fitting<a class="headerlink" href="#perform-curve-fitting" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+
+<span class="n">popt</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">tanh_function</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Extracting optimized parameters</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">popt</span>
+
+<span class="c1"># Generate fitted curve</span>
+<span class="n">y_fit</span> <span class="o">=</span> <span class="n">tanh_function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+
+<span class="c1"># Plotting</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;b.&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Original Data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_fit</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Fitted Curve&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Index&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Tanh Function Fitting&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Printing optimized parameters</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Optimized Parameters:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a =&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b =&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;c =&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;d =&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bded0b75537ee0ff2b420532bad962777e2f5d68d02c35fce62f93720c359c12.png" src="../_images/bded0b75537ee0ff2b420532bad962777e2f5d68d02c35fce62f93720c359c12.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimized Parameters:
+a = 187.08972100760633
+b = 0.056399678180667163
+c = -2.80764670977144
+d = 189.62178708778868
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dz_max_90</span> <span class="o">=</span> <span class="n">tanh_function</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dz</span><span class="p">)),</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dz_max_90</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([  3.88978622,   4.05124971,   4.2318273 ,   4.43375969,
+         4.65954471,   4.91196546,   5.19412109,   5.50946059,
+         5.86181952,   6.25546   ,   6.69511391,   7.18602944,
+         7.73402094,   8.34552182,   9.02764048,   9.78821859,
+        10.63589128,  11.58014822,  12.63139452,  13.80100975,
+        15.10140314,  16.54606232,  18.14959251,  19.92774221,
+        21.89741083,  24.07663286,  26.4845323 ,  29.14124041,
+        32.06776905,  35.28583156,  38.81760291,  42.68541118,
+        46.91135357,  51.51683185,  56.52200507,  61.94516131,
+        67.80201558,  74.1049473 ,  80.86219824,  88.07705989,
+        95.74708725, 103.86338297, 112.41000134, 121.36352345,
+       130.69285331, 140.35927768, 150.31682062, 160.51290687,
+       170.8893278 , 181.38348107, 191.92983316, 202.46153511,
+       212.91210815, 223.21710955, 233.31569094, 243.15197092,
+       252.67615996, 261.84539616, 270.62427305, 278.98506237,
+       286.90765387, 294.37924899, 301.39385482, 307.95162933,
+       314.05812899, 319.72350586, 324.96169559, 329.78962955,
+       334.22649664, 338.29307219, 342.01112468, 345.40290465,
+       348.49071585, 351.29656501, 353.84188435])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="make-sure-max-thickness-of-first-4-layers-is-2-5-m">
+<h2>Make sure max thickness of first 4 layers is 2.5 m<a class="headerlink" href="#make-sure-max-thickness-of-first-4-layers-is-2-5-m" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dz_max_90</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.5</span> <span class="c1"># </span>
+<span class="n">dz_max_90</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([  2.5       ,   2.5       ,   2.5       ,   2.5       ,
+         4.65954471,   4.91196546,   5.19412109,   5.50946059,
+         5.86181952,   6.25546   ,   6.69511391,   7.18602944,
+         7.73402094,   8.34552182,   9.02764048,   9.78821859,
+        10.63589128,  11.58014822,  12.63139452,  13.80100975,
+        15.10140314,  16.54606232,  18.14959251,  19.92774221,
+        21.89741083,  24.07663286,  26.4845323 ,  29.14124041,
+        32.06776905,  35.28583156,  38.81760291,  42.68541118,
+        46.91135357,  51.51683185,  56.52200507,  61.94516131,
+        67.80201558,  74.1049473 ,  80.86219824,  88.07705989,
+        95.74708725, 103.86338297, 112.41000134, 121.36352345,
+       130.69285331, 140.35927768, 150.31682062, 160.51290687,
+       170.8893278 , 181.38348107, 191.92983316, 202.46153511,
+       212.91210815, 223.21710955, 233.31569094, 243.15197092,
+       252.67615996, 261.84539616, 270.62427305, 278.98506237,
+       286.90765387, 294.37924899, 301.39385482, 307.95162933,
+       314.05812899, 319.72350586, 324.96169559, 329.78962955,
+       334.22649664, 338.29307219, 342.01112468, 345.40290465,
+       348.49071585, 351.29656501, 353.84188435])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plotting</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;b.&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Original Data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dz</span><span class="p">)),</span> <span class="n">dz_max_90</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Fitted Curve&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Index&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Max. thickness (m)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Updated Tanh Function Fitting&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/826bbed2cfebef47c799a97afa9983d60207482d1ba59ec41ab2bcac8180494d.png" src="../_images/826bbed2cfebef47c799a97afa9983d60207482d1ba59ec41ab2bcac8180494d.png" />
+</div>
+</div>
+</section>
+<section id="save-to-file">
+<h2>Save to file<a class="headerlink" href="#save-to-file" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;dz&quot;</span><span class="p">:</span> <span class="n">dz_max_90</span><span class="p">},</span>
+    <span class="n">coords</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dz_max_90</span><span class="p">)),</span> 
+    <span class="p">},</span>
+    <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;long_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Maximum thickness using h &gt;= 90th quantile of run 018&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;units&#39;</span>    <span class="p">:</span> <span class="s1">&#39;m&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;author&#39;</span>   <span class="p">:</span> <span class="n">author</span><span class="p">,</span>
+        <span class="s1">&#39;created&#39;</span>  <span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-</span><span class="si">%d</span><span class="s2">-%m %H:%M:%S&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="n">date_fmt</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span><span class="o">+</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">+</span> \
+           <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%m&quot;</span><span class="p">)</span>
+<span class="n">fname</span> <span class="o">=</span> <span class="s1">&#39;dz_max_</span><span class="si">{}</span><span class="s1">_</span><span class="si">{}</span><span class="s1">.nc&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grid_name</span><span class="p">,</span><span class="n">date_fmt</span><span class="p">)</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">to_netcdf</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-env-miniconda-dev2-py"
+        },
+        kernelOptions: {
+            name: "conda-env-miniconda-dev2-py",
+            path: "./maximum_thickness"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-env-miniconda-dev2-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../initial_conditions/ics.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../tidal_energy_dissipation/regrid_tidal_dissipation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Wave Dissipation dataset</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Define maximum layer thicknesses H_max(z)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ics">ICs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-thicknesses-based-on-the-values-above-the-90-quantile">Maximum thicknesses based on the values above the 90% quantile</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maps">Maps</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-the-function-to-fit-tanh">Define the function to fit (tanh)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paste-rms-90-below-and-manually-adjust-small-values-near-the-bottom">Paste RMS_90 below and manually adjust small values near the bottom</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-curve-fitting">Perform curve fitting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-sure-max-thickness-of-first-4-layers-is-2-5-m">Make sure max thickness of first 4 layers is 2.5 m</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-to-file">Save to file</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Ocean Model Working Group
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

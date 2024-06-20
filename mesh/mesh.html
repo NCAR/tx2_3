@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,8 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -65,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Runoff mapping files" href="../runoff_mapping/runoff.html" />
-    <link rel="prev" title="Topography generation" href="../topography/topo.html" />
+    <link rel="prev" title="Supergrid" href="../supergrid/orca_gridgen.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -76,6 +77,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -129,9 +139,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../README.html">
+  
   
   
   
@@ -141,8 +153,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/ncar_logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/ncar_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/ncar_logo.png" class="logo__image only-light" alt="Nominal 2/3 degree global configuration for CESM/MOM6 - Home"/>
+    <script>document.write(`<img src="../_static/ncar_logo.png" class="logo__image only-dark" alt="Nominal 2/3 degree global configuration for CESM/MOM6 - Home"/>`);</script>
   
   
 </a></div>
@@ -152,12 +164,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../supergrid/orca_gridgen.html">Supergrid</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="../topography/topo.html">Topography generation</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Generate an ESMF mesh</a></li>
-
 
 <li class="toctree-l1"><a class="reference internal" href="../runoff_mapping/runoff.html">Runoff mapping files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../initial_conditions/ics.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maximum_thickness/max_h.html">Define maximum layer thicknesses H_max(z)</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="../tidal_energy_dissipation/regrid_tidal_dissipation.html">Wave Dissipation dataset</a></li>
 
 
@@ -331,20 +343,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -372,7 +386,6 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Generate an ESMF mesh</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#about">About</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#steps">Steps</a></li>
 </ul>
 
@@ -389,10 +402,6 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="generate-an-esmf-mesh">
 <h1>Generate an ESMF mesh<a class="headerlink" href="#generate-an-esmf-mesh" title="Permalink to this heading">#</a></h1>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="about">
-<h1>About<a class="headerlink" href="#about" title="Permalink to this heading">#</a></h1>
-<p>TODO: why this is needed?</p>
-</section>
 <section class="tex2jax_ignore mathjax_ignore" id="steps">
 <h1>Steps<a class="headerlink" href="#steps" title="Permalink to this heading">#</a></h1>
 <ol class="arabic simple">
@@ -401,6 +410,9 @@ document.write(`
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">gen_nc_grid</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
+<blockquote>
+<div><p><strong>Note:</strong> Make sure variable <code class="docutils literal notranslate"><span class="pre">nc_topo</span></code> in gen_nc_grid.py is pointing to the right topography file .</p>
+</div></blockquote>
 <ol class="arabic simple" start="2">
 <li><p>Convert grid to a SCRIP convention file</p></li>
 </ol>
@@ -408,13 +420,19 @@ document.write(`
 <span class="n">ncl</span> <span class="n">gen_scrip</span><span class="o">.</span><span class="n">ncl</span>
 </pre></div>
 </div>
+<blockquote>
+<div><p><strong>Note:</strong> Make sure to set variables ncGrdFilePath, maskFilePath, and dstGridPath in <code class="docutils literal notranslate"><span class="pre">gen_scrip.ncl</span></code>.</p>
+</div></blockquote>
 <ol class="arabic simple" start="3">
 <li><p>Create an ESMF mesh</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="n">create__mesh</span>
 </pre></div>
 </div>
-<p>If these scripts run successfully, you should see file “<em><em>mesh</em></em>.nc” in your directory.</p>
+<blockquote>
+<div><p><strong>Note:</strong> Make sure to set variables file_i and file_o <code class="docutils literal notranslate"><span class="pre">create__mesh</span></code>.</p>
+</div></blockquote>
+<p>If these scripts run successfully, you should see file “tx?_?_mesh_YYMMDD.nc” in your directory.</p>
 <ol class="arabic simple" start="4">
 <li><p>Convert the mesh file to CDF5</p></li>
 </ol>
@@ -448,19 +466,18 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../topography/topo.html"
+       href="../supergrid/orca_gridgen.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Topography generation</p>
+        <p class="prev-next-title">Supergrid</p>
       </div>
     </a>
     <a class="right-next"
@@ -472,10 +489,7 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -491,7 +505,6 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Generate an ESMF mesh</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#about">About</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#steps">Steps</a></li>
 </ul>
 
@@ -515,6 +528,7 @@ By The Ocean Model Working Group
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022.
@@ -541,8 +555,8 @@ By The Ocean Model Working Group
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>
