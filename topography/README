@@ -1,0 +1,22 @@
+These are the steps:
+
+1) run_create_topo.tx2_3v2.pbs (qsub run_create_topo.tx2_3v2.pbs)
+create the cell average topography statistics
+
+2) MaskEdit_tx2_3v2.ipynb
+edit the land mask for channel widths etc
+
+3) run_append_topo_interp_smooth_tx2_3v2.pbs (qsub run_append_topo_interp_smooth_tx2_3v2.pbs)
+create smoothly interpolated topography
+
+Optional
+
+4) Channel_topo_tx2_3v2.ipynb
+local topography depth edits for run time changes
+
+5) Channel_width_tx2_3v2.ipynb
+create channel width file
+
+If changes in 4) must be incorporated into the topography generated in 3), run the following notebook
+
+6) Append_topo_edits.ipynb
