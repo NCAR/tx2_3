@@ -10,10 +10,10 @@ MODULE param
   IMPLICIT NONE
 
   !!----------------------------------------------------------------------
-  !! 
+  !!
   !! 	parameter module    : demi-grille nord
   !!    : parameters for the north half-grid (spans 180 degrees longitude)
-  !! 
+  !!
   !!----------------------------------------------------------------------
   !!
   !! Controle parameter:
@@ -72,16 +72,16 @@ MODULE param
   INTEGER, PARAMETER :: &!:
        jpeq   =  jpeqt+jpeqn    ,&  ! From south to join
        jpj    =  jpeq+jpnord-1  ,&  ! Whole grid
-       jpnp   =  jpnord       
+       jpnp   =  jpnord
   !!
   !!----------------------------------------------------------------------
   !!
   !! Demi grille nord (tout points)
   !! ---------------------------
-  !!	jpin	: = jpi, nb de meridiens de la demi grille nord incluant 
+  !!	jpin	: = jpi, nb de meridiens de la demi grille nord incluant
   !!	          les 2 meridiens passant par chaque pole
-  !!	jpjn	: = 2*jpjnord, nb de parallele de la demi grille nord 
-  !!	          incluant la ligne equateur de la grille (ligne T-U) et 
+  !!	jpjn	: = 2*jpjnord, nb de parallele de la demi grille nord
+  !!	          incluant la ligne equateur de la grille (ligne T-U) et
   !!	          la ligne pole (ligne V-F)
   !!
 
@@ -106,7 +106,7 @@ MODULE param
   !! Demi grille nord fine:
   !! ----------------------
   !!      jpjf    : nb de pts par courbe de "longitude" (grille fine)
-  !!                (=Nb de cercles de "latitude"=cste) servant pour le 
+  !!                (=Nb de cercles de "latitude"=cste) servant pour le
   !!                 calcul des facteurs d echelle (jpfac fois + de
   !!		   resolution que la demi grille nord)
   !!      jph     : nombre de point sur lequel se fait la resolution nume-
@@ -116,7 +116,7 @@ MODULE param
 
   INTEGER, PARAMETER :: jpjf = jpfac*(jpjn-1)+1 ,  jph = jpint*(jpjf-1)+1
 
-  !! 
+  !!
   !!----------------------------------------------------------------------
   !!
   !! PARAMETER  dimension de la global mesh avec cl east-west and north
@@ -151,7 +151,9 @@ MODULE param
   !!
   !
   ! rayon de la terre
-  REAL(wp), PARAMETER :: ra=6371229.0_wp
+  !REAL(wp), PARAMETER :: ra=6371229.0_wp
+  ! GMM, make it consistent with CESM shared constants
+  REAL(wp), PARAMETER :: ra=6.37122E6_wp
   !
   ! pi
   REAL(wp), PARAMETER :: rpi=3.141592653589793_wp
