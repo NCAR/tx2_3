@@ -14,7 +14,6 @@ __pycache__/
 *.mod
 
 # misc
-*.in
 *.o*
 
 # Distribution / packaging
