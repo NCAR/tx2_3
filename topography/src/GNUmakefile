@@ -21,8 +21,9 @@ VPATH = $(SRCDIRS)
 INCLDIR =
 #
 FC=    gfortran
-FFLAGS = -O2 -g -fopenmp -ffree-form -ffree-line-length-none -fconvert=big-endian $(INCLDIR)
-FFLAGS_77 = -O2 -g -fopenmp fconvert=bigendian $(INCLDIR)
+## NO openmp FFLAGS = -O2 -g -ffree-form -ffree-line-length-none -fconvert=big-endian -fbounds-check -Wall $(INCLDIR)
+###FFLAGS = -O2 -g -fopenmp -ffree-form -ffree-line-length-none -fconvert=big-endian -fbounds-check -Wall $(INCLDIR)
+FFLAGS = -O2 -g -fopenmp -ffree-form -ffree-line-length-none -fconvert=big-endian -Wall $(INCLDIR)
 #
 LDR =   $(FC)
 LDFLAGS= $(FFLAGS)

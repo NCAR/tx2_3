@@ -469,7 +469,7 @@ program create_model_topo
                  stop
               endif
 
-              !---- Compute average elevation (land + ocean) for this cell
+              !---- Compute average elevation (lad + ocean) for this cell
               nsum = nsum + 1
               AVG_TOPO(ocn_i,ocn_j) = AVG_TOPO(ocn_i,ocn_j) + TOPO_Z(topo_i,topo_j)
 
