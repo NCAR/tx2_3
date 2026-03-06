@@ -1,0 +1,14 @@
+&input_nml
+   gridtype     = 'obs'
+   file_roff    = '/glade/campaign/cesm/cesmdata/inputdata/lnd/dlnd7/JRA55/domain.roff.JRA025m.190213.nc',
+   file_ocn     = '/glade/work/gmarques/cesm/tx2_3/mesh/tx2_3v3_260305_SCRIP.nc'
+   file_nn      = 'map_jra_to_tx2_3_nn.260306.nc'
+   file_smooth  = 'map_jra_to_tx2_3_sm_e250r250_260306.nc'
+   file_new     = 'map_jra_to_tx2_3_nnsm_e250r250_260306.nc'
+   title        = 'runoff map: JRA-55 -> tx2_3v3, nearest neighbor and smoothed (e = r = 250 km)'
+   eFold        = 250000.0
+   rMax         = 250000.0
+   step1 = .true.
+   step2 = .true.
+   step3 = .true.
+/
