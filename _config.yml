@@ -15,4 +15,3 @@ repository:
 html:
   use_repository_button: true
   use_issues_button: true
-  baseurl: /tx2_3
