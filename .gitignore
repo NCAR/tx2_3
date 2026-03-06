@@ -16,6 +16,9 @@ __pycache__/
 # misc
 *.o*
 
+# old studd
+*/OLD*
+
 # Distribution / packaging
 .Python
 build/
