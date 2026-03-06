@@ -1,0 +1,1421 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Check Points with Ian’s Modified Runoff Map &#8212; Nominal 2/3 degree global configuration for CESM/MOM6</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'topography/CheckRunoffPoints';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ncar_logo.png" class="logo__image only-light" alt="Nominal 2/3 degree global configuration for CESM/MOM6 - Home"/>
+    <script>document.write(`<img src="../_static/ncar_logo.png" class="logo__image only-dark" alt="Nominal 2/3 degree global configuration for CESM/MOM6 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Nominal 2/3 degree global configuration for CESM/MOM6
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Model Setup</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../supergrid/orca_gridgen.html">Supergrid</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="topo.html">tx2_3v3 Topography Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mesh/create_mesh.html">Create ESMF mesh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../runoff_mapping/runoff.html">Runoff mapping files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../state_restoring/state_restoring.html">Sea-surface salinity and potential temperature restoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tidal_energy_dissipation/regrid_tidal_dissipation.html">Tidal Dissipation</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../chlorophyll/Interpolate_and_fill_SeaWIFS.html">Interpolate and fill SeaWIFS data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seaice_files/create_seaice.html">Create CICE grid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geothermal/davies2013_to_tx2_3.html">Remap geothermal dataset (Davies, 2013) to tx2_3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../background_viscosity/background_kh_tx2_3.html">Background harmonic viscosity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cr_mask/mle_cr_labsea_mask.html">Create a 2D mask with zero in the Lab Sea and one elsewhere</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Model Validation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../basin_masks/basin_masks.html">Ocean Basin Masks</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../basin_masks/imbie_basin_to_tx2_3.html">Remap IMBIE basins to tx2_3</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../woa18/woa18_to_tx2_3.html">Remap WOA18 to tx2_3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mld/deBoyer2004/deBoyer2004_to_tx2_3.html">Regrid MLD from deBoyer et al (2004)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mld/deBoyer2023/deBoyer2023_to_tx2_3.html">Regrid MLD from Treguier et al., 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aviso/aviso_to_tx2_3.html">Remap AVISO to tx2_3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oisst/oisst_to_tx2_3.html">Remap OISST to tx2_3</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NCAR/tx2_3" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NCAR/tx2_3/issues/new?title=Issue%20on%20page%20%2Ftopography/CheckRunoffPoints.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/topography/CheckRunoffPoints.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Check Points with Ian’s Modified Runoff Map</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;../src/&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">topo_edit_util</span><span class="w"> </span><span class="kn">import</span> <span class="n">map_mask</span><span class="p">,</span> <span class="n">mom6_latlon2ij</span><span class="p">,</span> <span class="n">map_maskij</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path_old</span> <span class="o">=</span> <span class="s1">&#39;/glade/work/bryan/MOM6-data-files/Topography/tx2_3v2/&#39;</span>
+<span class="n">file_old</span> <span class="o">=</span> <span class="s1">&#39;topo.sub150.tx2_3v2.srtm.edit4.SmL1.0_C1.0.nc&#39;</span>
+<span class="n">df_old</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">path_old</span><span class="o">+</span><span class="n">file_old</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path_new</span> <span class="o">=</span> <span class="s1">&#39;/glade/work/bryan/tx2_3v3_Feb2026/&#39;</span>
+<span class="n">file_new</span> <span class="o">=</span> <span class="s1">&#39;topo.sub150.tx2_3v3.SRTM15_V2.4.edit1.nc&#39;</span>
+<span class="n">df_new</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">path_new</span><span class="o">+</span><span class="n">file_new</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_new</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in notebooks */
+
+:root {
+  --xr-font-color0: var(
+    --jp-content-font-color0,
+    var(--pst-color-text-base rgba(0, 0, 0, 1))
+  );
+  --xr-font-color2: var(
+    --jp-content-font-color2,
+    var(--pst-color-text-base, rgba(0, 0, 0, 0.54))
+  );
+  --xr-font-color3: var(
+    --jp-content-font-color3,
+    var(--pst-color-text-base, rgba(0, 0, 0, 0.38))
+  );
+  --xr-border-color: var(
+    --jp-border-color2,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 10))
+  );
+  --xr-disabled-color: var(
+    --jp-layout-color3,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 40))
+  );
+  --xr-background-color: var(
+    --jp-layout-color0,
+    var(--pst-color-on-background, white)
+  );
+  --xr-background-color-row-even: var(
+    --jp-layout-color1,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 5))
+  );
+  --xr-background-color-row-odd: var(
+    --jp-layout-color2,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 15))
+  );
+}
+
+html[theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"],
+body.vscode-dark {
+  --xr-font-color0: var(
+    --jp-content-font-color0,
+    var(--pst-color-text-base, rgba(255, 255, 255, 1))
+  );
+  --xr-font-color2: var(
+    --jp-content-font-color2,
+    var(--pst-color-text-base, rgba(255, 255, 255, 0.54))
+  );
+  --xr-font-color3: var(
+    --jp-content-font-color3,
+    var(--pst-color-text-base, rgba(255, 255, 255, 0.38))
+  );
+  --xr-border-color: var(
+    --jp-border-color2,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 10))
+  );
+  --xr-disabled-color: var(
+    --jp-layout-color3,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 40))
+  );
+  --xr-background-color: var(
+    --jp-layout-color0,
+    var(--pst-color-on-background, #111111)
+  );
+  --xr-background-color-row-even: var(
+    --jp-layout-color1,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 5))
+  );
+  --xr-background-color-row-odd: var(
+    --jp-layout-color2,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 15))
+  );
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+  line-height: 1.6;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-obj-name,
+.xr-group-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-group-name::before {
+  content: "📁";
+  padding-right: 0.3em;
+}
+
+.xr-group-name,
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 0 20px 0 20px;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: inline-block;
+  opacity: 0;
+  height: 0;
+  margin: 0;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+  border: 2px solid transparent !important;
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:focus + label {
+  border: 2px solid var(--xr-font-color0) !important;
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: "►";
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: "▼";
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-top: 4px;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-group-box {
+  display: inline-grid;
+  grid-template-columns: 0px 20px auto;
+  width: 100%;
+}
+
+.xr-group-box-vline {
+  grid-column-start: 1;
+  border-right: 0.2em solid;
+  border-color: var(--xr-border-color);
+  width: 0px;
+}
+
+.xr-group-box-hline {
+  grid-column-start: 2;
+  grid-row-start: 1;
+  height: 1em;
+  width: 20px;
+  border-bottom: 0.2em solid;
+  border-color: var(--xr-border-color);
+}
+
+.xr-group-box-contents {
+  grid-column-start: 3;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: "(";
+}
+
+.xr-dim-list:after {
+  content: ")";
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ",";
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  border-color: var(--xr-background-color-row-odd);
+  margin-bottom: 0;
+  padding-top: 2px;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+  border-color: var(--xr-background-color-row-even);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  border-top: 2px dotted var(--xr-background-color);
+  padding-bottom: 20px !important;
+  padding-top: 10px !important;
+}
+
+.xr-var-attrs-in + label,
+.xr-var-data-in + label,
+.xr-index-data-in + label {
+  padding: 0 1px;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-data > pre,
+.xr-index-data > pre,
+.xr-var-data > table > tbody > tr {
+  background-color: transparent !important;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.xr-var-attrs-in:checked + label > .xr-icon-file-text2,
+.xr-var-data-in:checked + label > .xr-icon-database,
+.xr-index-data-in:checked + label > .xr-icon-database {
+  color: var(--xr-font-color0);
+  filter: drop-shadow(1px 1px 5px var(--xr-font-color2));
+  stroke-width: 0.8px;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 19MB
+Dimensions:     (lath: 480, lonh: 540, latq: 481, lonq: 541)
+Coordinates:
+  * lath        (lath) float64 4kB -81.56 -81.46 -81.36 ... 89.33 89.6 89.86
+  * lonh        (lonh) float64 4kB -286.7 -286.0 -285.3 ... 71.33 72.0 72.67
+  * latq        (latq) float64 4kB -81.61 -81.51 -81.41 ... 89.46 89.72 89.91
+  * lonq        (lonq) float64 4kB -287.0 -286.3 -285.7 ... 71.67 72.33 73.0
+Data variables: (12/14)
+    geolon      (lath, lonh) float64 2MB ...
+    geolat      (lath, lonh) float64 2MB ...
+    geolonb     (latq, lonq) float64 2MB ...
+    geolatb     (latq, lonq) float64 2MB ...
+    z           (lath, lonh) float32 1MB ...
+    ocn_frac    (lath, lonh) float32 1MB ...
+    ...          ...
+    D_median    (lath, lonh) float32 1MB ...
+    D2_mean     (lath, lonh) float32 1MB ...
+    D_min       (lath, lonh) float32 1MB ...
+    D_max       (lath, lonh) float32 1MB ...
+    hand_edits  (lath, lonh) int32 1MB ...
+    orig_mask   (lath, lonh) int32 1MB ...
+Attributes:
+    Description:             Ocean Topography Statistics on MOM6 Grid
+    Creator:                 Frank Bryan
+    Created:                 20260225
+    Generating Code:         create_model_topo.f90
+    Model Grid Version:      tx2_3v3
+    Source Topography Data:  /glade/work/bryan/Observations/Topography/SRTM/S...
+    Edit History:            Hand Edit + Lake Fill 02/26/2026</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-34697f58-ef40-4776-a658-db348ef93b2c' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-34697f58-ef40-4776-a658-db348ef93b2c' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>lath</span>: 480</li><li><span class='xr-has-index'>lonh</span>: 540</li><li><span class='xr-has-index'>latq</span>: 481</li><li><span class='xr-has-index'>lonq</span>: 541</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-be86a4b9-5895-4b07-90e0-77d6c3544e0a' class='xr-section-summary-in' type='checkbox'  checked><label for='section-be86a4b9-5895-4b07-90e0-77d6c3544e0a' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lath</span></div><div class='xr-var-dims'>(lath)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-81.56 -81.46 -81.36 ... 89.6 89.86</div><input id='attrs-aa10b883-9d54-4dbc-a15e-b88564f9720a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-aa10b883-9d54-4dbc-a15e-b88564f9720a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-dd8fed0c-5ade-4266-a9ea-92db2fd3bcc5' class='xr-var-data-in' type='checkbox'><label for='data-dd8fed0c-5ade-4266-a9ea-92db2fd3bcc5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>Nominal latitude of cell center points</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><pre>array([-81.558125, -81.459689, -81.360114, ...,  89.327983,  89.596848,
+        89.856897], shape=(480,))</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lonh</span></div><div class='xr-var-dims'>(lonh)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-286.7 -286.0 -285.3 ... 72.0 72.67</div><input id='attrs-c3c5cd33-d685-4fd3-9ba3-da46851b19e8' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c3c5cd33-d685-4fd3-9ba3-da46851b19e8' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ab199b3a-f197-4fc8-84ff-9c44bf4313bf' class='xr-var-data-in' type='checkbox'><label for='data-ab199b3a-f197-4fc8-84ff-9c44bf4313bf' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>Nominal longitude of cell center points</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><pre>array([-286.666667, -286.      , -285.333333, ...,   71.333333,   72.      ,
+         72.666667], shape=(540,))</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>latq</span></div><div class='xr-var-dims'>(latq)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-81.61 -81.51 ... 89.72 89.91</div><input id='attrs-acd8f2ff-f791-4d61-8575-8dd83556bbb9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-acd8f2ff-f791-4d61-8575-8dd83556bbb9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6bbde2a7-0c3c-432e-9c79-30df3eda52e8' class='xr-var-data-in' type='checkbox'><label for='data-6bbde2a7-0c3c-432e-9c79-30df3eda52e8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>Nominal latitude of cell corner points</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><pre>array([-81.60692 , -81.509049, -81.410045, ...,  89.458332,  89.719382,
+        89.908629], shape=(481,))</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lonq</span></div><div class='xr-var-dims'>(lonq)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-287.0 -286.3 -285.7 ... 72.33 73.0</div><input id='attrs-d59b970c-f24e-48d8-947a-51b7c875780d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d59b970c-f24e-48d8-947a-51b7c875780d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2b342664-597f-48d2-be59-095b233784ab' class='xr-var-data-in' type='checkbox'><label for='data-2b342664-597f-48d2-be59-095b233784ab' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>Nominal longitude of cell corner points</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><pre>array([-287.      , -286.333333, -285.666667, ...,   71.666667,   72.333333,
+         73.      ], shape=(541,))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-36bfdc0e-60e2-4470-8019-2270b9a2166f' class='xr-section-summary-in' type='checkbox'  checked><label for='section-36bfdc0e-60e2-4470-8019-2270b9a2166f' class='xr-section-summary' >Data variables: <span>(14)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>geolon</span></div><div class='xr-var-dims'>(lath, lonh)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-075f8971-3409-496d-8a6d-39c594ebb14f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-075f8971-3409-496d-8a6d-39c594ebb14f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0ac74444-a582-4320-9a68-e0c5bdaced27' class='xr-var-data-in' type='checkbox'><label for='data-0ac74444-a582-4320-9a68-e0c5bdaced27' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>Longitude of cell center points</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><pre>[259200 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>geolat</span></div><div class='xr-var-dims'>(lath, lonh)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-e6fe8e99-e2d1-482d-b736-0e6d52863b37' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e6fe8e99-e2d1-482d-b736-0e6d52863b37' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-eee81f2f-aa3c-403e-a32e-d7f88a0c6e20' class='xr-var-data-in' type='checkbox'><label for='data-eee81f2f-aa3c-403e-a32e-d7f88a0c6e20' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>Latitude of cell center points</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><pre>[259200 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>geolonb</span></div><div class='xr-var-dims'>(latq, lonq)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-4e93760f-0bee-421d-b360-9bb0c74d98a8' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4e93760f-0bee-421d-b360-9bb0c74d98a8' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a0e7a692-f03b-4a74-819f-5da545d5e87e' class='xr-var-data-in' type='checkbox'><label for='data-a0e7a692-f03b-4a74-819f-5da545d5e87e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>Longitude of cell corner points</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><pre>[260221 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>geolatb</span></div><div class='xr-var-dims'>(latq, lonq)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-636ac0ab-5d14-4012-b304-84864530a83d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-636ac0ab-5d14-4012-b304-84864530a83d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-aecdee81-6752-419b-b037-18f2f509ab32' class='xr-var-data-in' type='checkbox'><label for='data-aecdee81-6752-419b-b037-18f2f509ab32' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>Latitude of cell corner points</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><pre>[260221 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>z</span></div><div class='xr-var-dims'>(lath, lonh)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-540e598c-0560-4c75-8533-bb54f3da7659' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-540e598c-0560-4c75-8533-bb54f3da7659' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7704b07e-92f2-4572-bc65-09fc0a6661cc' class='xr-var-data-in' type='checkbox'><label for='data-7704b07e-92f2-4572-bc65-09fc0a6661cc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>Average Elevation (land and ocean) in cell</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>[259200 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>ocn_frac</span></div><div class='xr-var-dims'>(lath, lonh)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-dfb07f1c-d328-4e0d-9322-492cac084d43' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-dfb07f1c-d328-4e0d-9322-492cac084d43' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-16dfff0a-a14f-46da-a353-1001d8c7c82c' class='xr-var-data-in' type='checkbox'><label for='data-16dfff0a-a14f-46da-a353-1001d8c7c82c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>fraction of cell area covered by ocean</dd><dt><span>units :</span></dt><dd>dimensionless</dd></dl></div><div class='xr-var-data'><pre>[259200 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>mask</span></div><div class='xr-var-dims'>(lath, lonh)</div><div class='xr-var-dtype'>int32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-f12e1f9d-707a-4964-bdf1-83f33971c1dc' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f12e1f9d-707a-4964-bdf1-83f33971c1dc' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d4d27d89-7195-4f44-9094-a278beef951d' class='xr-var-data-in' type='checkbox'><label for='data-d4d27d89-7195-4f44-9094-a278beef951d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>Land/Ocean Mask: 0 if land, 1 if ocean at tracer points</dd></dl></div><div class='xr-var-data'><pre>[259200 values with dtype=int32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>D_mean</span></div><div class='xr-var-dims'>(lath, lonh)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-4fa51de4-a2ec-44c9-b7d5-da7e82d59351' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4fa51de4-a2ec-44c9-b7d5-da7e82d59351' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-dda51b1c-c049-44c5-b6b1-627a5a0bcfeb' class='xr-var-data-in' type='checkbox'><label for='data-dda51b1c-c049-44c5-b6b1-627a5a0bcfeb' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>mean ocean depth in cell</dd><dt><span>units :</span></dt><dd>meters</dd></dl></div><div class='xr-var-data'><pre>[259200 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>D_median</span></div><div class='xr-var-dims'>(lath, lonh)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-af73c782-91b7-4ef3-9c6b-34b6e457285d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-af73c782-91b7-4ef3-9c6b-34b6e457285d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-162254f6-d5a2-445c-a612-8be4aac1c9f6' class='xr-var-data-in' type='checkbox'><label for='data-162254f6-d5a2-445c-a612-8be4aac1c9f6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>median ocean depth in cell</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>[259200 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>D2_mean</span></div><div class='xr-var-dims'>(lath, lonh)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-4ccc050d-47ab-47fb-80b7-bb988cda3310' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4ccc050d-47ab-47fb-80b7-bb988cda3310' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2633feb7-112a-452f-9ee9-d69f5ccf8f06' class='xr-var-data-in' type='checkbox'><label for='data-2633feb7-112a-452f-9ee9-d69f5ccf8f06' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>mean squared ocean depth in cell</dd><dt><span>units :</span></dt><dd>meters^2</dd></dl></div><div class='xr-var-data'><pre>[259200 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>D_min</span></div><div class='xr-var-dims'>(lath, lonh)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-ee0cc5b5-7998-4523-8f98-faf693655905' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ee0cc5b5-7998-4523-8f98-faf693655905' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-26bb1166-8e86-4149-afec-38572f7e4b1a' class='xr-var-data-in' type='checkbox'><label for='data-26bb1166-8e86-4149-afec-38572f7e4b1a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>minimum ocean depth in cell</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>[259200 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>D_max</span></div><div class='xr-var-dims'>(lath, lonh)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-6aa4021e-98e5-4aac-9bb9-04212a724e29' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-6aa4021e-98e5-4aac-9bb9-04212a724e29' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-29d33645-e5ba-4a11-a2a0-1ce67336260a' class='xr-var-data-in' type='checkbox'><label for='data-29d33645-e5ba-4a11-a2a0-1ce67336260a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>maximum ocean depth in cell</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>[259200 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>hand_edits</span></div><div class='xr-var-dims'>(lath, lonh)</div><div class='xr-var-dtype'>int32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-2622494f-15f5-4cd7-aa13-38e0122b5100' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-2622494f-15f5-4cd7-aa13-38e0122b5100' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-39595d9d-b16f-4d9e-9d4a-d2a669891374' class='xr-var-data-in' type='checkbox'><label for='data-39595d9d-b16f-4d9e-9d4a-d2a669891374' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>[259200 values with dtype=int32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>orig_mask</span></div><div class='xr-var-dims'>(lath, lonh)</div><div class='xr-var-dtype'>int32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-a66a1a2c-ff89-4ca3-9c37-dd0438aa5df1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a66a1a2c-ff89-4ca3-9c37-dd0438aa5df1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a9f8b516-15c0-460e-829a-4d316c4eb94d' class='xr-var-data-in' type='checkbox'><label for='data-a9f8b516-15c0-460e-829a-4d316c4eb94d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>Land/Ocean Mask: 0 if land, 1 if ocean at tracer points</dd></dl></div><div class='xr-var-data'><pre>[259200 values with dtype=int32]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-4280b97b-80a6-4427-9c91-8bfff67cb0a7' class='xr-section-summary-in' type='checkbox'  checked><label for='section-4280b97b-80a6-4427-9c91-8bfff67cb0a7' class='xr-section-summary' >Attributes: <span>(7)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Description :</span></dt><dd>Ocean Topography Statistics on MOM6 Grid</dd><dt><span>Creator :</span></dt><dd>Frank Bryan</dd><dt><span>Created :</span></dt><dd>20260225</dd><dt><span>Generating Code :</span></dt><dd>create_model_topo.f90</dd><dt><span>Model Grid Version :</span></dt><dd>tx2_3v3</dd><dt><span>Source Topography Data :</span></dt><dd>/glade/work/bryan/Observations/Topography/SRTM/SRTM15_V2.4.nc</dd><dt><span>Edit History :</span></dt><dd>Hand Edit + Lake Fill 02/26/2026</dd></dl></div></li></ul></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_new</span><span class="p">[</span><span class="s1">&#39;mask&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x15300e93d400&gt;
+</pre></div>
+</div>
+<img alt="../_images/818faa479222ac9dac68ae1c2c6bce3b44bd4f5d8a8784ac7d3a6b26bd1c6aa3.png" src="../_images/818faa479222ac9dac68ae1c2c6bce3b44bd4f5d8a8784ac7d3a6b26bd1c6aa3.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jpnt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+<span class="mi">27</span><span class="p">,</span>
+<span class="mi">32</span><span class="p">,</span>
+<span class="mi">33</span><span class="p">,</span>
+<span class="mi">33</span><span class="p">,</span>
+<span class="mi">33</span><span class="p">,</span>
+<span class="mi">37</span><span class="p">,</span>
+<span class="mi">39</span><span class="p">,</span>
+<span class="mi">39</span><span class="p">,</span>
+<span class="mi">39</span><span class="p">,</span>
+<span class="mi">45</span><span class="p">,</span>
+<span class="mi">50</span><span class="p">,</span>
+<span class="mi">51</span><span class="p">,</span>
+<span class="mi">56</span><span class="p">,</span>
+<span class="mi">56</span><span class="p">,</span>
+<span class="mi">57</span><span class="p">,</span>
+<span class="mi">58</span><span class="p">,</span>
+<span class="mi">62</span><span class="p">,</span>
+<span class="mi">62</span><span class="p">,</span>
+<span class="mi">62</span><span class="p">,</span>
+<span class="mi">63</span><span class="p">,</span>
+<span class="mi">63</span><span class="p">,</span>
+<span class="mi">77</span><span class="p">,</span>
+<span class="mi">78</span><span class="p">,</span>
+<span class="mi">78</span><span class="p">,</span>
+<span class="mi">86</span><span class="p">,</span>
+<span class="mi">87</span><span class="p">,</span>
+<span class="mi">87</span><span class="p">,</span>
+<span class="mi">88</span><span class="p">,</span>
+<span class="mi">89</span><span class="p">,</span>
+<span class="mi">438</span><span class="p">,</span>
+<span class="mi">458</span><span class="p">,</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ipnt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+<span class="mi">183</span><span class="p">,</span>
+<span class="mi">138</span><span class="p">,</span>
+<span class="mi">138</span><span class="p">,</span>
+<span class="mi">140</span><span class="p">,</span>
+<span class="mi">141</span><span class="p">,</span>
+<span class="mi">202</span><span class="p">,</span>
+<span class="mi">135</span><span class="p">,</span>
+<span class="mi">204</span><span class="p">,</span>
+<span class="mi">205</span><span class="p">,</span>
+<span class="mi">391</span><span class="p">,</span>
+<span class="mi">136</span><span class="p">,</span>
+<span class="mi">278</span><span class="p">,</span>
+<span class="mi">139</span><span class="p">,</span>
+<span class="mi">258</span><span class="p">,</span>
+<span class="mi">140</span><span class="p">,</span>
+<span class="mi">240</span><span class="p">,</span>
+<span class="mi">320</span><span class="p">,</span>
+<span class="mi">321</span><span class="p">,</span>
+<span class="mi">322</span><span class="p">,</span>
+<span class="mi">321</span><span class="p">,</span>
+<span class="mi">322</span><span class="p">,</span>
+<span class="mi">489</span><span class="p">,</span>
+<span class="mi">489</span><span class="p">,</span>
+<span class="mi">490</span><span class="p">,</span>
+<span class="mi">503</span><span class="p">,</span>
+<span class="mi">503</span><span class="p">,</span>
+<span class="mi">504</span><span class="p">,</span>
+<span class="mi">506</span><span class="p">,</span>
+<span class="mi">25</span><span class="p">,</span>
+<span class="mi">397</span><span class="p">,</span>
+<span class="mi">383</span><span class="p">,</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;# values = &#39;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">ipnt</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; 1=Ocean   0=Land&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; n   i    j    Old  NEW  CHANGED&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ipnt</span><span class="p">)):</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="n">jpnt</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">ipnt</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="si">:</span><span class="s2">3d</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="si">:</span><span class="s2">4d</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">:</span><span class="s2">4d</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">df_old</span><span class="p">[</span><span class="s1">&#39;mask&#39;</span><span class="p">][</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="si">:</span><span class="s2">3d</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">df_new</span><span class="p">[</span><span class="s1">&#39;mask&#39;</span><span class="p">][</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="si">:</span><span class="s2">3d</span><span class="si">}</span><span class="s2">   </span><span class="si">{</span><span class="p">(</span><span class="n">df_old</span><span class="p">[</span><span class="s1">&#39;mask&#39;</span><span class="p">][</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">df_new</span><span class="p">[</span><span class="s1">&#39;mask&#39;</span><span class="p">][</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">values</span><span class="si">}</span><span class="s2">&quot;</span>
+          <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># values =  31
+ 1=Ocean   0=Land
+ n   i    j    Old  NEW  CHANGED
+  1   27  183   1   0   True
+  2   32  138   1   0   True
+  3   33  138   1   1   False
+  4   33  140   1   1   False
+  5   33  141   1   0   True
+  6   37  202   1   0   True
+  7   39  135   1   0   True
+  8   39  204   1   1   False
+  9   39  205   1   0   True
+ 10   45  391   1   0   True
+ 11   50  136   1   0   True
+ 12   51  278   1   1   False
+ 13   56  139   1   0   True
+ 14   56  258   1   0   True
+ 15   57  140   1   0   True
+ 16   58  240   1   0   True
+ 17   62  320   1   1   False
+ 18   62  321   1   1   False
+ 19   62  322   1   0   True
+ 20   63  321   1   1   False
+ 21   63  322   1   0   True
+ 22   77  489   1   0   True
+ 23   78  489   1   1   False
+ 24   78  490   1   1   False
+ 25   86  503   1   0   True
+ 26   87  503   1   1   False
+ 27   87  504   1   0   True
+ 28   88  506   1   0   True
+ 29   89   25   1   0   True
+ 30  438  397   1   0   True
+ 31  458  383   1   0   True
+</pre></div>
+</div>
+</div>
+</div>
+<section id="check-points-with-ian-s-modified-runoff-map">
+<h1>Check Points with Ian’s Modified Runoff Map<a class="headerlink" href="#check-points-with-ian-s-modified-runoff-map" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imin</span><span class="o">=</span><span class="mi">130</span>
+<span class="n">imax</span><span class="o">=</span><span class="mi">150</span>
+<span class="n">jmin</span><span class="o">=</span><span class="mi">30</span>
+<span class="n">jmax</span><span class="o">=</span><span class="mi">60</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">map_maskij</span><span class="p">(</span><span class="n">df_new</span><span class="p">,</span><span class="s1">&#39;mask&#39;</span><span class="p">,</span><span class="n">imin</span><span class="p">,</span><span class="n">imax</span><span class="p">,</span><span class="n">jmin</span><span class="p">,</span><span class="n">jmax</span><span class="p">,</span>
+               <span class="n">label_skip</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">line_skip</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">draw_coastline</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">137</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">137</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">139</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">140</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">134</span><span class="p">,</span><span class="mi">38</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">135</span><span class="p">,</span><span class="mi">49</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">138</span><span class="p">,</span><span class="mi">55</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">139</span><span class="p">,</span><span class="mi">56</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(139, 56, &#39;X&#39;)
+</pre></div>
+</div>
+<img alt="../_images/d7d8a94d81a92ed4dd6cc6c738b5e59de33e0cfcbb12e9fb41c891960d038d0c.png" src="../_images/d7d8a94d81a92ed4dd6cc6c738b5e59de33e0cfcbb12e9fb41c891960d038d0c.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imin</span><span class="o">=</span><span class="mi">180</span>
+<span class="n">imax</span><span class="o">=</span><span class="mi">190</span>
+<span class="n">jmin</span><span class="o">=</span><span class="mi">20</span>
+<span class="n">jmax</span><span class="o">=</span><span class="mi">30</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">map_maskij</span><span class="p">(</span><span class="n">df_new</span><span class="p">,</span><span class="s1">&#39;mask&#39;</span><span class="p">,</span><span class="n">imin</span><span class="p">,</span><span class="n">imax</span><span class="p">,</span><span class="n">jmin</span><span class="p">,</span><span class="n">jmax</span><span class="p">,</span>
+               <span class="n">label_skip</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">line_skip</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">draw_coastline</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">182</span><span class="p">,</span><span class="mi">26</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(182, 26, &#39;X&#39;)
+</pre></div>
+</div>
+<img alt="../_images/e613ecc255052c739ac220825bd3231a79d1b84bb6c027e8b57818f74b6485c7.png" src="../_images/e613ecc255052c739ac220825bd3231a79d1b84bb6c027e8b57818f74b6485c7.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imin</span><span class="o">=</span><span class="mi">200</span>
+<span class="n">imax</span><span class="o">=</span><span class="mi">210</span>
+<span class="n">jmin</span><span class="o">=</span><span class="mi">30</span>
+<span class="n">jmax</span><span class="o">=</span><span class="mi">45</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">map_maskij</span><span class="p">(</span><span class="n">df_new</span><span class="p">,</span><span class="s1">&#39;mask&#39;</span><span class="p">,</span><span class="n">imin</span><span class="p">,</span><span class="n">imax</span><span class="p">,</span><span class="n">jmin</span><span class="p">,</span><span class="n">jmax</span><span class="p">,</span>
+               <span class="n">label_skip</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">line_skip</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">draw_coastline</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">201</span><span class="p">,</span><span class="mi">36</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">203</span><span class="p">,</span><span class="mi">38</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">204</span><span class="p">,</span><span class="mi">38</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(204, 38, &#39;X&#39;)
+</pre></div>
+</div>
+<img alt="../_images/4775e0d565eaf8f11694c3e4c0f8cdb7fdc03dd9c2e6c28cb32212840e39ecb0.png" src="../_images/4775e0d565eaf8f11694c3e4c0f8cdb7fdc03dd9c2e6c28cb32212840e39ecb0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imin</span><span class="o">=</span><span class="mi">235</span>
+<span class="n">imax</span><span class="o">=</span><span class="mi">245</span>
+<span class="n">jmin</span><span class="o">=</span><span class="mi">55</span>
+<span class="n">jmax</span><span class="o">=</span><span class="mi">65</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">map_maskij</span><span class="p">(</span><span class="n">df_new</span><span class="p">,</span><span class="s1">&#39;mask&#39;</span><span class="p">,</span><span class="n">imin</span><span class="p">,</span><span class="n">imax</span><span class="p">,</span><span class="n">jmin</span><span class="p">,</span><span class="n">jmax</span><span class="p">,</span>
+               <span class="n">label_skip</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">line_skip</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">draw_coastline</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">239</span><span class="p">,</span><span class="mi">57</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(239, 57, &#39;X&#39;)
+</pre></div>
+</div>
+<img alt="../_images/93bb733c1aea2df1e5221455ac53514433962ee62d19a9fddf7615e411a93170.png" src="../_images/93bb733c1aea2df1e5221455ac53514433962ee62d19a9fddf7615e411a93170.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imin</span><span class="o">=</span><span class="mi">255</span>
+<span class="n">imax</span><span class="o">=</span><span class="mi">280</span>
+<span class="n">jmin</span><span class="o">=</span><span class="mi">45</span>
+<span class="n">jmax</span><span class="o">=</span><span class="mi">60</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">map_maskij</span><span class="p">(</span><span class="n">df_new</span><span class="p">,</span><span class="s1">&#39;mask&#39;</span><span class="p">,</span><span class="n">imin</span><span class="p">,</span><span class="n">imax</span><span class="p">,</span><span class="n">jmin</span><span class="p">,</span><span class="n">jmax</span><span class="p">,</span>
+               <span class="n">label_skip</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">line_skip</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">draw_coastline</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">277</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">257</span><span class="p">,</span><span class="mi">55</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(257, 55, &#39;X&#39;)
+</pre></div>
+</div>
+<img alt="../_images/e78d957cd30d1b53e1375fe60d9caa0f09fc017a63afdb810f57c8c62e904d0e.png" src="../_images/e78d957cd30d1b53e1375fe60d9caa0f09fc017a63afdb810f57c8c62e904d0e.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imin</span><span class="o">=</span><span class="mi">315</span>
+<span class="n">imax</span><span class="o">=</span><span class="mi">325</span>
+<span class="n">jmin</span><span class="o">=</span><span class="mi">60</span>
+<span class="n">jmax</span><span class="o">=</span><span class="mi">70</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">map_maskij</span><span class="p">(</span><span class="n">df_new</span><span class="p">,</span><span class="s1">&#39;mask&#39;</span><span class="p">,</span><span class="n">imin</span><span class="p">,</span><span class="n">imax</span><span class="p">,</span><span class="n">jmin</span><span class="p">,</span><span class="n">jmax</span><span class="p">,</span>
+               <span class="n">label_skip</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">line_skip</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">draw_coastline</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">319</span><span class="p">,</span><span class="mi">61</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">320</span><span class="p">,</span><span class="mi">61</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">321</span><span class="p">,</span><span class="mi">61</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">320</span><span class="p">,</span><span class="mi">62</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">321</span><span class="p">,</span><span class="mi">62</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(321, 62, &#39;X&#39;)
+</pre></div>
+</div>
+<img alt="../_images/a487cb8ba1537da3b0a56bda7c4b7e1adcd72d8ccfdf5875e351bdec1d448b89.png" src="../_images/a487cb8ba1537da3b0a56bda7c4b7e1adcd72d8ccfdf5875e351bdec1d448b89.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imin</span><span class="o">=</span><span class="mi">485</span>
+<span class="n">imax</span><span class="o">=</span><span class="mi">495</span>
+<span class="n">jmin</span><span class="o">=</span><span class="mi">70</span>
+<span class="n">jmax</span><span class="o">=</span><span class="mi">80</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">map_maskij</span><span class="p">(</span><span class="n">df_new</span><span class="p">,</span><span class="s1">&#39;mask&#39;</span><span class="p">,</span><span class="n">imin</span><span class="p">,</span><span class="n">imax</span><span class="p">,</span><span class="n">jmin</span><span class="p">,</span><span class="n">jmax</span><span class="p">,</span>
+               <span class="n">label_skip</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">line_skip</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">draw_coastline</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">488</span><span class="p">,</span><span class="mi">76</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">488</span><span class="p">,</span><span class="mi">77</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">489</span><span class="p">,</span><span class="mi">77</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(489, 77, &#39;X&#39;)
+</pre></div>
+</div>
+<img alt="../_images/3da4be80478e8dff543d3faa7052d04dcd2045db29ad0ea51e412bff6994cf32.png" src="../_images/3da4be80478e8dff543d3faa7052d04dcd2045db29ad0ea51e412bff6994cf32.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imin</span><span class="o">=</span><span class="mi">500</span>
+<span class="n">imax</span><span class="o">=</span><span class="mi">510</span>
+<span class="n">jmin</span><span class="o">=</span><span class="mi">80</span>
+<span class="n">jmax</span><span class="o">=</span><span class="mi">90</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">map_maskij</span><span class="p">(</span><span class="n">df_new</span><span class="p">,</span><span class="s1">&#39;mask&#39;</span><span class="p">,</span><span class="n">imin</span><span class="p">,</span><span class="n">imax</span><span class="p">,</span><span class="n">jmin</span><span class="p">,</span><span class="n">jmax</span><span class="p">,</span>
+               <span class="n">label_skip</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">line_skip</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">draw_coastline</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">502</span><span class="p">,</span><span class="mi">85</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">502</span><span class="p">,</span><span class="mi">86</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">503</span><span class="p">,</span><span class="mi">86</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">505</span><span class="p">,</span><span class="mi">87</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(505, 87, &#39;X&#39;)
+</pre></div>
+</div>
+<img alt="../_images/f6380b0200ae5c10fc615c6e3ef8c88f9bb1e91e34032359a13197a346aa5f21.png" src="../_images/f6380b0200ae5c10fc615c6e3ef8c88f9bb1e91e34032359a13197a346aa5f21.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imin</span><span class="o">=</span><span class="mi">20</span>
+<span class="n">imax</span><span class="o">=</span><span class="mi">30</span>
+<span class="n">jmin</span><span class="o">=</span><span class="mi">85</span>
+<span class="n">jmax</span><span class="o">=</span><span class="mi">95</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">map_maskij</span><span class="p">(</span><span class="n">df_new</span><span class="p">,</span><span class="s1">&#39;mask&#39;</span><span class="p">,</span><span class="n">imin</span><span class="p">,</span><span class="n">imax</span><span class="p">,</span><span class="n">jmin</span><span class="p">,</span><span class="n">jmax</span><span class="p">,</span>
+               <span class="n">label_skip</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">line_skip</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">draw_coastline</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span><span class="mi">88</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(24, 88, &#39;X&#39;)
+</pre></div>
+</div>
+<img alt="../_images/938f83a371e3f818c6e921198ac819fb1ba921b25e7719e12cb9d06356b0ef61.png" src="../_images/938f83a371e3f818c6e921198ac819fb1ba921b25e7719e12cb9d06356b0ef61.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imin</span><span class="o">=</span><span class="mi">380</span>
+<span class="n">imax</span><span class="o">=</span><span class="mi">400</span>
+<span class="n">jmin</span><span class="o">=</span><span class="mi">435</span>
+<span class="n">jmax</span><span class="o">=</span><span class="mi">460</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">map_maskij</span><span class="p">(</span><span class="n">df_new</span><span class="p">,</span><span class="s1">&#39;mask&#39;</span><span class="p">,</span><span class="n">imin</span><span class="p">,</span><span class="n">imax</span><span class="p">,</span><span class="n">jmin</span><span class="p">,</span><span class="n">jmax</span><span class="p">,</span>
+               <span class="n">label_skip</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">line_skip</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">draw_coastline</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">382</span><span class="p">,</span><span class="mi">457</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">396</span><span class="p">,</span><span class="mi">437</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(396, 437, &#39;X&#39;)
+</pre></div>
+</div>
+<img alt="../_images/b67fbda850530aa3e92b22fde9208cc11a71239a933a6265deec5022cf7b01b8.png" src="../_images/b67fbda850530aa3e92b22fde9208cc11a71239a933a6265deec5022cf7b01b8.png" />
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "npl-2026a"
+        },
+        kernelOptions: {
+            name: "npl-2026a",
+            path: "./topography"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'npl-2026a'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Ocean Model Working Group
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

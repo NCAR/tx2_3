@@ -1,0 +1,1456 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Set sub-grid widths for selected channels &#8212; Nominal 2/3 degree global configuration for CESM/MOM6</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'topography/Channel_width_tx2_3v3';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ncar_logo.png" class="logo__image only-light" alt="Nominal 2/3 degree global configuration for CESM/MOM6 - Home"/>
+    <script>document.write(`<img src="../_static/ncar_logo.png" class="logo__image only-dark" alt="Nominal 2/3 degree global configuration for CESM/MOM6 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Nominal 2/3 degree global configuration for CESM/MOM6
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Model Setup</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../supergrid/orca_gridgen.html">Supergrid</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="topo.html">tx2_3v3 Topography Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mesh/create_mesh.html">Create ESMF mesh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../runoff_mapping/runoff.html">Runoff mapping files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../state_restoring/state_restoring.html">Sea-surface salinity and potential temperature restoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tidal_energy_dissipation/regrid_tidal_dissipation.html">Tidal Dissipation</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../chlorophyll/Interpolate_and_fill_SeaWIFS.html">Interpolate and fill SeaWIFS data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seaice_files/create_seaice.html">Create CICE grid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geothermal/davies2013_to_tx2_3.html">Remap geothermal dataset (Davies, 2013) to tx2_3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../background_viscosity/background_kh_tx2_3.html">Background harmonic viscosity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cr_mask/mle_cr_labsea_mask.html">Create a 2D mask with zero in the Lab Sea and one elsewhere</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Model Validation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../basin_masks/basin_masks.html">Ocean Basin Masks</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../basin_masks/imbie_basin_to_tx2_3.html">Remap IMBIE basins to tx2_3</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../woa18/woa18_to_tx2_3.html">Remap WOA18 to tx2_3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mld/deBoyer2004/deBoyer2004_to_tx2_3.html">Regrid MLD from deBoyer et al (2004)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mld/deBoyer2023/deBoyer2023_to_tx2_3.html">Regrid MLD from Treguier et al., 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aviso/aviso_to_tx2_3.html">Remap AVISO to tx2_3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oisst/oisst_to_tx2_3.html">Remap OISST to tx2_3</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NCAR/tx2_3" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NCAR/tx2_3/issues/new?title=Issue%20on%20page%20%2Ftopography/Channel_width_tx2_3v3.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/topography/Channel_width_tx2_3v3.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Set sub-grid widths for selected channels</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-input-topography-data-set">Get input topography data set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-output-files">Set up output files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selected-straits">Selected Straits</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strait-of-gibralter">Strait of Gibralter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bosphorus">Bosphorus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dardanelles">Dardanelles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lombok-strait">Lombok Strait</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bab-el-mandeb">Bab El-Mandeb</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#st-of-hormuz">St of Hormuz</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="set-sub-grid-widths-for-selected-channels">
+<h1>Set sub-grid widths for selected channels<a class="headerlink" href="#set-sub-grid-widths-for-selected-channels" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;src/&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">datetime</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">topo_edit_util</span><span class="w"> </span><span class="kn">import</span> <span class="n">inspect_topo</span><span class="p">,</span> <span class="n">create_soc_topo_table</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="get-input-topography-data-set">
+<h2>Get input topography data set<a class="headerlink" href="#get-input-topography-data-set" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path_root</span> <span class="o">=</span> <span class="s1">&#39;./&#39;</span>
+<span class="n">file_root</span> <span class="o">=</span> <span class="s1">&#39;topo.&#39;</span>
+
+<span class="n">grid</span> <span class="o">=</span> <span class="s1">&#39;tx2_3v3&#39;</span>
+<span class="n">topo_src</span> <span class="o">=</span> <span class="s1">&#39;SRTM15_V2.4&#39;</span>
+<span class="n">nsub</span> <span class="o">=</span> <span class="s1">&#39;sub150&#39;</span>
+<span class="n">edit_no</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">case</span> <span class="o">=</span> <span class="s1">&#39;SmL1.0_C1.0&#39;</span>
+<span class="n">depth_var_in</span> <span class="o">=</span> <span class="s1">&#39;D_edit2&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path_in</span> <span class="o">=</span> <span class="n">path_root</span>
+
+<span class="n">file_in</span> <span class="o">=</span> <span class="n">file_root</span> <span class="o">+</span> <span class="n">nsub</span> <span class="o">+</span>  <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">grid</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">topo_src</span> <span class="o">+</span> <span class="s1">&#39;.edit&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="si">{:d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">edit_no</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">case</span> <span class="o">+</span> <span class="s1">&#39;.nc&#39;</span>
+
+<span class="c1"># This is the current default input file</span>
+<span class="c1">#file_in = &#39;ocean_topo_tx2_3v2_240501.nc&#39;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">path_in</span><span class="o">+</span><span class="n">file_in</span><span class="p">)</span>
+<span class="n">dss</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">path_in</span><span class="o">+</span><span class="n">file_in</span><span class="p">)</span>
+<span class="n">dss</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>./topo.sub150.tx2_3v3.SRTM15_V2.4.edit2.SmL1.0_C1.0.nc
+</pre></div>
+</div>
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in notebooks */
+
+:root {
+  --xr-font-color0: var(
+    --jp-content-font-color0,
+    var(--pst-color-text-base rgba(0, 0, 0, 1))
+  );
+  --xr-font-color2: var(
+    --jp-content-font-color2,
+    var(--pst-color-text-base, rgba(0, 0, 0, 0.54))
+  );
+  --xr-font-color3: var(
+    --jp-content-font-color3,
+    var(--pst-color-text-base, rgba(0, 0, 0, 0.38))
+  );
+  --xr-border-color: var(
+    --jp-border-color2,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 10))
+  );
+  --xr-disabled-color: var(
+    --jp-layout-color3,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 40))
+  );
+  --xr-background-color: var(
+    --jp-layout-color0,
+    var(--pst-color-on-background, white)
+  );
+  --xr-background-color-row-even: var(
+    --jp-layout-color1,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 5))
+  );
+  --xr-background-color-row-odd: var(
+    --jp-layout-color2,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 15))
+  );
+}
+
+html[theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"],
+body.vscode-dark {
+  --xr-font-color0: var(
+    --jp-content-font-color0,
+    var(--pst-color-text-base, rgba(255, 255, 255, 1))
+  );
+  --xr-font-color2: var(
+    --jp-content-font-color2,
+    var(--pst-color-text-base, rgba(255, 255, 255, 0.54))
+  );
+  --xr-font-color3: var(
+    --jp-content-font-color3,
+    var(--pst-color-text-base, rgba(255, 255, 255, 0.38))
+  );
+  --xr-border-color: var(
+    --jp-border-color2,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 10))
+  );
+  --xr-disabled-color: var(
+    --jp-layout-color3,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 40))
+  );
+  --xr-background-color: var(
+    --jp-layout-color0,
+    var(--pst-color-on-background, #111111)
+  );
+  --xr-background-color-row-even: var(
+    --jp-layout-color1,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 5))
+  );
+  --xr-background-color-row-odd: var(
+    --jp-layout-color2,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 15))
+  );
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+  line-height: 1.6;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-obj-name,
+.xr-group-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-group-name::before {
+  content: "📁";
+  padding-right: 0.3em;
+}
+
+.xr-group-name,
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 0 20px 0 20px;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: inline-block;
+  opacity: 0;
+  height: 0;
+  margin: 0;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+  border: 2px solid transparent !important;
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:focus + label {
+  border: 2px solid var(--xr-font-color0) !important;
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: "►";
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: "▼";
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-top: 4px;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-group-box {
+  display: inline-grid;
+  grid-template-columns: 0px 20px auto;
+  width: 100%;
+}
+
+.xr-group-box-vline {
+  grid-column-start: 1;
+  border-right: 0.2em solid;
+  border-color: var(--xr-border-color);
+  width: 0px;
+}
+
+.xr-group-box-hline {
+  grid-column-start: 2;
+  grid-row-start: 1;
+  height: 1em;
+  width: 20px;
+  border-bottom: 0.2em solid;
+  border-color: var(--xr-border-color);
+}
+
+.xr-group-box-contents {
+  grid-column-start: 3;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: "(";
+}
+
+.xr-dim-list:after {
+  content: ")";
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ",";
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  border-color: var(--xr-background-color-row-odd);
+  margin-bottom: 0;
+  padding-top: 2px;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+  border-color: var(--xr-background-color-row-even);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  border-top: 2px dotted var(--xr-background-color);
+  padding-bottom: 20px !important;
+  padding-top: 10px !important;
+}
+
+.xr-var-attrs-in + label,
+.xr-var-data-in + label,
+.xr-index-data-in + label {
+  padding: 0 1px;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-data > pre,
+.xr-index-data > pre,
+.xr-var-data > table > tbody > tr {
+  background-color: transparent !important;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.xr-var-attrs-in:checked + label > .xr-icon-file-text2,
+.xr-var-data-in:checked + label > .xr-icon-database,
+.xr-index-data-in:checked + label > .xr-icon-database {
+  color: var(--xr-font-color0);
+  filter: drop-shadow(1px 1px 5px var(--xr-font-color2));
+  stroke-width: 0.8px;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 21MB
+Dimensions:     (lath: 480, lonh: 540, latq: 481, lonq: 541, nEdits: 367)
+Coordinates:
+  * lath        (lath) float64 4kB -81.56 -81.46 -81.36 ... 89.33 89.6 89.86
+  * lonh        (lonh) float64 4kB -286.7 -286.0 -285.3 ... 71.33 72.0 72.67
+  * latq        (latq) float64 4kB -81.61 -81.51 -81.41 ... 89.46 89.72 89.91
+  * lonq        (lonq) float64 4kB -287.0 -286.3 -285.7 ... 71.67 72.33 73.0
+Dimensions without coordinates: nEdits
+Data variables: (12/19)
+    geolon      (lath, lonh) float64 2MB ...
+    geolat      (lath, lonh) float64 2MB ...
+    geolonb     (latq, lonq) float64 2MB ...
+    geolatb     (latq, lonq) float64 2MB ...
+    z           (lath, lonh) float32 1MB ...
+    ocn_frac    (lath, lonh) float32 1MB ...
+    ...          ...
+    orig_mask   (lath, lonh) int32 1MB ...
+    D_interp    (lath, lonh) float32 1MB ...
+    D_edit2     (lath, lonh) float32 1MB ...
+    iEdit       (nEdits) int32 1kB ...
+    jEdit       (nEdits) int32 1kB ...
+    zEdit       (nEdits) float64 3kB ...
+Attributes:
+    Description:               Ocean Topography Statistics on MOM6 Grid
+    Creator:                   Frank Bryan
+    Created:                   20260226
+    Generating Code:           create_model_topo.f90
+    Model Grid Version:        tx2_3v3
+    Source Topography Data:    /glade/work/bryan/Observations/Topography/SRTM...
+    Edit History:              Hand Edit + Lake Fill 02/27/2026
+    Manual edits updated on::  2026-03-04T14:46:33.511255
+    By::                       Frank Bryan (bryan@ucar.edu)
+    url:                       https://github.com/NCAR/tx2_3/topography/</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-bb9e22c8-6bc6-4036-b3a2-e15578b15bbf' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-bb9e22c8-6bc6-4036-b3a2-e15578b15bbf' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>lath</span>: 480</li><li><span class='xr-has-index'>lonh</span>: 540</li><li><span class='xr-has-index'>latq</span>: 481</li><li><span class='xr-has-index'>lonq</span>: 541</li><li><span>nEdits</span>: 367</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-0477b9ee-f4db-47a5-b8f1-b85e852720f2' class='xr-section-summary-in' type='checkbox'  checked><label for='section-0477b9ee-f4db-47a5-b8f1-b85e852720f2' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lath</span></div><div class='xr-var-dims'>(lath)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-81.56 -81.46 -81.36 ... 89.6 89.86</div><input id='attrs-36e61e02-9b92-4f41-bc42-92af7336e682' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-36e61e02-9b92-4f41-bc42-92af7336e682' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-99e36db3-9c01-4caf-9d12-b3219d101f2d' class='xr-var-data-in' type='checkbox'><label for='data-99e36db3-9c01-4caf-9d12-b3219d101f2d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>Nominal latitude of cell center points</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><pre>array([-81.558125, -81.459689, -81.360114, ...,  89.327983,  89.596848,
+        89.856897], shape=(480,))</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lonh</span></div><div class='xr-var-dims'>(lonh)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-286.7 -286.0 -285.3 ... 72.0 72.67</div><input id='attrs-f5713e91-20a2-44bd-b594-2abcded10ec7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f5713e91-20a2-44bd-b594-2abcded10ec7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-dd9ce97c-7c28-48a6-8a16-16f46303eabc' class='xr-var-data-in' type='checkbox'><label for='data-dd9ce97c-7c28-48a6-8a16-16f46303eabc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>Nominal longitude of cell center points</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><pre>array([-286.666667, -286.      , -285.333333, ...,   71.333333,   72.      ,
+         72.666667], shape=(540,))</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>latq</span></div><div class='xr-var-dims'>(latq)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-81.61 -81.51 ... 89.72 89.91</div><input id='attrs-f46dfb6e-49e3-498f-8c46-0b2d8264e848' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f46dfb6e-49e3-498f-8c46-0b2d8264e848' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-79c377bb-4f4c-453d-bf6a-7d18993119f8' class='xr-var-data-in' type='checkbox'><label for='data-79c377bb-4f4c-453d-bf6a-7d18993119f8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>Nominal latitude of cell corner points</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><pre>array([-81.60692 , -81.509049, -81.410045, ...,  89.458332,  89.719382,
+        89.908629], shape=(481,))</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lonq</span></div><div class='xr-var-dims'>(lonq)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-287.0 -286.3 -285.7 ... 72.33 73.0</div><input id='attrs-ee05faf6-476f-4557-a106-eda9fa6d4ffe' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ee05faf6-476f-4557-a106-eda9fa6d4ffe' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-292019f1-8db2-4626-a3dc-1d25dadffb03' class='xr-var-data-in' type='checkbox'><label for='data-292019f1-8db2-4626-a3dc-1d25dadffb03' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>Nominal longitude of cell corner points</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><pre>array([-287.      , -286.333333, -285.666667, ...,   71.666667,   72.333333,
+         73.      ], shape=(541,))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-9ec4727d-3d33-4436-a243-e57b7187ca53' class='xr-section-summary-in' type='checkbox'  ><label for='section-9ec4727d-3d33-4436-a243-e57b7187ca53' class='xr-section-summary' >Data variables: <span>(19)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>geolon</span></div><div class='xr-var-dims'>(lath, lonh)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-5a038711-fc9a-4a07-8537-0f513eddb22f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5a038711-fc9a-4a07-8537-0f513eddb22f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a573eb94-8fd2-4a07-b9eb-8a0ec7384825' class='xr-var-data-in' type='checkbox'><label for='data-a573eb94-8fd2-4a07-b9eb-8a0ec7384825' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>Longitude of cell center points</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><pre>[259200 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>geolat</span></div><div class='xr-var-dims'>(lath, lonh)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-d4779291-55fb-4140-83f3-a14ff1944d24' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d4779291-55fb-4140-83f3-a14ff1944d24' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-45b3341d-9da4-46e5-a26f-b3f49d1ca9e9' class='xr-var-data-in' type='checkbox'><label for='data-45b3341d-9da4-46e5-a26f-b3f49d1ca9e9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>Latitude of cell center points</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><pre>[259200 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>geolonb</span></div><div class='xr-var-dims'>(latq, lonq)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-5bd50ccb-a1a7-4ffe-bb54-6e2745bee0b3' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5bd50ccb-a1a7-4ffe-bb54-6e2745bee0b3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-79fbab18-171a-473c-8cd9-be15ce6edde5' class='xr-var-data-in' type='checkbox'><label for='data-79fbab18-171a-473c-8cd9-be15ce6edde5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>Longitude of cell corner points</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><pre>[260221 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>geolatb</span></div><div class='xr-var-dims'>(latq, lonq)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-2ea21970-ba2d-400e-baf9-652f0b198d51' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-2ea21970-ba2d-400e-baf9-652f0b198d51' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-54736a11-cb46-4e16-bf5f-36bcfba546a7' class='xr-var-data-in' type='checkbox'><label for='data-54736a11-cb46-4e16-bf5f-36bcfba546a7' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>Latitude of cell corner points</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><pre>[260221 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>z</span></div><div class='xr-var-dims'>(lath, lonh)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-8fa7e47f-427b-4806-bb48-5e57892cf235' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8fa7e47f-427b-4806-bb48-5e57892cf235' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-76efb77a-6d7c-4c41-916d-50b4538d433a' class='xr-var-data-in' type='checkbox'><label for='data-76efb77a-6d7c-4c41-916d-50b4538d433a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>Average Elevation (land and ocean) in cell</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>[259200 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>ocn_frac</span></div><div class='xr-var-dims'>(lath, lonh)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-a377e16c-6446-48d3-9d6d-0a73ee46edf3' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a377e16c-6446-48d3-9d6d-0a73ee46edf3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-aa0dff2f-1633-43c1-839d-c3c91e9a366f' class='xr-var-data-in' type='checkbox'><label for='data-aa0dff2f-1633-43c1-839d-c3c91e9a366f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>fraction of cell area covered by ocean</dd><dt><span>units :</span></dt><dd>dimensionless</dd></dl></div><div class='xr-var-data'><pre>[259200 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>mask</span></div><div class='xr-var-dims'>(lath, lonh)</div><div class='xr-var-dtype'>int32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-9b325d10-508c-47a3-9a28-20516c641ea3' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9b325d10-508c-47a3-9a28-20516c641ea3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1336100e-2d6c-4051-a89d-82d0737b39e8' class='xr-var-data-in' type='checkbox'><label for='data-1336100e-2d6c-4051-a89d-82d0737b39e8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>Land/Ocean Mask: 0 if land, 1 if ocean at tracer points</dd></dl></div><div class='xr-var-data'><pre>[259200 values with dtype=int32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>D_mean</span></div><div class='xr-var-dims'>(lath, lonh)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-fe23cace-3b82-4436-b79d-388e472f7a31' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-fe23cace-3b82-4436-b79d-388e472f7a31' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1f6589db-7f20-4081-99ac-6714b8a3c853' class='xr-var-data-in' type='checkbox'><label for='data-1f6589db-7f20-4081-99ac-6714b8a3c853' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>mean ocean depth in cell</dd><dt><span>units :</span></dt><dd>meters</dd></dl></div><div class='xr-var-data'><pre>[259200 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>D_median</span></div><div class='xr-var-dims'>(lath, lonh)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-c0cb5ef7-5905-4d2d-9115-1866196edfc5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c0cb5ef7-5905-4d2d-9115-1866196edfc5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e2ae7b86-798b-465c-860b-218bdcb40f22' class='xr-var-data-in' type='checkbox'><label for='data-e2ae7b86-798b-465c-860b-218bdcb40f22' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>median ocean depth in cell</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>[259200 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>D2_mean</span></div><div class='xr-var-dims'>(lath, lonh)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-c0653a76-4a31-47e6-903d-1a453cc8de8e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c0653a76-4a31-47e6-903d-1a453cc8de8e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-92256f2d-0d2a-48da-8691-6d502297da23' class='xr-var-data-in' type='checkbox'><label for='data-92256f2d-0d2a-48da-8691-6d502297da23' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>mean squared ocean depth in cell</dd><dt><span>units :</span></dt><dd>meters^2</dd></dl></div><div class='xr-var-data'><pre>[259200 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>D_min</span></div><div class='xr-var-dims'>(lath, lonh)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-46e3f2c7-60db-4bb0-9228-b4e25786b765' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-46e3f2c7-60db-4bb0-9228-b4e25786b765' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7ead4f3f-a610-4c2e-a6f0-baee6150e6f2' class='xr-var-data-in' type='checkbox'><label for='data-7ead4f3f-a610-4c2e-a6f0-baee6150e6f2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>minimum ocean depth in cell</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>[259200 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>D_max</span></div><div class='xr-var-dims'>(lath, lonh)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-7705705c-8262-4a4b-9c01-cc6eb7472e40' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7705705c-8262-4a4b-9c01-cc6eb7472e40' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bccd1df5-29fe-4fa3-a283-32424d2ebe8c' class='xr-var-data-in' type='checkbox'><label for='data-bccd1df5-29fe-4fa3-a283-32424d2ebe8c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>maximum ocean depth in cell</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>[259200 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>hand_edits</span></div><div class='xr-var-dims'>(lath, lonh)</div><div class='xr-var-dtype'>int32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-71dba0b5-27ec-479b-9b27-e4936e5b2e15' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-71dba0b5-27ec-479b-9b27-e4936e5b2e15' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9019c901-06e4-45a4-8b4e-4dac0eba180b' class='xr-var-data-in' type='checkbox'><label for='data-9019c901-06e4-45a4-8b4e-4dac0eba180b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>[259200 values with dtype=int32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>orig_mask</span></div><div class='xr-var-dims'>(lath, lonh)</div><div class='xr-var-dtype'>int32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-e165b704-3aa6-4b89-9a06-081bc958efc2' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e165b704-3aa6-4b89-9a06-081bc958efc2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-117b1c5b-8bc8-4e21-9fd7-d07066ec0268' class='xr-var-data-in' type='checkbox'><label for='data-117b1c5b-8bc8-4e21-9fd7-d07066ec0268' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>Land/Ocean Mask: 0 if land, 1 if ocean at tracer points</dd></dl></div><div class='xr-var-data'><pre>[259200 values with dtype=int32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>D_interp</span></div><div class='xr-var-dims'>(lath, lonh)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-ebc45bb9-6a1e-4454-bf27-da11738fc9b1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ebc45bb9-6a1e-4454-bf27-da11738fc9b1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8a0baa39-8697-41c4-90aa-ef3c074d318b' class='xr-var-data-in' type='checkbox'><label for='data-8a0baa39-8697-41c4-90aa-ef3c074d318b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>interpolated grid cell depth</dd><dt><span>units :</span></dt><dd>m</dd><dt><span>Smoothing Scale L (grid lengths) :</span></dt><dd>1.0</dd><dt><span>Smoothing Function :</span></dt><dd>(L^2 - r^2)/(L^2 + r^2)</dd><dt><span>Minimum Depth (m) :</span></dt><dd>10.0</dd></dl></div><div class='xr-var-data'><pre>[259200 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>D_edit2</span></div><div class='xr-var-dims'>(lath, lonh)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-23823c30-ab12-41d5-8d2a-d768dfcec0bb' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-23823c30-ab12-41d5-8d2a-d768dfcec0bb' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-97e851f2-8bea-484e-ab55-0cafc555be18' class='xr-var-data-in' type='checkbox'><label for='data-97e851f2-8bea-484e-ab55-0cafc555be18' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>longname :</span></dt><dd>interpolated grid cell depth</dd><dt><span>units :</span></dt><dd>m</dd><dt><span>Smoothing Scale L (grid lengths) :</span></dt><dd>1.0</dd><dt><span>Smoothing Function :</span></dt><dd>(L^2 - r^2)/(L^2 + r^2)</dd><dt><span>Minimum Depth (m) :</span></dt><dd>10.0</dd></dl></div><div class='xr-var-data'><pre>[259200 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>iEdit</span></div><div class='xr-var-dims'>(nEdits)</div><div class='xr-var-dtype'>int32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-b53e22d6-6d73-4096-961b-87e37fdd3635' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b53e22d6-6d73-4096-961b-87e37fdd3635' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-486d06ed-1c6b-4c7d-9316-a9723e28ad34' class='xr-var-data-in' type='checkbox'><label for='data-486d06ed-1c6b-4c7d-9316-a9723e28ad34' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>i-index of edited depth</dd></dl></div><div class='xr-var-data'><pre>[367 values with dtype=int32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>jEdit</span></div><div class='xr-var-dims'>(nEdits)</div><div class='xr-var-dtype'>int32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-87bf3ccf-8af0-4f57-9c37-62a85922e917' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-87bf3ccf-8af0-4f57-9c37-62a85922e917' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1b212ce4-ae7b-4c3e-8deb-e68cd9874aa6' class='xr-var-data-in' type='checkbox'><label for='data-1b212ce4-ae7b-4c3e-8deb-e68cd9874aa6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>j-index of edited depth</dd></dl></div><div class='xr-var-data'><pre>[367 values with dtype=int32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>zEdit</span></div><div class='xr-var-dims'>(nEdits)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-510093a9-43a0-4f3f-8fd9-2eaace11f0aa' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-510093a9-43a0-4f3f-8fd9-2eaace11f0aa' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-73d809f2-78dc-443e-8044-145289fb79ab' class='xr-var-data-in' type='checkbox'><label for='data-73d809f2-78dc-443e-8044-145289fb79ab' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>New value of depth</dd><dt><span>units :</span></dt><dd>meters</dd></dl></div><div class='xr-var-data'><pre>[367 values with dtype=float64]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-67a82801-9bc8-4614-8f3b-2555f2c24bbe' class='xr-section-summary-in' type='checkbox'  ><label for='section-67a82801-9bc8-4614-8f3b-2555f2c24bbe' class='xr-section-summary' >Attributes: <span>(10)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Description :</span></dt><dd>Ocean Topography Statistics on MOM6 Grid</dd><dt><span>Creator :</span></dt><dd>Frank Bryan</dd><dt><span>Created :</span></dt><dd>20260226</dd><dt><span>Generating Code :</span></dt><dd>create_model_topo.f90</dd><dt><span>Model Grid Version :</span></dt><dd>tx2_3v3</dd><dt><span>Source Topography Data :</span></dt><dd>/glade/work/bryan/Observations/Topography/SRTM/SRTM15_V2.4.nc</dd><dt><span>Edit History :</span></dt><dd>Hand Edit + Lake Fill 02/27/2026</dd><dt><span>Manual edits updated on: :</span></dt><dd>2026-03-04T14:46:33.511255</dd><dt><span>By: :</span></dt><dd>Frank Bryan (bryan@ucar.edu)</dd><dt><span>url :</span></dt><dd>https://github.com/NCAR/tx2_3/topography/</dd></dl></div></li></ul></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">soc_table</span> <span class="o">=</span> <span class="n">create_soc_topo_table</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="set-up-output-files">
+<h2>Set up output files<a class="headerlink" href="#set-up-output-files" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">today</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+
+<span class="n">path_out</span> <span class="o">=</span> <span class="n">path_in</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">path_out</span><span class="p">)</span>
+<span class="n">file_out_chan</span> <span class="o">=</span> <span class="s1">&#39;channels_&#39;</span> <span class="o">+</span> <span class="n">grid</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">today</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%y%m</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.txt&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;channel width file : &#39;</span><span class="p">,</span><span class="n">file_out_chan</span><span class="p">)</span>
+
+<span class="n">fmt_out</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{0:s}</span><span class="s2">, </span><span class="si">{1:8.2f}</span><span class="s2">, </span><span class="si">{2:8.2f}</span><span class="s2">, </span><span class="si">{3:8.2f}</span><span class="s2">, </span><span class="si">{4:8.2f}</span><span class="s2">, </span><span class="si">{5:10.1f}</span><span class="s2"> ! </span><span class="si">{6:s}</span><span class="se">\n</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>./
+channel width file :  channels_tx2_3v3_260304.txt
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="selected-straits">
+<h2>Selected Straits<a class="headerlink" href="#selected-straits" title="Permalink to this heading">#</a></h2>
+<section id="strait-of-gibralter">
+<h3>Strait of Gibralter<a class="headerlink" href="#strait-of-gibralter" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">place</span> <span class="o">=</span> <span class="s1">&#39;St. of Gibralter&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">soc_table</span><span class="p">[</span><span class="n">place</span><span class="p">])</span>
+<span class="n">lon_beg</span> <span class="o">=</span> <span class="o">-</span><span class="mi">7</span>
+<span class="n">lon_end</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span>
+<span class="n">lat_beg</span> <span class="o">=</span> <span class="mi">35</span>
+<span class="n">lat_end</span> <span class="o">=</span> <span class="mi">38</span>
+<span class="n">zmax</span> <span class="o">=</span> <span class="mf">1300.</span>
+
+<span class="n">ax</span><span class="o">=</span><span class="n">inspect_topo</span><span class="p">(</span><span class="n">dss</span><span class="p">,</span><span class="n">depth_var_in</span><span class="p">,</span><span class="n">lon_beg</span><span class="p">,</span><span class="n">lon_end</span><span class="p">,</span><span class="n">lat_beg</span><span class="p">,</span><span class="n">lat_end</span><span class="p">,</span><span class="n">zmax</span><span class="p">,</span><span class="n">place</span><span class="o">=</span><span class="n">soc_table</span><span class="p">[</span><span class="n">place</span><span class="p">])</span>
+
+<span class="n">lon1</span> <span class="o">=</span> <span class="o">-</span><span class="mf">6.5</span>
+<span class="n">lat1</span> <span class="o">=</span> <span class="mf">35.6</span>
+<span class="n">lon2</span> <span class="o">=</span> <span class="o">-</span><span class="mf">4.75</span>
+<span class="n">lat2</span> <span class="o">=</span> <span class="mf">36.3</span>
+<span class="n">xbox</span> <span class="o">=</span> <span class="p">[</span><span class="n">lon1</span><span class="p">,</span> <span class="n">lon2</span><span class="p">,</span> <span class="n">lon2</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">]</span>
+<span class="n">ybox</span> <span class="o">=</span> <span class="p">[</span><span class="n">lat1</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lat1</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xbox</span><span class="p">,</span><span class="n">ybox</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;lat&#39;: 35.92, &#39;lon&#39;: -5.75, &#39;depth&#39;: 284.0, &#39;width&#39;: 10.0}
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x146f69d81f90&gt;]
+</pre></div>
+</div>
+<img alt="../_images/53e81e4dc36bc10f80efc9d70d117c0614c2d711efbce7bf45e0d177e7c5044b.png" src="../_images/53e81e4dc36bc10f80efc9d70d117c0614c2d711efbce7bf45e0d177e7c5044b.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">width</span> <span class="o">=</span> <span class="mf">12.0e3</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;width = &#39;</span><span class="p">,</span><span class="n">width</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path_out</span><span class="o">+</span><span class="n">file_out_chan</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">fmt_out</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;U_width&quot;</span><span class="p">,</span><span class="n">lon1</span><span class="p">,</span><span class="n">lon2</span><span class="p">,</span><span class="n">lat1</span><span class="p">,</span><span class="n">lat2</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">place</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>width =  12000.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bosphorus">
+<h3>Bosphorus<a class="headerlink" href="#bosphorus" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Black Sea / Bosphorus</span>
+<span class="n">place</span> <span class="o">=</span> <span class="s1">&#39;Bosphorus St.&#39;</span>
+<span class="n">lon_beg</span> <span class="o">=</span> <span class="mi">28</span>
+<span class="n">lon_end</span> <span class="o">=</span> <span class="mf">30.5</span>
+<span class="n">lat_beg</span> <span class="o">=</span> <span class="mf">40.5</span>
+<span class="n">lat_end</span> <span class="o">=</span> <span class="mf">42.5</span>
+<span class="n">zmax</span> <span class="o">=</span> <span class="mf">500.</span>
+
+
+<span class="n">ax</span><span class="o">=</span><span class="n">inspect_topo</span><span class="p">(</span><span class="n">dss</span><span class="p">,</span><span class="n">depth_var_in</span><span class="p">,</span><span class="n">lon_beg</span><span class="p">,</span><span class="n">lon_end</span><span class="p">,</span><span class="n">lat_beg</span><span class="p">,</span><span class="n">lat_end</span><span class="p">,</span><span class="n">zmax</span><span class="p">)</span>
+
+<span class="n">lon1</span> <span class="o">=</span> <span class="mf">28.75</span>
+<span class="n">lat1</span> <span class="o">=</span> <span class="mf">41.1</span>
+<span class="n">lon2</span> <span class="o">=</span> <span class="mf">29.5</span>
+<span class="n">lat2</span> <span class="o">=</span> <span class="mf">41.3</span>
+<span class="n">xbox</span> <span class="o">=</span> <span class="p">[</span><span class="n">lon1</span><span class="p">,</span> <span class="n">lon2</span><span class="p">,</span> <span class="n">lon2</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">]</span>
+<span class="n">ybox</span> <span class="o">=</span> <span class="p">[</span><span class="n">lat1</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lat1</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xbox</span><span class="p">,</span><span class="n">ybox</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x146f68b81d10&gt;]
+</pre></div>
+</div>
+<img alt="../_images/5b9d15a229fd1a130105bc9e7094d429c4ac558d2ed070106ac4b192f4d58b66.png" src="../_images/5b9d15a229fd1a130105bc9e7094d429c4ac558d2ed070106ac4b192f4d58b66.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">width</span> <span class="o">=</span> <span class="mf">5.0e3</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;width = &#39;</span><span class="p">,</span><span class="n">width</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path_out</span><span class="o">+</span><span class="n">file_out_chan</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">fmt_out</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;V_width&quot;</span><span class="p">,</span><span class="n">lon1</span><span class="p">,</span><span class="n">lon2</span><span class="p">,</span><span class="n">lat1</span><span class="p">,</span><span class="n">lat2</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">place</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>width =  5000.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dardanelles">
+<h3>Dardanelles<a class="headerlink" href="#dardanelles" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">place</span> <span class="o">=</span> <span class="s1">&#39;Dardanelles&#39;</span>
+<span class="n">lon_beg</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">lon_end</span> <span class="o">=</span> <span class="mi">29</span>
+<span class="n">lat_beg</span> <span class="o">=</span> <span class="mf">39.5</span>
+<span class="n">lat_end</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="n">zmax</span> <span class="o">=</span> <span class="mf">500.</span>
+
+<span class="n">ax</span><span class="o">=</span><span class="n">inspect_topo</span><span class="p">(</span><span class="n">dss</span><span class="p">,</span><span class="n">depth_var_in</span><span class="p">,</span><span class="n">lon_beg</span><span class="p">,</span><span class="n">lon_end</span><span class="p">,</span><span class="n">lat_beg</span><span class="p">,</span><span class="n">lat_end</span><span class="p">,</span><span class="n">zmax</span><span class="p">)</span>
+
+<span class="n">lon1</span> <span class="o">=</span> <span class="mf">26.5</span>
+<span class="n">lat1</span> <span class="o">=</span> <span class="mf">40.</span>
+<span class="n">lon2</span> <span class="o">=</span> <span class="mf">26.8</span>
+<span class="n">lat2</span> <span class="o">=</span> <span class="mf">40.7</span>
+<span class="n">xbox</span> <span class="o">=</span> <span class="p">[</span><span class="n">lon1</span><span class="p">,</span> <span class="n">lon2</span><span class="p">,</span> <span class="n">lon2</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">]</span>
+<span class="n">ybox</span> <span class="o">=</span> <span class="p">[</span><span class="n">lat1</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lat1</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xbox</span><span class="p">,</span><span class="n">ybox</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x146f68814f50&gt;]
+</pre></div>
+</div>
+<img alt="../_images/96bb0383239eb69bcdaa555a1466051ba36386169dab01f3ce71f191331e6a76.png" src="../_images/96bb0383239eb69bcdaa555a1466051ba36386169dab01f3ce71f191331e6a76.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">width</span> <span class="o">=</span> <span class="mf">5.0e3</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;width = &#39;</span><span class="p">,</span><span class="n">width</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path_out</span><span class="o">+</span><span class="n">file_out_chan</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">fmt_out</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;U_width&quot;</span><span class="p">,</span><span class="n">lon1</span><span class="p">,</span><span class="n">lon2</span><span class="p">,</span><span class="n">lat1</span><span class="p">,</span><span class="n">lat2</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">place</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>width =  5000.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="lombok-strait">
+<h3>Lombok Strait<a class="headerlink" href="#lombok-strait" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">place</span> <span class="o">=</span> <span class="s1">&#39;Lombok St.&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">soc_table</span><span class="p">[</span><span class="n">place</span><span class="p">])</span>
+<span class="n">lon_beg</span> <span class="o">=</span> <span class="o">-</span><span class="mf">245.5</span>
+<span class="n">lon_end</span> <span class="o">=</span> <span class="o">-</span><span class="mf">242.</span>
+<span class="n">lat_beg</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span>
+<span class="n">lat_end</span> <span class="o">=</span> <span class="o">-</span><span class="mf">7.</span>
+<span class="n">zmax</span> <span class="o">=</span> <span class="mf">1500.</span>
+
+<span class="n">ax</span><span class="o">=</span><span class="n">inspect_topo</span><span class="p">(</span><span class="n">dss</span><span class="p">,</span><span class="n">depth_var_in</span><span class="p">,</span><span class="n">lon_beg</span><span class="p">,</span><span class="n">lon_end</span><span class="p">,</span><span class="n">lat_beg</span><span class="p">,</span><span class="n">lat_end</span><span class="p">,</span><span class="n">zmax</span><span class="p">,</span><span class="n">place</span><span class="o">=</span><span class="n">soc_table</span><span class="p">[</span><span class="n">place</span><span class="p">])</span>
+
+<span class="n">lon1</span> <span class="o">=</span> <span class="mf">115.5</span>
+<span class="n">lon2</span> <span class="o">=</span> <span class="mf">116.5</span>
+<span class="n">lat1</span> <span class="o">=</span> <span class="o">-</span><span class="mf">8.75</span>
+<span class="n">lat2</span> <span class="o">=</span> <span class="o">-</span><span class="mf">8.5</span>
+<span class="n">xbox</span> <span class="o">=</span> <span class="p">[</span><span class="n">lon1</span><span class="p">,</span> <span class="n">lon2</span><span class="p">,</span> <span class="n">lon2</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">]</span>
+<span class="n">ybox</span> <span class="o">=</span> <span class="p">[</span><span class="n">lat1</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lat1</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xbox</span><span class="p">,</span><span class="n">ybox</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;lat&#39;: -8.9, &#39;lon&#39;: 116.0, &#39;depth&#39;: 350.0, &#39;width&#39;: 22.0}
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x146f68854b90&gt;]
+</pre></div>
+</div>
+<img alt="../_images/1e915ea9f33ab4befe5c44c4729d266898137dbce64f38667f00e574853577d5.png" src="../_images/1e915ea9f33ab4befe5c44c4729d266898137dbce64f38667f00e574853577d5.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">width</span> <span class="o">=</span> <span class="n">soc_table</span><span class="p">[</span><span class="n">place</span><span class="p">][</span><span class="s1">&#39;width&#39;</span><span class="p">]</span><span class="o">*</span><span class="mf">1000.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;width = &#39;</span><span class="p">,</span><span class="n">width</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path_out</span><span class="o">+</span><span class="n">file_out_chan</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">fmt_out</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;V_width&quot;</span><span class="p">,</span><span class="n">lon1</span><span class="p">,</span><span class="n">lon2</span><span class="p">,</span><span class="n">lat1</span><span class="p">,</span><span class="n">lat2</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">place</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>width =  22000.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bab-el-mandeb">
+<h3>Bab El-Mandeb<a class="headerlink" href="#bab-el-mandeb" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">place</span> <span class="o">=</span> <span class="s1">&#39;Bab El-Mandeb&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">soc_table</span><span class="p">[</span><span class="n">place</span><span class="p">])</span>
+<span class="n">lon_beg</span> <span class="o">=</span> <span class="mf">41.5</span>
+<span class="n">lon_end</span> <span class="o">=</span> <span class="mf">44.5</span>
+<span class="n">lat_beg</span> <span class="o">=</span> <span class="mf">11.5</span>
+<span class="n">lat_end</span> <span class="o">=</span> <span class="mf">14.75</span>
+<span class="n">zmax</span> <span class="o">=</span> <span class="mf">1000.</span>
+
+<span class="n">ax</span><span class="o">=</span><span class="n">inspect_topo</span><span class="p">(</span><span class="n">dss</span><span class="p">,</span><span class="n">depth_var_in</span><span class="p">,</span><span class="n">lon_beg</span><span class="p">,</span><span class="n">lon_end</span><span class="p">,</span><span class="n">lat_beg</span><span class="p">,</span><span class="n">lat_end</span><span class="p">,</span><span class="n">zmax</span><span class="p">,</span><span class="n">place</span><span class="o">=</span><span class="n">soc_table</span><span class="p">[</span><span class="n">place</span><span class="p">])</span>
+
+<span class="n">lon1</span> <span class="o">=</span> <span class="mf">42.9</span>
+<span class="n">lon2</span> <span class="o">=</span> <span class="mf">43.7</span>
+<span class="n">lat1</span> <span class="o">=</span> <span class="mf">12.6</span>
+<span class="n">lat2</span> <span class="o">=</span> <span class="mf">12.9</span>
+<span class="n">xbox</span> <span class="o">=</span> <span class="p">[</span><span class="n">lon1</span><span class="p">,</span> <span class="n">lon2</span><span class="p">,</span> <span class="n">lon2</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">]</span>
+<span class="n">ybox</span> <span class="o">=</span> <span class="p">[</span><span class="n">lat1</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lat1</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xbox</span><span class="p">,</span><span class="n">ybox</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;lat&#39;: 13.73, &#39;lon&#39;: 42.5, &#39;depth&#39;: 137.0, &#39;width&#39;: 32.0}
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x146f6814c690&gt;]
+</pre></div>
+</div>
+<img alt="../_images/3af0bc2e7a4dba574c0d1e6db6541e47640f25d85d0454a2822f53cc03c2add1.png" src="../_images/3af0bc2e7a4dba574c0d1e6db6541e47640f25d85d0454a2822f53cc03c2add1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">width</span> <span class="o">=</span> <span class="n">soc_table</span><span class="p">[</span><span class="n">place</span><span class="p">][</span><span class="s1">&#39;width&#39;</span><span class="p">]</span><span class="o">*</span><span class="mf">1000.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;width = &#39;</span><span class="p">,</span><span class="n">width</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path_out</span><span class="o">+</span><span class="n">file_out_chan</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">fmt_out</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;V_width&quot;</span><span class="p">,</span><span class="n">lon1</span><span class="p">,</span><span class="n">lon2</span><span class="p">,</span><span class="n">lat1</span><span class="p">,</span><span class="n">lat2</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">place</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>width =  32000.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="st-of-hormuz">
+<h3>St of Hormuz<a class="headerlink" href="#st-of-hormuz" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">place</span> <span class="o">=</span><span class="s1">&#39;St. of Hormuz&#39;</span>
+<span class="n">lon_beg</span> <span class="o">=</span> <span class="mf">54.5</span>
+<span class="n">lon_end</span> <span class="o">=</span> <span class="mi">59</span>
+<span class="n">lat_beg</span> <span class="o">=</span> <span class="mf">24.5</span>
+<span class="n">lat_end</span> <span class="o">=</span> <span class="mf">28.5</span>
+<span class="n">zmax</span> <span class="o">=</span> <span class="mf">250.</span>
+
+<span class="n">ax</span><span class="o">=</span><span class="n">inspect_topo</span><span class="p">(</span><span class="n">dss</span><span class="p">,</span><span class="n">depth_var_in</span><span class="p">,</span><span class="n">lon_beg</span><span class="p">,</span><span class="n">lon_end</span><span class="p">,</span><span class="n">lat_beg</span><span class="p">,</span><span class="n">lat_end</span><span class="p">,</span><span class="n">zmax</span><span class="p">)</span>
+
+<span class="n">lon1</span> <span class="o">=</span> <span class="mi">56</span>
+<span class="n">lon2</span> <span class="o">=</span> <span class="mf">56.6</span>
+<span class="n">lat1</span> <span class="o">=</span> <span class="mf">25.25</span>
+<span class="n">lat2</span> <span class="o">=</span> <span class="mf">26.0</span>
+<span class="n">xbox</span> <span class="o">=</span> <span class="p">[</span><span class="n">lon1</span><span class="p">,</span> <span class="n">lon2</span><span class="p">,</span> <span class="n">lon2</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">]</span>
+<span class="n">ybox</span> <span class="o">=</span> <span class="p">[</span><span class="n">lat1</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lat1</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xbox</span><span class="p">,</span><span class="n">ybox</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x146f5bf5b750&gt;]
+</pre></div>
+</div>
+<img alt="../_images/6d02dcfc7b4a660192122c7822e2e7d2957162fccc1d74410e3cffc6050952cb.png" src="../_images/6d02dcfc7b4a660192122c7822e2e7d2957162fccc1d74410e3cffc6050952cb.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">width</span> <span class="o">=</span> <span class="mf">5.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;width = &#39;</span><span class="p">,</span><span class="n">width</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path_out</span><span class="o">+</span><span class="n">file_out_chan</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">fmt_out</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;V_width&quot;</span><span class="p">,</span><span class="n">lon1</span><span class="p">,</span><span class="n">lon2</span><span class="p">,</span><span class="n">lat1</span><span class="p">,</span><span class="n">lat2</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">place</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>width =  5.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "npl-2026a"
+        },
+        kernelOptions: {
+            name: "npl-2026a",
+            path: "./topography"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'npl-2026a'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-input-topography-data-set">Get input topography data set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-output-files">Set up output files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selected-straits">Selected Straits</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strait-of-gibralter">Strait of Gibralter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bosphorus">Bosphorus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dardanelles">Dardanelles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lombok-strait">Lombok Strait</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bab-el-mandeb">Bab El-Mandeb</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#st-of-hormuz">St of Hormuz</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Ocean Model Working Group
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
