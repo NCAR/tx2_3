@@ -14,8 +14,10 @@ __pycache__/
 *.mod
 
 # misc
-*.in
 *.o*
+
+# old studd
+*/OLD*
 
 # Distribution / packaging
 .Python

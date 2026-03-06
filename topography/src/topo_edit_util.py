@@ -200,6 +200,7 @@ def map_maskij(df,vmask,imin,imax,jmin,jmax,
         for i in range(imin,imax,label_skip):
                 lab = f"({j},{i})"
                 ax.text(i,j,lab,ha='center',va='center',fontsize=8)
+    return(ax)
 
 
 """
@@ -355,7 +356,7 @@ def map_topo_latlon(df,lon_beg,lon_end,lat_beg,lat_end,zmax,zmin=0,
         
     return ax
 
-def inspect_topo(df,zvar,lon_beg,lon_end,lat_beg,lat_end,zmax,zmin=0,place=None):
+def inspect_topo(df,zvar,lon_beg,lon_end,lat_beg,lat_end,zmax,zmin=0,place=None,figsize=(10,7.5)):
     
     import numpy as np
     import xarray as xr
@@ -385,7 +386,7 @@ def inspect_topo(df,zvar,lon_beg,lon_end,lat_beg,lat_end,zmax,zmin=0,place=None)
     nlat=np.shape(lon2D)[0]
     nlon=np.shape(lon2D)[1]
 
-    fig = plt.figure(figsize=(10,7.5),constrained_layout=True)
+    fig = plt.figure(figsize=figsize,constrained_layout=True)
     ax = plt.axes(projection=ccrs.PlateCarree())
     
 
@@ -473,7 +474,7 @@ def create_soc_topo_table():
     'Grenada Passage' :       {'lat' :  11.50, 'lon' : -62.00, 'depth' : 1000., 'width' : -1.},
     'St. Vincent Passage' :   {'lat' :  13.50, 'lon' : -61.00, 'depth' : 1000., 'width' : -1.},
     'St Lucia Passage' :      {'lat' :  14.25, 'lon' : -61.00, 'depth' : 1000., 'width' : -1.},
-    'Dominica' :              {'lat' : -15.00, 'lon' : -61.25, 'depth' : 1085., 'width' : -1.},
+    'Dominica' :              {'lat' :  15.00, 'lon' : -61.25, 'depth' : 1085., 'width' : -1.},
     'Anegada Passage' :       {'lat' :  18.40, 'lon' : -64.20, 'depth' : 1800., 'width' : 15.},
     'Windward Passage' :      {'lat' :  19.00, 'lon' : -74.00, 'depth' : 1650., 'width' : 22.},
     'Yucatan Channel' :       {'lat' :  22.00, 'lon' : -86.0,  'depth' : 1650., 'width' : 22.},
