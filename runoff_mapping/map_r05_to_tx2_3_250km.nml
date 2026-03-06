@@ -1,0 +1,14 @@
+&input_nml
+   gridtype     = 'rtm'
+   file_roff    = '/glade/campaign/cesm/cesmdata/inputdata/lnd/clm2/rtmdata/rdirc.05.061026'
+   file_ocn     = '/glade/work/gmarques/cesm/tx2_3/mesh/tx2_3v3_260305_SCRIP.nc'
+   file_nn      = 'map_r05_to_tx2_3_nn.260306.nc'
+   file_smooth  = 'map_r05_to_tx2_3_sm_e250r250_260306.nc'
+   file_new     = 'map_r05_to_tx2_3_nnsm_e250r250_260306.nc'
+   title        = 'runoff map: r05 -> tx2_3v3, nearest neighbor and smoothed'
+   eFold        = 250000.0
+   rMax         = 250000.0
+   step1 = .true.
+   step2 = .true.
+   step3 = .true.
+/
