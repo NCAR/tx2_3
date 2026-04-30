@@ -23,3 +23,5 @@ parts:
     - file:  mld/deBoyer2023/deBoyer2023_to_tx2_3.ipynb
     - file:  aviso/aviso_to_tx2_3.ipynb
     - file:  oisst/oisst_to_tx2_3.ipynb
+    - file:  sfc_check/sfc_flux_check_xarray_g01.ipynb
+    - file:  sfc_check/sfc_flux_check_xarray_b01.ipynb
