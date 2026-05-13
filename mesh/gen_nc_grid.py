@@ -36,7 +36,7 @@ qlon = x[::2,::2]
 qlat = y[::2,::2]
 
 # T cell area (sum of four supergrid cells)
-tarea = area[::2,::2] + area[1::2,1::2] + area[::2,1::2] + area[::2,1::2]
+tarea = area[::2,::2] + area[1::2,1::2] + area[::2,1::2] + area[1::2,::2]
 
 # t-point angle
 angle = angle_dx[1::2,1::2]
