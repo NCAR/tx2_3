@@ -12,7 +12,7 @@
 set echo on
 echo "Job starting at " `date`
 
-setenv TMPDIR  /glade/scratch/gmarques/tmp
+setenv TMPDIR  /glade/scratch/bryan/tmp
 setenv OMP_NUM_THREADS ${NCPUS}
 echo "Number of threads from script = " ${OMP_NUM_THREADS}
 
@@ -26,15 +26,15 @@ setenv NSUB 150
 setenv SFNC SmL${SMOOTH_SCL}_C${CEXP}
 
 cat > interp_smooth.${GRID}.in << EOF
-&model_input_nml
+&model_input_nml 
  mom6_grid_version='${GRID}'
- mom6_horiz_grid_file='../supergrid/ORCA_gridgen/ocean_hgrid.nc'
- lmask_file='topo.sub${NSUB}.${GRID}.srtm.${EDIT}.nc'
+ mom6_horiz_grid_file='/glade/work/fredc/cesm/grid/MOM6/${GRID}/gridgen/ocean_hgrid.nc'
+ lmask_file='/glade/scratch/bryan/${GRID}/topo.sub${NSUB}.${GRID}.srtm.${EDIT}.nc'
  vname_lmask='mask'
 /
 &topo_data_nml
  topo_data_name='${TOPODATA}'
- topo_data_file='/glade/campaign/cgd/oce/datasets/obs/topography/SRTM/SRTM15_V2.4.nc'
+ topo_data_file='/glade/work/bryan/Observations/Topography/SRTM/SRTM15_V2.4.nc'
  vname_lon='lon',
  vname_lat='lat',
  vname_z='z'
@@ -44,7 +44,7 @@ cat > interp_smooth.${GRID}.in << EOF
  hmin = 10.0
  smooth_scl=${SMOOTH_SCL}
  cressman_exp = ${CEXP}
- model_topo_file='topo.${GRID}.${TOPODATA}.${EDIT}.${SFNC}.nc'
+ model_topo_file='/glade/scratch/bryan/${GRID}/topo.${GRID}.${TOPODATA}.${EDIT}.${SFNC}.nc'
  vname_depth='depth'
  user_name='${USER}'
 /

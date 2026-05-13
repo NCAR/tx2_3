@@ -1,0 +1,35 @@
+These are the steps:
+
+1) run_create_topo.tx2_3v3.pbs (qsub run_create_topo.tx2_3v3.pbs)
+Creates basic topography file with raw cell level depth statistics and a first cut mask
+output = topo.sub150.tx2_3v3.SRTM15_V2.4.nc
+
+2) MaskEdit_tx2_3v3.ipynb
+Edits land mask including now removing 1-point bays around Greenland and Antarctica
+output = topo.sub150.tx2_3v3.SRTM15_V2.4.edit1.nc
+
+3) run_append_topo_interp_smooth_tx2_3v3.pbs (qsub run_append_topo_interp_smooth_tx2_3v3.pbs)
+Appends a new depth variable D_interp to the topography file with lightly smoothed depths
+
+4) Append_topo_edits_tx2_3v3.ipynb
+Hand edits depths for straits and channels. This creates the model input file. The final topography variable (model input) is called D_edit2
+
+6) Channel_width_tx2_3v3.ipynb
+create channel width file
+
+Optional (not used in v3)
+
+7) Channel_topo_tx2_3v3.ipynb
+local topography depth edits for run time changes
+
+If changes in 7) must be incorporated into the topography generated in 3), run the following notebook
+
+8) Append_topo_edits.ipynb
+
+
+There are a couple of notebooks in the source directory for checking things as you go along:
+
+1. CompareFirstMasks.ipynb : make sure step 1 reproduces tx2_3v2 data
+2. CompareEditedMasks.ipynb : check mask after step 2 to make sure only changes are as intended
+3. CheckRunoffPoints.ipynb : same thing with focus on places we meant to change
+4. CompareDepths.ipynb : compare the final depths from step 4 above to make sure they agree with both the input and output files from tx2_3v2 - should only see depth differences for the 30 points we filled in tx2_3v3. Note there are roundoff level differences in the depths (O(10^-3 m)) from tx2_3v2, maybe because of the new grid file.
