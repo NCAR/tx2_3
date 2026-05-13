@@ -1,0 +1,1314 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Case: b.e30_alpha08b.B1850C_LTso.ne30_t232_wgx3.sfc_test01 &#8212; Nominal 2/3 degree global configuration for CESM/MOM6</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'sfc_check/sfc_flux_check_xarray_b01';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Case: g.e30_a08l.GW_JRA.TL319_t232_wgx3_hycom1_N75.2026.sfc_test01" href="sfc_flux_check_xarray_g01.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ncar_logo.png" class="logo__image only-light" alt="Nominal 2/3 degree global configuration for CESM/MOM6 - Home"/>
+    <script>document.write(`<img src="../_static/ncar_logo.png" class="logo__image only-dark" alt="Nominal 2/3 degree global configuration for CESM/MOM6 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Nominal 2/3 degree global configuration for CESM/MOM6
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Model Setup</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../supergrid/orca_gridgen.html">Supergrid</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../topography/topo.html">tx2_3v3 Topography Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mesh/create_mesh.html">Create ESMF mesh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../runoff_mapping/runoff.html">Runoff mapping files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../state_restoring/state_restoring.html">Sea-surface salinity and potential temperature restoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tidal_energy_dissipation/regrid_tidal_dissipation.html">Tidal Dissipation</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../chlorophyll/Interpolate_and_fill_SeaWIFS.html">Interpolate and fill SeaWIFS data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seaice_files/create_seaice.html">Create CICE grid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geothermal/davies2013_to_tx2_3.html">Remap geothermal dataset (Davies, 2013) to tx2_3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../background_viscosity/background_kh_tx2_3.html">Background harmonic viscosity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cr_mask/mle_cr_labsea_mask.html">Create a 2D mask with zero in the Lab Sea and one elsewhere</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Model Validation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../basin_masks/basin_masks.html">Ocean Basin Masks</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../basin_masks/imbie_basin_to_tx2_3.html">Remap IMBIE basins to tx2_3</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../woa18/woa18_to_tx2_3.html">Remap WOA18 to tx2_3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mld/deBoyer2004/deBoyer2004_to_tx2_3.html">Regrid MLD from deBoyer et al (2004)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mld/deBoyer2023/deBoyer2023_to_tx2_3.html">Regrid MLD from Treguier et al., 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aviso/aviso_to_tx2_3.html">Remap AVISO to tx2_3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oisst/oisst_to_tx2_3.html">Remap OISST to tx2_3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sfc_flux_check_xarray_g01.html">Case: g.e30_a08l.GW_JRA.TL319_t232_wgx3_hycom1_N75.2026.sfc_test01</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Case: b.e30_alpha08b.B1850C_LTso.ne30_t232_wgx3.sfc_test01</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NCAR/tx2_3" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NCAR/tx2_3/issues/new?title=Issue%20on%20page%20%2Fsfc_check/sfc_flux_check_xarray_b01.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/sfc_check/sfc_flux_check_xarray_b01.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Case: b.e30_alpha08b.B1850C_LTso.ne30_t232_wgx3.sfc_test01</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Case: b.e30_alpha08b.B1850C_LTso.ne30_t232_wgx3.sfc_test01</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#purposes">Purposes</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="case-b-e30-alpha08b-b1850c-ltso-ne30-t232-wgx3-sfc-test01">
+<h1>Case: b.e30_alpha08b.B1850C_LTso.ne30_t232_wgx3.sfc_test01<a class="headerlink" href="#case-b-e30-alpha08b-b1850c-ltso-ne30-t232-wgx3-sfc-test01" title="Permalink to this heading">#</a></h1>
+<p>caseroot: /glade/work/chengz/cesm.cases/sfc_fluxes_check/b.e30_alpha08b.B1850C_LTso.ne30_t232_wgx3.sfc_test01</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="purposes">
+<h1>Purposes<a class="headerlink" href="#purposes" title="Permalink to this heading">#</a></h1>
+<p>Surface fluxes check for the B case.</p>
+<h1 align="center">MOM6 diagnostic boundary fluxes of scalars and their global budgets</h1> <div class="alert alert-info">
+This notebook is meant to work with MOM6 run via the CESM framework
+<div class="alert alert-info><p>This notebook checks if the fluxes of water, heat, and salt crossing the surface of the ocean are consistent with corresponding changes in the ocean interior. This particular analysis is for <code class="docutils literal notranslate"><span class="pre">b.e30_alpha08b.B1850C_LTso.ne30_t232_wgx3.sfc_test01</span></code>.</p>
+<p>Results from this notebook:</p>
+<ol class="arabic simple">
+<li><p>Maps of surface boundary fluxes of water, heat, and salt crossing into the liquid seawater in MOM6;</p></li>
+<li><p>Computation of self-consistency checks, including global heat, salt, and mass budgets to verify that the model is conserving scalars over the global/regional domain.</p></li>
+</ol>
+<p>Hopes for the use of this notebook:</p>
+<ol class="arabic simple">
+<li><p>To provide a starting point to document boundary fluxes of scalar fields;</p></li>
+<li><p>To teach MOM6 users about the boundary fluxes, their patterns, units, and sign conventions;</p></li>
+<li><p>To perform self-consistency checks to ensure the model is conserving scalar fields;</p></li>
+<li><p>To illustrate a self-contained notebook of use for MOM6 analysis.</p></li>
+</ol>
+<p>This notebook was originally developed at NOAA/GFDL, and it is provided freely to the MOM6 community. GFDL scientists developing MOM6 make extensive use of Python for diagnostics. We solicit modifications/fixes that are useful to the MOM6 community.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span>    <span class="o">=</span> <span class="s1">&#39;/glade/u/home/chengz/scratch/b.e30_alpha08b.B1850C_LTso.ne30_t232_wgx3.sfc_test01/run/&#39;</span>
+<span class="n">static</span>  <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">path</span><span class="o">+</span><span class="s1">&#39;ocean.mom6.static.nc&#39;</span><span class="p">)</span>
+<span class="n">forcing</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">path</span><span class="o">+</span><span class="s1">&#39;ocean.mom6.frc.0001.nc&#39;</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">surface</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">path</span><span class="o">+</span><span class="s1">&#39;ocean.mom6.sfc.0001.nc&#39;</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">cp</span>   <span class="o">=</span> <span class="mf">3992.0</span>
+<span class="n">rho0</span> <span class="o">=</span> <span class="mf">1035.0</span>
+<span class="n">n</span>    <span class="o">=</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Variables saved:&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">forcing</span><span class="o">.</span><span class="n">data_vars</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">surface</span><span class="o">.</span><span class="n">data_vars</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">static</span><span class="o">.</span><span class="n">data_vars</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Variables saved:
+net_massin
+net_massout
+evap
+seaice_melt
+lrunoff
+frunoff
+lrunoff_glc
+frunoff_glc
+lprec
+fprec
+vprec
+PRCmE
+internal_heat
+net_heat_surface
+net_heat_coupler
+LwLatSens
+SW
+frazil
+seaice_melt_heat
+Heat_PmE
+heat_content_surfwater
+heat_content_massin
+heat_content_massout
+heat_content_evap
+heat_content_lprec
+heat_content_fprec
+heat_content_vprec
+heat_content_lrunoff
+heat_content_frunoff
+heat_content_frunoff_glc
+heat_content_lrunoff_glc
+heat_content_cond
+salt_flux
+salt_flux_in
+average_T1
+average_T2
+average_DT
+time_bounds
+SST
+mass_wt
+temp_int
+salt_int
+geolon
+geolat
+area_t
+wet
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This section fills the fields used in this notebook.</span>
+
+<span class="c1">#--------------------------------------------------------------</span>
+<span class="c1"># geometric factors </span>
+<span class="n">lon</span>  <span class="o">=</span> <span class="n">static</span><span class="p">[</span><span class="s1">&#39;geolon&#39;</span><span class="p">]</span>
+<span class="n">lat</span>  <span class="o">=</span> <span class="n">static</span><span class="p">[</span><span class="s1">&#39;geolat&#39;</span><span class="p">]</span>
+<span class="n">wet</span>  <span class="o">=</span> <span class="n">static</span><span class="p">[</span><span class="s1">&#39;wet&#39;</span><span class="p">]</span>
+<span class="n">area</span> <span class="o">=</span> <span class="n">static</span><span class="p">[</span><span class="s1">&#39;area_t&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">wet</span>
+
+
+<span class="c1">#--------------------------------------------------------------</span>
+<span class="c1"># time in seconds (time coordinate values are in days)</span>
+<span class="n">time</span> <span class="o">=</span> <span class="n">surface</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">*</span> <span class="mf">86400.</span>
+
+
+<span class="c1">#--------------------------------------------------------------</span>
+<span class="c1"># sea surface temperature </span>
+<span class="n">sst</span> <span class="o">=</span> <span class="n">surface</span><span class="p">[</span><span class="s1">&#39;SST&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+
+<span class="c1">#--------------------------------------------------------------</span>
+<span class="c1"># \int \rho \, dz \, (1,Theta,S), with \rho = \rho_{0} for Boussinesq.  </span>
+<span class="n">mass_wt</span> <span class="o">=</span> <span class="n">surface</span><span class="p">[</span><span class="s1">&#39;mass_wt&#39;</span><span class="p">]</span>
+<span class="n">tomint</span>  <span class="o">=</span> <span class="n">surface</span><span class="p">[</span><span class="s1">&#39;temp_int&#39;</span><span class="p">]</span>
+<span class="n">somint</span>  <span class="o">=</span> <span class="n">surface</span><span class="p">[</span><span class="s1">&#39;salt_int&#39;</span><span class="p">]</span>
+
+<span class="c1">#--------------------------------------------------------------</span>
+
+<span class="c1"># This case has a daily output frequency.</span>
+<span class="c1"># The variables above are snapshots at the end of the day (time stamp at 12 am)</span>
+<span class="c1"># The variables below are daily means over the previous day (time stamp at 12 pm)</span>
+
+<span class="c1">#--------------------------------------------------------------</span>
+<span class="c1"># mass flux of water crossing ocean surface [kg/(m^2 s)]</span>
+<span class="c1"># positive values indicate mass entering ocean; </span>
+<span class="c1"># negative values indicate mass leaving ocean. </span>
+
+<span class="c1"># net mass flux entering ocean </span>
+<span class="n">net_massin</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;net_massin&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># net mass flux leaving ocean</span>
+<span class="n">net_massout</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;net_massout&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># evaporation (negative) and condensation (positive)</span>
+<span class="n">evap</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;evap&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># meltw, fresh water from melting/forming sea ice</span>
+<span class="n">meltw</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;seaice_melt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># liquid runoff entering ocean (non-negative)</span>
+<span class="n">lrunoff</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;lrunoff&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># frozen runoff entering ocean (non-negative)</span>
+<span class="n">frunoff</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;frunoff&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># liquid runoff from GLC entering ocean (non-negative)</span>
+<span class="n">lrunoff_glc</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;lrunoff_glc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># frozen runoff from GLC entering ocean (non-negative)</span>
+<span class="n">frunoff_glc</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;frunoff_glc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># liquid precipitation entering ocean.</span>
+<span class="c1"># note: includes exchanges with sea-ice, with </span>
+<span class="c1">#       melt adding mass to ocean; formation removing mass.</span>
+<span class="n">lprec</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;lprec&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># frozen precipitation entering ocean.</span>
+<span class="n">fprec</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;fprec&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># virtual precipitation arising from conversion of salt restoring to water flux</span>
+<span class="n">vprec</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;vprec&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># net mass flux crossing surface (including exchange with sea-ice)</span>
+<span class="n">PRCmE</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;PRCmE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+
+<span class="c1">#--------------------------------------------------------------</span>
+<span class="c1"># heat flux crossing ocean surface and bottom [Watt/m^2]</span>
+<span class="c1"># positive values indicate heat entering ocean;</span>
+<span class="c1"># negative values indicate heat leaving ocean.</span>
+
+<span class="c1"># geothermal heating at ocean bottom </span>
+<span class="n">geothermal</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;internal_heat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># net heat crossing ocean surface due to all processes, except restoring </span>
+<span class="n">net_heat_surface</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;net_heat_surface&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># net heat passed through coupler from shortwave, longwave, latent, sensible.</span>
+<span class="c1"># note: latent includes heat to vaporize liquid and heat to melt ice/snow. </span>
+<span class="c1"># note: sensible includes air-sea and ice-sea sensible heat fluxes.  </span>
+<span class="n">net_heat_coupler</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;net_heat_coupler&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># sum of longwave + latent + sensible</span>
+<span class="n">LwLatSens</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;LwLatSens&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># net shortwave passing through ocean surface</span>
+<span class="n">SW</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;SW&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># heating of liquid seawater due to formation of frazil sea ice</span>
+<span class="n">frazil</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;frazil&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># heat from melting/forming sea ice</span>
+<span class="n">melth</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;seaice_melt_heat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># there is no restoring heat flux with this test case </span>
+<span class="n">heat_restore</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="o">*</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;frazil&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># net heat content associated with transfer of mass across ocean surface, </span>
+<span class="c1"># computed relative to 0C. Both diagnostics should be the same, though </span>
+<span class="c1"># they are computed differently in MOM6.   </span>
+<span class="n">heat_pme</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;Heat_PmE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="n">heat_content_surfwater</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;heat_content_surfwater&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># heat content associated with water mass entering ocean</span>
+<span class="n">heat_content_massin</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;heat_content_massin&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># heat content associated with water mass leaving ocean</span>
+<span class="n">heat_content_massout</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;heat_content_massout&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># heat content associated with evaporation</span>
+<span class="n">heat_content_evap</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;heat_content_evap&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># heat content associated with meltw</span>
+<span class="c1"># no longer needed (GMM)</span>
+<span class="c1">#heat_content_meltw = forcing[&#39;heat_content_icemelt&#39;].isel(time=n)</span>
+
+<span class="c1"># heat content associated with liquid precipitation </span>
+<span class="n">heat_content_lprec</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;heat_content_lprec&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># heat content associated with frozen precipitation </span>
+<span class="n">heat_content_fprec</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;heat_content_fprec&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># heat content associated with virtual precipitation </span>
+<span class="n">heat_content_vprec</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;heat_content_vprec&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># heat content associated with liquid runoff </span>
+<span class="n">heat_content_lrunoff</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;heat_content_lrunoff&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># heat content associated with frozen runoff </span>
+<span class="n">heat_content_frunoff</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;heat_content_frunoff&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># heat content associated with frozen runoff from GLC</span>
+<span class="n">heat_content_frunoff_glc</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;heat_content_frunoff_glc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># heat content associated with liquid runoff from GLC</span>
+<span class="n">heat_content_lrunoff_glc</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;heat_content_lrunoff_glc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># heat content associated with liquid condensation </span>
+<span class="n">heat_content_cond</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;heat_content_cond&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1">#--------------------------------------------------------------</span>
+<span class="c1"># salt flux crossing ocean surface and bottom [kg/(m^2 s)]</span>
+<span class="c1"># positive values indicate salt entering ocean; </span>
+<span class="c1"># negative values indicate salt leaving ocean.</span>
+
+<span class="n">salt_flux</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;salt_flux_in&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># salt flux associated with surface restoring.</span>
+<span class="c1"># salt_flux has contribution from sea ice + restoring, so we need to remove salt_flux (salt_flux_in)</span>
+<span class="n">salt_restore</span> <span class="o">=</span> <span class="n">forcing</span><span class="p">[</span><span class="s1">&#39;salt_flux&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span> <span class="o">-</span> <span class="n">salt_flux</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for easy setup of subplots</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">newSP</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">__spv</span><span class="p">,</span> <span class="n">__spi</span>
+    <span class="n">__spv</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    <span class="n">__spi</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">__spv</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">__spv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">__spi</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">nextSP</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">__spv</span><span class="p">,</span> <span class="n">__spi</span>
+    <span class="n">__spi</span> <span class="o">=</span> <span class="n">__spi</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">__spv</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">__spv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">__spi</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">xmin</span><span class="o">=-</span><span class="mi">280</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=-</span><span class="mi">80</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mi">200</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Uses xarray to compute statistics and plot field as a function of lat and lon.</span>
+<span class="sd">    Writes the max, min and ave values of field into the plot.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">global</span> <span class="n">area</span>
+
+    <span class="c1"># Convert to xarray DataArray if needed</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">):</span>
+        <span class="n">field</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+
+    <span class="c1"># Compute statistics using xarray</span>
+    <span class="n">field_min</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+    <span class="n">field_max</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+    <span class="n">field_ave</span> <span class="o">=</span> <span class="nb">float</span><span class="p">((</span><span class="n">field</span> <span class="o">*</span> <span class="n">area</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">area</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+    <span class="c1"># Extract coordinate arrays</span>
+    <span class="n">lon_vals</span> <span class="o">=</span> <span class="n">lon</span><span class="o">.</span><span class="n">values</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">)</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span>
+    <span class="n">lat_vals</span> <span class="o">=</span> <span class="n">lat</span><span class="o">.</span><span class="n">values</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">)</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span>
+
+    <span class="c1"># Build DataArray with 2D lon/lat as coordinates for xarray plotting</span>
+    <span class="n">plot_da</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span>
+        <span class="n">field</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+        <span class="n">dims</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;yh&#39;</span><span class="p">,</span> <span class="s1">&#39;xh&#39;</span><span class="p">],</span>
+        <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;geolon&#39;</span><span class="p">:</span> <span class="p">([</span><span class="s1">&#39;yh&#39;</span><span class="p">,</span> <span class="s1">&#39;xh&#39;</span><span class="p">],</span> <span class="n">lon_vals</span><span class="p">),</span>
+                <span class="s1">&#39;geolat&#39;</span><span class="p">:</span> <span class="p">([</span><span class="s1">&#39;yh&#39;</span><span class="p">,</span> <span class="s1">&#39;xh&#39;</span><span class="p">],</span> <span class="n">lat_vals</span><span class="p">)}</span>
+    <span class="p">)</span>
+
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;geolon&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;geolat&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">add_colorbar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">cmin</span> <span class="o">!=</span> <span class="mf">0.0</span> <span class="ow">or</span> <span class="n">cmax</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;vmin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cmin</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;vmax&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cmax</span>
+
+    <span class="n">plot_da</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;&#39;</span> <span class="o">+</span> <span class="n">title</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Latitude [$\degree$N]&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">xlabel</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Longitude&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;max=</span><span class="si">%5.2f</span><span class="se">\n</span><span class="s1">min=</span><span class="si">%5.2f</span><span class="se">\n</span><span class="s1">ave=</span><span class="si">%5.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">field_max</span><span class="p">,</span> <span class="n">field_min</span><span class="p">,</span> <span class="n">field_ave</span><span class="p">),</span>
+                <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.74</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;axes fraction&#39;</span><span class="p">,</span>
+                <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr --- />
+<h1 align="center">Mass fluxes and global seawater mass budget</h1><h2 align="center">Global seawater mass budget consistency check</h2>
+<p>We compute the change in seawater mass over a given time period using two methods. Note that the difference from the offline diagnostics is generally larger than that from the online diagnostics, because the model output interval is usually larger than the model time step, and the loss of precision may occur depending on how the output is written by the model, especially if the output is written in single precision.</p>
+<ol class="arabic simple">
+<li><p>The net mass per time of water (units of kg/s) entering through the ocean boundaries is given by the area integral
+$<span class="math notranslate nohighlight">\(\begin{equation*}
+\mbox{boundary water mass entering liquid seawater} = \int Q_{W} \, dA,
+\end{equation*}\)</span><span class="math notranslate nohighlight">\(
+where the net water flux (units of \)</span>\mbox{kg}~\mbox{m}^{-2}~\mbox{s}^{-1}<span class="math notranslate nohighlight">\() is given by
+\)</span><span class="math notranslate nohighlight">\(\begin{align*}
+Q_{W} &amp;= {\tt PRCmE}.
+\end{align*}\)</span>$
+A nonzero surface mass flux is associated with liquid and solid precipitation and runoff; evaporation and condensation; sea ice melt/formation; and surface restoring.</p></li>
+<li><p>The time change of liquid seawater mass is computed according to
+$<span class="math notranslate nohighlight">\(\begin{equation*}
+\mbox{seawater mass change at step \)</span>n<span class="math notranslate nohighlight">\(} = 
+\frac{1}{\tau_{n} - \tau_{n-1} } \int \left[\int (\rho_{n} - \rho_{n-1}) \, \mathrm{d}z \right] dA,
+\end{equation*}\)</span><span class="math notranslate nohighlight">\(
+where \)</span>\tau_{n} - \tau_{n-1}<span class="math notranslate nohighlight">\( is the time increment of the output (i.e., one day) in seconds. Note that we make use of the MOM6 diagnostic for depth integrated density
+\)</span><span class="math notranslate nohighlight">\(\begin{equation*}
+{\tt mass\_wt} =  \int \rho \, \mathrm{d}z.
+\end{equation*}\)</span><span class="math notranslate nohighlight">\(
+For a Boussinesq fluid, the in-situ \)</span>\rho<span class="math notranslate nohighlight">\( factor is set to \)</span>\rho_{0}<span class="math notranslate nohighlight">\(, in which case the diagnostic field \)</span>{\tt mass_wt}<span class="math notranslate nohighlight">\( measures the thickness of a fluid column, multiplied by \)</span>\rho_{0}<span class="math notranslate nohighlight">\(.
+Note that the numerical difference of \)</span>{\tt mass_wt}<span class="math notranslate nohighlight">\( is taken between \)</span>\tau_{n}<span class="math notranslate nohighlight">\( and \)</span>\tau_{n-1}<span class="math notranslate nohighlight">\(, because \)</span>{\tt mass_wt[n]}<span class="math notranslate nohighlight">\( is a snapshot at the end of the \)</span>n<span class="math notranslate nohighlight">\(-th day, whereas \)</span>{\tt PRCmE[n]}<span class="math notranslate nohighlight">\( is the daily average over the \)</span>n<span class="math notranslate nohighlight">\(-th day.
+For self-consistency, we should have the following equality
+\)</span><span class="math notranslate nohighlight">\(\begin{equation*}
+\boxed{
+\mbox{boundary water mass entering liquid seawater} = \mbox{seawater mass change}.
+}
+\end{equation*}\)</span>$</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n0</span>       <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">dmass_wt</span> <span class="o">=</span> <span class="n">mass_wt</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span> <span class="o">-</span> <span class="n">mass_wt</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n0</span><span class="p">)</span>
+<span class="n">dt</span>       <span class="o">=</span> <span class="n">time</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="n">time</span><span class="p">[</span><span class="n">n0</span><span class="p">]</span>
+<span class="n">lhs</span>      <span class="o">=</span> <span class="n">area</span> <span class="o">*</span> <span class="n">dmass_wt</span> <span class="o">/</span> <span class="n">dt</span>
+<span class="n">rhs</span>      <span class="o">=</span> <span class="n">area</span> <span class="o">*</span> <span class="n">PRCmE</span>
+
+<span class="c1"># ADJUST_NET_FRESH_WATER_TO_ZERO = False</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Total seawater mass at time step n [kg seawater]   =&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">((</span><span class="n">mass_wt</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="n">area</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Total seawater mass at time step n0 [kg seawater]  =&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">((</span><span class="n">mass_wt</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n0</span><span class="p">)</span> <span class="o">*</span> <span class="n">area</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Total seawater mass change [kg seawater]           =&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">dt</span> <span class="o">*</span> <span class="n">lhs</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Net mass flux across ocean surface [kg seawater]   =&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">dt</span> <span class="o">*</span> <span class="n">rhs</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Residual [kg seawater]                             =&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">dt</span> <span class="o">*</span> <span class="n">lhs</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">-</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">rhs</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Residual relative to seawater mass change          =&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">((</span><span class="n">lhs</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">-</span> <span class="n">rhs</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span> <span class="o">/</span> <span class="n">lhs</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Residual relative to mass_wt[n]                    =&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">((</span><span class="n">lhs</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">-</span> <span class="n">rhs</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">mass_wt</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="n">area</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total seawater mass at time step n [kg seawater]   = 1.3839157468285895e+21
+Total seawater mass at time step n0 [kg seawater]  = 1.3839157948509842e+21
+Total seawater mass change [kg seawater]           = -48022394659399.57
+Net mass flux across ocean surface [kg seawater]   = -48022394659597.41
+Residual [kg seawater]                             = 197.8359375
+Residual relative to seawater mass change          = -4.119667607458938e-12
+Residual relative to mass_wt[n]                    = 1.6545602858690613e-24
+</pre></div>
+</div>
+</div>
+</div>
+<h2 align="center">Surface mass fluxes I: combined fields</h2>
+<p>We will check if the net mass flux crossing surface is equal to the summation of mass flux entering and leaving ocean. If the budget is closed, then the difference should be zero.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">newSP</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">field</span> <span class="o">=</span> <span class="mf">86400.0</span> <span class="o">*</span> <span class="n">net_massin</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Net mass flux entering ocean [$kg/m^2/day$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mi">20</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">nextSP</span><span class="p">()</span>
+<span class="n">field</span> <span class="o">=</span> <span class="mf">86400.0</span> <span class="o">*</span> <span class="n">net_massout</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Net mass flux leaving ocean [$kg/m^2/day$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mi">20</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">nextSP</span><span class="p">()</span>
+<span class="n">field</span> <span class="o">=</span> <span class="mf">86400.0</span> <span class="o">*</span> <span class="n">PRCmE</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Net mass flux across ocean surface [$kg/m^2/day$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mi">20</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">nextSP</span><span class="p">()</span>
+<span class="n">field</span> <span class="o">=</span> <span class="mf">86400.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">PRCmE</span> <span class="o">-</span> <span class="n">net_massout</span> <span class="o">-</span> <span class="n">net_massin</span><span class="p">)</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Mass flux budget [$kg/m^2/day$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mi">0</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/604ea4e4d5ab7679d3aa72952743131e40032eaa7a31498e135045dbd4ea42d1.png" src="../_images/604ea4e4d5ab7679d3aa72952743131e40032eaa7a31498e135045dbd4ea42d1.png" />
+</div>
+</div>
+<h2 align="center">Surface mass fluxes II: component fields</h2><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">27</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">newSP</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># lprec contains a contribution from sea ice melt/formation.</span>
+<span class="n">field</span> <span class="o">=</span> <span class="mf">86400.0</span> <span class="o">*</span> <span class="n">lprec</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Liquid precipitation entering ocean [$kg/m^2/day$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mi">20</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">nextSP</span><span class="p">()</span>
+<span class="n">field</span> <span class="o">=</span> <span class="mf">86400.0</span> <span class="o">*</span> <span class="n">fprec</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Frozen precipitation entering ocean [$kg/m^2/day$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">nextSP</span><span class="p">()</span>
+<span class="c1"># evaporation and condensation</span>
+<span class="n">field</span> <span class="o">=</span> <span class="mf">86400.0</span> <span class="o">*</span> <span class="n">evap</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Evaporation (negative) and condensation (positive) [$kg/m^2/day$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mi">20</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">nextSP</span><span class="p">()</span>
+<span class="n">field</span> <span class="o">=</span> <span class="mf">86400.0</span> <span class="o">*</span> <span class="n">lrunoff</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Liquid runoff entering ocean [$kg/m^2/day$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">nextSP</span><span class="p">()</span>
+<span class="n">field</span> <span class="o">=</span> <span class="mf">86400.0</span> <span class="o">*</span> <span class="n">frunoff</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Frozen runoff entering ocean [$kg/m^2/day$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">nextSP</span><span class="p">()</span>
+<span class="n">field</span> <span class="o">=</span> <span class="mf">86400.0</span> <span class="o">*</span> <span class="n">meltw</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Sea ice formation (negative) and melting (positive) [$kg/m^2/day$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mi">20</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">nextSP</span><span class="p">()</span>
+<span class="n">field</span> <span class="o">=</span> <span class="mf">86400.0</span> <span class="o">*</span> <span class="n">lrunoff_glc</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Liquid runoff from GLC entering ocean [$kg/m^2/day$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">nextSP</span><span class="p">()</span>
+<span class="n">field</span> <span class="o">=</span> <span class="mf">86400.0</span> <span class="o">*</span> <span class="n">frunoff_glc</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Frozen runoff from GLC entering ocean [$kg/m^2/day$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">nextSP</span><span class="p">()</span>
+<span class="n">field</span> <span class="o">=</span> <span class="mf">86400.0</span> <span class="o">*</span> <span class="n">vprec</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Virtual precipitation from conversion of salt restoring to water flux [$kg/m^2/day$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3ac7565268b58df8a1abde4db3e24895de5a38d7e6735b3a5a06fde16f6a2182.png" src="../_images/3ac7565268b58df8a1abde4db3e24895de5a38d7e6735b3a5a06fde16f6a2182.png" />
+</div>
+</div>
+<h2 align="center">Surface mass flux self-consistency check</h2>
+<p>We will now check if the net mass flux crossing surface is equal to the summation of the above quantities. If the budget is closed, then the difference should be zero.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">newSP</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">field</span> <span class="o">=</span> <span class="mf">86400.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">PRCmE</span> <span class="o">-</span> <span class="n">lprec</span> <span class="o">-</span> <span class="n">fprec</span> <span class="o">-</span> <span class="n">evap</span> <span class="o">-</span> <span class="n">lrunoff</span> <span class="o">-</span> <span class="n">frunoff</span> <span class="o">-</span> <span class="n">meltw</span> <span class="o">-</span> <span class="n">frunoff_glc</span> <span class="o">-</span> <span class="n">lrunoff_glc</span> <span class="o">-</span> <span class="n">vprec</span><span class="p">)</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Mass flux budget [$kg/m^2/day$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/05b4a17a3dcb792a620bc264dcb4ab03433cbdc8c917c0f2e762458581f57819.png" src="../_images/05b4a17a3dcb792a620bc264dcb4ab03433cbdc8c917c0f2e762458581f57819.png" />
+</div>
+</div>
+<hr --- />
+<h1 align="center">Heat fluxes and global ocean heat budget</h1><h2 align="center">Global heat budget consistency check</h2>
+<p>We compute the change in seawater heat content over a given time period using two methods. If the difference is large, then there is a bug.</p>
+<ol class="arabic simple">
+<li><p>The net heat per time (units of Watts) entering through the ocean (surface and bottom) boundaries is given by the area integral
+$<span class="math notranslate nohighlight">\(\begin{equation*}
+\mbox{boundary heating of liquid seawater} = \int Q \, dA,
+\end{equation*}\)</span><span class="math notranslate nohighlight">\(
+where the net heat flux (units of \)</span>\mbox{W}~\mbox{m}^{-2}~\mbox{s}^{-1}<span class="math notranslate nohighlight">\() is given by 
+\)</span><span class="math notranslate nohighlight">\(\begin{align*}
+Q &amp;= {\tt (net\_heat\_coupler + heat\_pme + frazil) + internal\_heat + heat\_restore} \\
+&amp;= {\tt net\_heat\_surface + internal\_heat + heat\_restore}
+\end{align*}\)</span><span class="math notranslate nohighlight">\(
+Note that \)</span>{\tt internal_heat}$ represents the geothermal heating from the seafloor, which also contributes to the heat budget.</p></li>
+<li><p>The time change of liquid seawater heat is computed according to
+$<span class="math notranslate nohighlight">\(\begin{equation*}
+\mbox{seawater heat content change} = 
+\frac{C_p }{\tau_{n} - \tau_{n-1} } \int dA \left(\rho_0 \int (\Theta_{n} - \Theta_{n-1}) \, \mathrm{d}z \right) 
+\end{equation*}\)</span><span class="math notranslate nohighlight">\(
+where \)</span>\tau_{n} - \tau_{n-1}<span class="math notranslate nohighlight">\( is the time increment of the output (i.e., one day) in seconds.  Note that we make use of the MOM6 diagnostic for depth integrated potential/conservative temperature  
+\)</span><span class="math notranslate nohighlight">\(\begin{equation*}
+{\tt tomint} = \rho_0 \int \Theta \, \mathrm{d}z,
+\end{equation*}\)</span><span class="math notranslate nohighlight">\(
+where the Boussinesq reference density, \)</span>\rho_{0}<span class="math notranslate nohighlight">\(, is used since this test case makes the Boussinesq approximation. For self-consistency, we should have the following equality  
+\)</span><span class="math notranslate nohighlight">\(\begin{equation*}
+\boxed{
+\mbox{boundary heating of liquid seawater} = \mbox{seawater heat content change}.
+}
+\end{equation*}\)</span>$</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n0</span>      <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">dtomint</span> <span class="o">=</span> <span class="n">tomint</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span> <span class="o">-</span> <span class="n">tomint</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n0</span><span class="p">)</span>
+<span class="n">dt</span>      <span class="o">=</span> <span class="n">time</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="n">time</span><span class="p">[</span><span class="n">n0</span><span class="p">]</span>
+<span class="n">lhs</span>     <span class="o">=</span> <span class="n">cp</span> <span class="o">*</span> <span class="n">area</span> <span class="o">*</span> <span class="n">dtomint</span> <span class="o">/</span> <span class="n">dt</span>
+<span class="n">rhs</span>     <span class="o">=</span> <span class="n">area</span> <span class="o">*</span> <span class="p">(</span><span class="n">net_heat_coupler</span> <span class="o">+</span> <span class="n">heat_pme</span> <span class="o">+</span> <span class="n">frazil</span> <span class="o">+</span> <span class="n">geothermal</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Total seawater heat at time step n [Joules]    =&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">cp</span> <span class="o">*</span> <span class="p">(</span><span class="n">area</span> <span class="o">*</span> <span class="n">tomint</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Total seawater heat at time step n0 [Joules]   =&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">cp</span> <span class="o">*</span> <span class="p">(</span><span class="n">area</span> <span class="o">*</span> <span class="n">tomint</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n0</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Total seawater heat content change [Joules]    =&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">dt</span> <span class="o">*</span> <span class="n">lhs</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Net heat flux across ocean boundaries [Joules] =&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">dt</span> <span class="o">*</span> <span class="n">rhs</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Residual [Joules]                              =&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">dt</span> <span class="o">*</span> <span class="n">lhs</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">-</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">rhs</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Residual relative to heat content change       =&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">((</span><span class="n">lhs</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">-</span> <span class="n">rhs</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span> <span class="o">/</span> <span class="n">lhs</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Residual relative to tomint[n]                 =&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">((</span><span class="n">lhs</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">-</span> <span class="n">rhs</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">cp</span> <span class="o">*</span> <span class="p">(</span><span class="n">area</span> <span class="o">*</span> <span class="n">tomint</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">())))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total seawater heat at time step n [Joules]    = 1.9845832072498946e+25
+Total seawater heat at time step n0 [Joules]   = 1.9845176263322942e+25
+Total seawater heat content change [Joules]    = 6.558091759992569e+20
+Net heat flux across ocean boundaries [Joules] = 6.558091760000353e+20
+Residual [Joules]                              = -778436608.0
+Residual relative to heat content change       = -1.1870282217595598e-12
+Residual relative to tomint[n]                 = -4.539996089398271e-22
+</pre></div>
+</div>
+</div>
+</div>
+<h2 align="center">Basic components to surface heat flux</h2> 
+<p>Self-consistency check: <span class="math notranslate nohighlight">\({\tt net\_heat\_surface = net\_heat\_coupler + heat\_pme + frazil}\)</span>. If the budget is closed, then the difference should be zero.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">newSP</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">field</span> <span class="o">=</span> <span class="n">net_heat_surface</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Net heat flux across ocean surface [$W/m^2$]&#39;</span><span class="p">)</span>
+
+<span class="n">nextSP</span><span class="p">()</span>
+<span class="n">field</span> <span class="o">=</span> <span class="n">net_heat_coupler</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Net heat passing through coupler [$W/m^2$]&#39;</span><span class="p">)</span>
+
+<span class="n">nextSP</span><span class="p">()</span>
+<span class="n">field</span> <span class="o">=</span> <span class="n">heat_pme</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Heat content associated with mass flux across ocean surface [$W/m^2$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mi">20</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">nextSP</span><span class="p">()</span>
+<span class="n">field</span> <span class="o">=</span> <span class="n">frazil</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Heating of liquid seawater due to frazil ice formation [$W/m^2$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mi">20</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">nextSP</span><span class="p">()</span>
+<span class="n">field</span> <span class="o">=</span> <span class="n">net_heat_surface</span> <span class="o">-</span> <span class="n">net_heat_coupler</span> <span class="o">-</span> <span class="n">heat_pme</span> <span class="o">-</span> <span class="n">frazil</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Heat flux budget [$W/m^2$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">nextSP</span><span class="p">()</span>
+<span class="n">field</span> <span class="o">=</span> <span class="n">geothermal</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Geothermal heating [$W/m^2$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/9f8f6ec8f398dfc4d69b75c6a29394ad4cfee1a187d71c13e4e2d802404bd025.png" src="../_images/9f8f6ec8f398dfc4d69b75c6a29394ad4cfee1a187d71c13e4e2d802404bd025.png" />
+</div>
+</div>
+<h2 align="center">Heat fluxes acr ocean surface via the coupler</h2> 
+<p>Heat flux across ocean surface via the coupler: <span class="math notranslate nohighlight">\({\tt net\_heat\_coupler = LwLatSens + SW + melth}\)</span>, where <span class="math notranslate nohighlight">\({\tt LwLatSens = LW + latent + sensible}\)</span>. If the budget is closed, then the difference should be zero.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">newSP</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">field</span> <span class="o">=</span> <span class="n">net_heat_coupler</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Net heat passing through coupler [$W/m^2$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mi">200</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+
+<span class="n">nextSP</span><span class="p">()</span>
+<span class="n">field</span> <span class="o">=</span> <span class="n">LwLatSens</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Sum of longwave, latent, and sensible heat [$W/m^2$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mi">200</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+
+<span class="n">nextSP</span><span class="p">()</span>
+<span class="n">field</span> <span class="o">=</span> <span class="n">SW</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Net shortwave passing through ocean surface [$W/m^2$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mi">200</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+
+<span class="n">nextSP</span><span class="p">()</span>
+<span class="n">field</span> <span class="o">=</span> <span class="n">melth</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Sea ice formation (positive) and melting (negative) [$W/m^2$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mi">200</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">nextSP</span><span class="p">()</span>
+<span class="n">field</span> <span class="o">=</span> <span class="n">net_heat_coupler</span> <span class="o">-</span> <span class="n">LwLatSens</span> <span class="o">-</span> <span class="n">SW</span> <span class="o">-</span> <span class="n">melth</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Heat flux budget [$W/m^2$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/e77db1ff136db97ca85281f8412a0fed5ccb55c47863d45bc51b949823c0ce94.png" src="../_images/e77db1ff136db97ca85281f8412a0fed5ccb55c47863d45bc51b949823c0ce94.png" />
+</div>
+</div>
+<h2 align="center">Components of heat content associated with mass flux across ocean surface</h2>
+<p>Components of heat content of surface mass fluxes:
+$<span class="math notranslate nohighlight">\(\begin{align*}
+  {\tt heat\_PmE = } &amp;{\tt heat\_content\_lprec + heat\_content\_fprec + heat\_content\_evap + heat\_content\_lrunoff + heat\_content\_frunoff +} \\
+                     &amp;{\tt heat\_content\_cond + heat\_content\_frunoff\_glc + heat\_content\_lrunoff\_glc + heat\_content\_vprec}
+\end{align*}\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">27</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">newSP</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="n">field</span> <span class="o">=</span> <span class="n">heat_content_lprec</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Heat content associated with liquid precipitation [$W/m^2$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mf">20.0</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mf">20.0</span><span class="p">)</span>
+
+<span class="n">nextSP</span><span class="p">()</span>
+<span class="n">field</span> <span class="o">=</span> <span class="n">heat_content_fprec</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Heat content associated with frozen precipitation [$W/m^2$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="n">nextSP</span><span class="p">()</span>
+<span class="n">field</span> <span class="o">=</span> <span class="n">heat_content_evap</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Heat content associated with evaporation [$W/m^2$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mf">20.0</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mf">20.0</span><span class="p">)</span>
+
+<span class="n">nextSP</span><span class="p">()</span>
+<span class="n">field</span> <span class="o">=</span> <span class="n">heat_content_lrunoff</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Heat content associated with liquid runoff [$W/m^2$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="n">nextSP</span><span class="p">()</span>
+<span class="n">field</span> <span class="o">=</span> <span class="n">heat_content_frunoff</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Heat content associated with frozen runoff [$W/m^2$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="n">nextSP</span><span class="p">()</span>
+<span class="n">field</span> <span class="o">=</span> <span class="n">heat_content_cond</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Heat content associated with liquid condensation [$W/m^2$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="n">nextSP</span><span class="p">()</span>
+<span class="n">field</span> <span class="o">=</span> <span class="n">heat_content_lrunoff_glc</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Heat content associated with liquid runoff from GLC [$W/m^2$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">nextSP</span><span class="p">()</span>
+<span class="n">field</span> <span class="o">=</span> <span class="n">heat_content_frunoff_glc</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Heat content associated with frozen runoff from GLC [$W/m^2$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">nextSP</span><span class="p">()</span>
+<span class="n">field</span> <span class="o">=</span> <span class="n">heat_content_vprec</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Heat content associated with virtual precipitation [$W/m^2$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/8ea4f729ca7268a1f96ef08458bb0db52f743f7046f6a40ee43e8d92e722c53f.png" src="../_images/8ea4f729ca7268a1f96ef08458bb0db52f743f7046f6a40ee43e8d92e722c53f.png" />
+</div>
+</div>
+<h2 align="center">Self-consistency of heat content associated with mass flux across ocean surface</h2><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">comp_sum</span> <span class="o">=</span> <span class="p">(</span><span class="n">heat_content_lprec</span> <span class="o">+</span> <span class="n">heat_content_fprec</span> <span class="o">+</span> <span class="n">heat_content_evap</span> <span class="o">+</span>
+            <span class="n">heat_content_lrunoff</span> <span class="o">+</span> <span class="n">heat_content_frunoff</span> <span class="o">+</span> <span class="n">heat_content_cond</span> <span class="o">+</span>
+            <span class="n">heat_content_lrunoff_glc</span> <span class="o">+</span> <span class="n">heat_content_frunoff_glc</span> <span class="o">+</span> <span class="n">heat_content_vprec</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">newSP</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">field</span> <span class="o">=</span> <span class="n">heat_content_surfwater</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;(a) heat content associated with mass flux across ocean surface [$W/m^2$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mf">20.0</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mf">20.0</span><span class="p">)</span>
+
+<span class="n">nextSP</span><span class="p">()</span>
+<span class="n">field</span> <span class="o">=</span> <span class="n">heat_pme</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;(b) Heat flux into ocean from mass flux into ocean [$W/m^2$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mf">20.0</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mf">20.0</span><span class="p">)</span>
+
+<span class="n">nextSP</span><span class="p">()</span>
+<span class="n">field</span> <span class="o">=</span> <span class="n">heat_pme</span> <span class="o">-</span> <span class="n">heat_content_surfwater</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;(c) Difference between (b) and (a) [$W/m^2$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+
+<span class="n">nextSP</span><span class="p">()</span>
+<span class="n">field</span> <span class="o">=</span> <span class="n">comp_sum</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;(d) Sum of heat content components [$W/m^2$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mf">20.0</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mf">20.0</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">nextSP</span><span class="p">()</span>
+<span class="n">field</span> <span class="o">=</span> <span class="n">comp_sum</span> <span class="o">-</span> <span class="n">heat_content_surfwater</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;(e) Difference between (d) and (a) [$W/m^2$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ce8947e2c6ed75059948af530aeb8b30dd53e80e103dac488e866a428291da4a.png" src="../_images/ce8947e2c6ed75059948af530aeb8b30dd53e80e103dac488e866a428291da4a.png" />
+</div>
+</div>
+<hr --- />
+<h1 align="center">Salt fluxes and global ocean salt budget</h1><h2 align="center">Global salt budget consistency check</h2>
+<p>We compute the change in seawater salt content over a given time period using two methods. If the difference is large, then there is a bug.</p>
+<ol class="arabic simple">
+<li><p>The net salt per unit time (units of kg/s) entering through the ocean boundaries is given by the area integral
+$<span class="math notranslate nohighlight">\(\begin{equation*}
+\mbox{boundary salt entering liquid seawater} = \int Q_{S} \, dA,
+\end{equation*}\)</span><span class="math notranslate nohighlight">\(
+where the net salt flux (units of \)</span>\mbox{kg}~\mbox{m}^{-2}~\mbox{s}^{-1}<span class="math notranslate nohighlight">\() is given by 
+\)</span><span class="math notranslate nohighlight">\(\begin{align*}
+Q_{S} &amp;= {\tt salt\_flux} + {\tt salt\_restore}.
+\end{align*}\)</span>$
+A nonzero salt flux is associated with exchanges between liquid seawater and solid sea ice.  It also arises from simulations using a restoring boundary flux associated with damping to observed sea surface salinity.  Finally, there can be a salt flux when using sponges to damp the ocean interior back to an observed value.</p></li>
+<li><p>The time change of liquid seawater salt content is computed according to
+$<span class="math notranslate nohighlight">\(\begin{equation*}
+\mbox{seawater salt content change} = 
+\frac{1}{\tau_{n} - \tau_{n-1} } \int dA \left(\rho_0 \int (S_{n} - S_{n-1}) \, \mathrm{d}z \right) 
+\end{equation*}\)</span><span class="math notranslate nohighlight">\(
+where \)</span>\tau_{n} - \tau_{n-1}<span class="math notranslate nohighlight">\( is the time increment of the output (i.e., one day) in seconds.  Note that we make use of the MOM6 diagnostic for depth integrated salinity 
+\)</span><span class="math notranslate nohighlight">\(\begin{equation*}
+{\tt somint} = \rho_0 \int S \, \mathrm{d}z,
+\end{equation*}\)</span><span class="math notranslate nohighlight">\(
+where the Boussinesq reference density, \)</span>\rho_{0}<span class="math notranslate nohighlight">\(, is used since this test case makes the Boussinesq approximation. For self-consistency, we should have the following equality  
+\)</span><span class="math notranslate nohighlight">\(\begin{equation*}
+\boxed{
+\mbox{boundary salt entering liquid seawater} = \mbox{seawater salt content change}.
+}
+\end{equation*}\)</span>$</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n0</span>      <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">dsomint</span> <span class="o">=</span> <span class="n">somint</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">)</span> <span class="o">-</span> <span class="n">somint</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n0</span><span class="p">)</span>
+<span class="n">dt</span>      <span class="o">=</span> <span class="n">time</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="n">time</span><span class="p">[</span><span class="n">n0</span><span class="p">]</span>
+<span class="n">lhs</span>     <span class="o">=</span> <span class="mf">1.e-3</span> <span class="o">*</span> <span class="n">area</span> <span class="o">*</span> <span class="n">dsomint</span> <span class="o">/</span> <span class="n">dt</span>
+<span class="n">rhs</span>     <span class="o">=</span> <span class="n">area</span> <span class="o">*</span> <span class="p">(</span><span class="n">salt_flux</span> <span class="o">+</span> <span class="n">salt_restore</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Total seawater salt at time step n [kg salt]     =&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">((</span><span class="n">area</span> <span class="o">*</span> <span class="n">somint</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Total seawater salt at time step n0 [kg salt]    =&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">((</span><span class="n">area</span> <span class="o">*</span> <span class="n">somint</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n0</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Total seawater salt content change [kg salt]     =&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">dt</span> <span class="o">*</span> <span class="n">lhs</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Net salt flux across ocean surface [kg salt]     =&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">dt</span> <span class="o">*</span> <span class="n">rhs</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Residual [kg salt]                               =&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">dt</span> <span class="o">*</span> <span class="n">lhs</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">-</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">rhs</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Residual relative to salt content change         =&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">((</span><span class="n">lhs</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">-</span> <span class="n">rhs</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span> <span class="o">/</span> <span class="n">lhs</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Residual relative to somint[n]                   =&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">((</span><span class="n">lhs</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">-</span> <span class="n">rhs</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">area</span> <span class="o">*</span> <span class="n">somint</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">n</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total seawater salt at time step n [kg salt]     = 4.805000740653248e+22
+Total seawater salt at time step n0 [kg salt]    = 4.805000745001683e+22
+Total seawater salt content change [kg salt]     = -43484349186.481476
+Net salt flux across ocean surface [kg salt]     = -43484349598.13806
+Residual [kg salt]                               = 411.6565856933594
+Residual relative to salt content change         = -9.466775886436414e-09
+Residual relative to somint[n]                   = 9.915802522023821e-26
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">newSP</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">field</span> <span class="o">=</span> <span class="mf">86400.0</span> <span class="o">*</span> <span class="n">salt_flux</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Salt flux crossing ocean surface and bottom [kg m$^{-2}$ day$^{-1}$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">nextSP</span><span class="p">()</span>
+<span class="n">field</span> <span class="o">=</span> <span class="mf">86400.0</span> <span class="o">*</span> <span class="n">salt_restore</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="s1">&#39;Salt flux associated with surface restoring [kg m$^{-2}$ day$^{-1}$]&#39;</span><span class="p">,</span> <span class="n">cmin</span><span class="o">=-</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d600c64dab41a30d250cfe5e6a61e31c7c8c72e668dc9aa122cc7fb97ae33755.png" src="../_images/d600c64dab41a30d250cfe5e6a61e31c7c8c72e668dc9aa122cc7fb97ae33755.png" />
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "npl-2026a"
+        },
+        kernelOptions: {
+            name: "npl-2026a",
+            path: "./sfc_check"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'npl-2026a'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="sfc_flux_check_xarray_g01.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Case: g.e30_a08l.GW_JRA.TL319_t232_wgx3_hycom1_N75.2026.sfc_test01</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Case: b.e30_alpha08b.B1850C_LTso.ne30_t232_wgx3.sfc_test01</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#purposes">Purposes</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Ocean Model Working Group
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

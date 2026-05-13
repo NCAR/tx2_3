@@ -1,0 +1,1276 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>This notebook uses WOA data to generate a hycom1 vertical coordinate spec for CESM3 &#8212; Nominal 2/3 degree global configuration for CESM/MOM6</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'hycom1_vgrid/cesm3_0_ocn_vgrid';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ncar_logo.png" class="logo__image only-light" alt="Nominal 2/3 degree global configuration for CESM/MOM6 - Home"/>
+    <script>document.write(`<img src="../_static/ncar_logo.png" class="logo__image only-dark" alt="Nominal 2/3 degree global configuration for CESM/MOM6 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Nominal 2/3 degree global configuration for CESM/MOM6
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Model Setup</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../supergrid/orca_gridgen.html">Supergrid</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../topography/topo.html">tx2_3v3 Topography Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mesh/create_mesh.html">Create ESMF mesh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../runoff_mapping/runoff.html">Runoff mapping files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../state_restoring/state_restoring.html">Sea-surface salinity and potential temperature restoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tidal_energy_dissipation/regrid_tidal_dissipation.html">Tidal Dissipation</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../chlorophyll/Interpolate_and_fill_SeaWIFS.html">Interpolate and fill SeaWIFS data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seaice_files/create_seaice.html">Create CICE grid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geothermal/davies2013_to_tx2_3.html">Remap geothermal dataset (Davies, 2013) to tx2_3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../background_viscosity/background_kh_tx2_3.html">Background harmonic viscosity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cr_mask/mle_cr_labsea_mask.html">Create a 2D mask with zero in the Lab Sea and one elsewhere</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Model Validation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../basin_masks/basin_masks.html">Ocean Basin Masks</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../basin_masks/imbie_basin_to_tx2_3.html">Remap IMBIE basins to tx2_3</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../woa18/woa18_to_tx2_3.html">Remap WOA18 to tx2_3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mld/deBoyer2004/deBoyer2004_to_tx2_3.html">Regrid MLD from deBoyer et al (2004)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mld/deBoyer2023/deBoyer2023_to_tx2_3.html">Regrid MLD from Treguier et al., 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aviso/aviso_to_tx2_3.html">Remap AVISO to tx2_3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oisst/oisst_to_tx2_3.html">Remap OISST to tx2_3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sfc_check/sfc_flux_check_xarray_g01.html">Case: g.e30_a08l.GW_JRA.TL319_t232_wgx3_hycom1_N75.2026.sfc_test01</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../sfc_check/sfc_flux_check_xarray_b01.html">Case: b.e30_alpha08b.B1850C_LTso.ne30_t232_wgx3.sfc_test01</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NCAR/tx2_3" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NCAR/tx2_3/issues/new?title=Issue%20on%20page%20%2Fhycom1_vgrid/cesm3_0_ocn_vgrid.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/hycom1_vgrid/cesm3_0_ocn_vgrid.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>This notebook uses WOA data to generate a hycom1 vertical coordinate spec for CESM3</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminaries">Preliminaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-min-and-max-z-star-levels">Set min and max z-star levels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-vertical-grid-distribution-functions-at-each-horizontal-location">Compute vertical grid-distribution functions at each horizontal location</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-rho-2-on-an-equispaced-5-m-grid">Get <span class="math notranslate nohighlight">\(\rho_2\)</span> on an equispaced 5 m grid</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-a-single-global-grid-distribution-function">Compute a single global grid-distribution function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-target-densities">Compute target densities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-max-thicknesses">Set max thicknesses</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-the-results-to-netcdf-files">Write the results to netCDF files</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="this-notebook-uses-woa-data-to-generate-a-hycom1-vertical-coordinate-spec-for-cesm3">
+<h1>This notebook uses WOA data to generate a hycom1 vertical coordinate spec for CESM3<a class="headerlink" href="#this-notebook-uses-woa-data-to-generate-a-hycom1-vertical-coordinate-spec-for-cesm3" title="Permalink to this heading">#</a></h1>
+<p>Author: Ian Grooms</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">netCDF4</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dataset</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">OrderedDict</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="preliminaries">
+<h2>Preliminaries<a class="headerlink" href="#preliminaries" title="Permalink to this heading">#</a></h2>
+<p>Set the reference pressure to 2000 dbar</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_ref</span> <span class="o">=</span> <span class="mi">2000</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">dens_wright_full</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Equation of state for sea water given by Wright, 1997, J. Atmos. Ocean. Tech., 14, 735-740.</span>
+<span class="sd">    Units: T[degC],S[PSU],z[m]   (was p[Pa])</span>
+<span class="sd">    Returns density [kg m-3]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">p</span> <span class="o">=</span> <span class="mf">9.8</span> <span class="o">*</span> <span class="mf">1020.41</span> <span class="o">*</span> <span class="n">z</span>
+
+    <span class="n">a0</span> <span class="o">=</span> <span class="mf">7.133718e-4</span><span class="p">;</span> <span class="n">a1</span> <span class="o">=</span> <span class="mf">2.72467e-7</span><span class="p">;</span> <span class="n">a2</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.646582e-7</span>
+    <span class="n">b0</span> <span class="o">=</span> <span class="mf">5.61377e8</span><span class="p">;</span>   <span class="n">b1</span> <span class="o">=</span> <span class="mf">3.600337e6</span><span class="p">;</span> <span class="n">b2</span> <span class="o">=</span> <span class="o">-</span><span class="mf">3.727194e4</span><span class="p">;</span> <span class="n">b3</span> <span class="o">=</span> <span class="mf">1.660557e2</span><span class="p">;</span>  <span class="n">b4</span> <span class="o">=</span> <span class="mf">6.844158e5</span><span class="p">;</span>  <span class="n">b5</span> <span class="o">=</span> <span class="o">-</span><span class="mf">8.389457e3</span>
+    <span class="n">c0</span> <span class="o">=</span> <span class="mf">1.609893e5</span><span class="p">;</span>  <span class="n">c1</span> <span class="o">=</span> <span class="mf">8.427815e2</span><span class="p">;</span> <span class="n">c2</span> <span class="o">=</span> <span class="o">-</span><span class="mf">6.931554</span><span class="p">;</span>   <span class="n">c3</span> <span class="o">=</span> <span class="mf">3.869318e-2</span><span class="p">;</span> <span class="n">c4</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.664201e2</span><span class="p">;</span> <span class="n">c5</span> <span class="o">=</span> <span class="o">-</span><span class="mf">2.765195</span>
+
+    <span class="n">al0</span> <span class="o">=</span> <span class="n">a0</span> <span class="o">+</span> <span class="n">a1</span> <span class="o">*</span> <span class="n">T</span> <span class="o">+</span> <span class="n">a2</span> <span class="o">*</span> <span class="n">S</span>
+    <span class="n">p0</span> <span class="o">=</span> <span class="n">b0</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">S</span> <span class="o">+</span> <span class="n">T</span> <span class="o">*</span> <span class="p">(</span><span class="n">b1</span> <span class="o">+</span> <span class="n">T</span> <span class="o">*</span> <span class="p">(</span><span class="n">b2</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span> <span class="o">+</span> <span class="n">b5</span> <span class="o">*</span> <span class="n">S</span><span class="p">)</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="n">c0</span> <span class="o">+</span> <span class="n">c4</span> <span class="o">*</span> <span class="n">S</span> <span class="o">+</span> <span class="n">T</span> <span class="o">*</span> <span class="p">(</span><span class="n">c1</span> <span class="o">+</span> <span class="n">T</span> <span class="o">*</span> <span class="p">(</span><span class="n">c2</span> <span class="o">+</span> <span class="n">c3</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span> <span class="o">+</span> <span class="n">c5</span> <span class="o">*</span> <span class="n">S</span><span class="p">)</span>
+
+    <span class="n">dens</span> <span class="o">=</span> <span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="n">p0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="n">al0</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="n">p0</span><span class="p">))</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">dens</span><span class="o">.</span><span class="n">assign_attrs</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;kg m$^{-3}$&quot;</span><span class="p">,</span> <span class="n">standard_name</span><span class="o">=</span><span class="s2">&quot;Density-like&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dens</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Load WOA data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Re</span> <span class="o">=</span> <span class="mf">6370e3</span>      <span class="c1">#   [m]</span>
+<span class="n">deg2rad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">180</span>
+
+<span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;/glade/campaign/cgd/oce/datasets/obs/woa18/woa18_decav_merged_monthly_deep_01.nc&#39;</span><span class="p">)</span>
+<span class="n">ds</span><span class="p">[</span><span class="s1">&#39;depth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">depth</span><span class="o">.</span><span class="n">assign_attrs</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
+<span class="n">ds</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">lat</span><span class="o">.</span><span class="n">assign_attrs</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$^\circ$N&#39;</span><span class="p">)</span>
+<span class="n">ds</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">lon</span><span class="o">.</span><span class="n">assign_attrs</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$^\circ$E&#39;</span><span class="p">)</span>
+<span class="n">ds</span><span class="p">[</span><span class="s1">&#39;lateral&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">ds</span><span class="o">.</span><span class="n">lat</span> <span class="o">*</span> <span class="n">ds</span><span class="o">.</span><span class="n">lon</span> <span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span> <span class="n">ds</span><span class="o">.</span><span class="n">s_an</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">depth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="p">)</span> <span class="c1"># Convenience for broadcasting</span>
+<span class="n">ds</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span> <span class="n">Re</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">deg2rad</span> <span class="o">*</span> <span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span> <span class="n">deg2rad</span> <span class="o">*</span> <span class="p">(</span> <span class="n">ds</span><span class="o">.</span><span class="n">lat</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="p">)</span> <span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span> <span class="n">deg2rad</span> <span class="o">*</span> <span class="p">(</span> <span class="n">ds</span><span class="o">.</span><span class="n">lat</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="p">)</span> <span class="p">)</span> <span class="p">)</span> <span class="o">+</span> <span class="n">ds</span><span class="o">.</span><span class="n">lateral</span> <span class="p">)</span><span class="o">.</span><span class="n">assign_attrs</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="s1">&#39;m2&#39;</span><span class="p">,</span><span class="n">standard_name</span><span class="o">=</span><span class="s2">&quot;Area&quot;</span><span class="p">)</span>
+<span class="n">ds</span><span class="p">[</span><span class="s1">&#39;topo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span> <span class="n">ds</span><span class="o">.</span><span class="n">depth</span> <span class="o">+</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">ds</span><span class="o">.</span><span class="n">s_an</span> <span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;depth&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">assign_attrs</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="s1">&#39;m&#39;</span><span class="p">,</span><span class="n">standard_name</span><span class="o">=</span><span class="s2">&quot;Bathymetry&quot;</span><span class="p">)</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">topo</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Deepest point [m] =&#39;</span><span class="p">,</span> <span class="n">ds</span><span class="o">.</span><span class="n">topo</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Deepest point [m] = 5500.0
+</pre></div>
+</div>
+<img alt="../_images/41c9458aa7e2eb2618610d6b52516b168a874e704cc639ceac012dd4e9b0d491.png" src="../_images/41c9458aa7e2eb2618610d6b52516b168a874e704cc639ceac012dd4e9b0d491.png" />
+</div>
+</div>
+<p>Define basin masks. Code in the cell below was obtained originally from Alistair Adcroft, then modified.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">genBasinMasks</span><span class="p">(</span><span class="n">depth</span><span class="p">,</span> <span class="n">contiguous</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xda</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Returns masking for different regions.</span>
+
+<span class="sd">  Parameters</span>
+<span class="sd">  ----------</span>
+<span class="sd">  x : 2D array</span>
+<span class="sd">    Longitude</span>
+
+<span class="sd">  y : 2D array</span>
+<span class="sd">    Latitude</span>
+
+<span class="sd">  depth : 2D array</span>
+<span class="sd">    Ocean depth. Masked values must be set to zero.</span>
+
+<span class="sd">  verbose : boolean, optional</span>
+<span class="sd">    If True, print some stuff. Default is false.</span>
+
+<span class="sd">  xda : boolean, optional</span>
+<span class="sd">    If True, returns an xarray Dataset. Default is false.</span>
+
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">rmask_od</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+  <span class="n">rmask_od</span><span class="p">[</span><span class="s1">&#39;Global&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">depth</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+  <span class="n">x</span> <span class="o">=</span> <span class="n">depth</span><span class="o">.</span><span class="n">lon</span><span class="o">.</span><span class="n">values</span>
+  <span class="n">y</span> <span class="o">=</span> <span class="n">depth</span><span class="o">.</span><span class="n">lat</span><span class="o">.</span><span class="n">values</span>
+  <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+  <span class="c1"># y, x = np.meshgrid(y, x)</span>
+  <span class="n">depth</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan_to_num</span><span class="p">(</span><span class="n">depth</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Generating global wet mask...&#39;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">contiguous</span><span class="p">:</span>
+    <span class="n">wet</span> <span class="o">=</span> <span class="n">ice9</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">35</span><span class="p">))</span> <span class="c1"># All ocean points seeded from South Atlantic</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">wet</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">depth</span>
+    <span class="n">wet</span><span class="p">[</span><span class="n">depth</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;done.&#39;</span><span class="p">)</span>
+
+  <span class="n">code</span> <span class="o">=</span> <span class="mi">0</span><span class="o">*</span><span class="n">wet</span>
+
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Finding Cape of Good Hope ...&#39;</span><span class="p">)</span>
+  <span class="n">tmp</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">wet</span><span class="p">;</span> <span class="n">tmp</span><span class="p">[</span><span class="n">x</span><span class="o">&lt;-</span><span class="mi">30</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">tmp</span> <span class="o">=</span> <span class="n">ice9</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="o">-</span><span class="mf">30.</span><span class="p">))</span>
+  <span class="n">yCGH</span> <span class="o">=</span> <span class="p">(</span><span class="n">tmp</span><span class="o">*</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;done.&#39;</span><span class="p">,</span> <span class="n">yCGH</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Finding Melbourne ...&#39;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">&lt;-</span><span class="mi">180</span><span class="p">:</span>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">wet</span><span class="p">;</span> <span class="n">tmp</span><span class="p">[</span><span class="n">x</span><span class="o">&gt;-</span><span class="mi">180</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="n">ice9</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">220</span><span class="p">,</span><span class="o">-</span><span class="mf">25.</span><span class="p">))</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">wet</span>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="n">ice9</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="p">(</span><span class="mi">360</span><span class="o">-</span><span class="mi">220</span><span class="p">,</span><span class="o">-</span><span class="mf">25.</span><span class="p">))</span>
+  <span class="n">yMel</span> <span class="o">=</span> <span class="p">(</span><span class="n">tmp</span><span class="o">*</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;done.&#39;</span><span class="p">,</span> <span class="n">yMel</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Processing Persian Gulf ...&#39;</span><span class="p">)</span>
+  <span class="n">tmp</span> <span class="o">=</span> <span class="n">wet</span><span class="o">*</span><span class="p">(</span> <span class="mi">1</span><span class="o">-</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="mf">55.</span><span class="p">,</span><span class="mf">23.</span><span class="p">),</span> <span class="p">(</span><span class="mf">56.5</span><span class="p">,</span><span class="mf">27.</span><span class="p">))</span> <span class="p">)</span>
+  <span class="n">tmp</span> <span class="o">=</span> <span class="n">ice9</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="p">(</span><span class="mf">53.</span><span class="p">,</span><span class="mf">25.</span><span class="p">))</span>
+  <span class="n">code</span><span class="p">[</span><span class="n">tmp</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">11</span>
+  <span class="n">rmask_od</span><span class="p">[</span><span class="s1">&#39;PersianGulf&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">code</span> <span class="o">==</span> <span class="mi">11</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+  <span class="n">wet</span> <span class="o">=</span> <span class="n">wet</span> <span class="o">-</span> <span class="n">tmp</span> <span class="c1"># Removed named points</span>
+
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Processing Red Sea ...&#39;</span><span class="p">)</span>
+  <span class="n">tmp</span> <span class="o">=</span> <span class="n">wet</span><span class="o">*</span><span class="p">(</span> <span class="mi">1</span><span class="o">-</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="mf">40.</span><span class="p">,</span><span class="mf">11.</span><span class="p">),</span> <span class="p">(</span><span class="mf">45.</span><span class="p">,</span><span class="mf">13.</span><span class="p">))</span> <span class="p">)</span>
+  <span class="n">tmp</span> <span class="o">=</span> <span class="n">ice9</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="p">(</span><span class="mf">40.</span><span class="p">,</span><span class="mf">18.</span><span class="p">))</span>
+  <span class="n">code</span><span class="p">[</span><span class="n">tmp</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+  <span class="n">rmask_od</span><span class="p">[</span><span class="s1">&#39;RedSea&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">code</span> <span class="o">==</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+  <span class="n">wet</span> <span class="o">=</span> <span class="n">wet</span> <span class="o">-</span> <span class="n">tmp</span> <span class="c1"># Removed named points</span>
+
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Processing Black Sea ...&#39;</span><span class="p">)</span>
+  <span class="n">tmp</span> <span class="o">=</span> <span class="n">wet</span><span class="o">*</span><span class="p">(</span> <span class="mi">1</span><span class="o">-</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="mf">26.</span><span class="p">,</span><span class="mf">42.</span><span class="p">),</span> <span class="p">(</span><span class="mf">32.</span><span class="p">,</span><span class="mf">40.</span><span class="p">))</span> <span class="p">)</span>
+  <span class="n">tmp</span> <span class="o">=</span> <span class="n">ice9</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="p">(</span><span class="mf">32.</span><span class="p">,</span><span class="mf">43.</span><span class="p">))</span>
+  <span class="n">code</span><span class="p">[</span><span class="n">tmp</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">7</span>
+  <span class="n">rmask_od</span><span class="p">[</span><span class="s1">&#39;BlackSea&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">code</span> <span class="o">==</span> <span class="mi">7</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+  <span class="n">wet</span> <span class="o">=</span> <span class="n">wet</span> <span class="o">-</span> <span class="n">tmp</span> <span class="c1"># Removed named points</span>
+
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Processing Mediterranean ...&#39;</span><span class="p">)</span>
+  <span class="n">tmp</span> <span class="o">=</span> <span class="n">wet</span><span class="o">*</span><span class="p">(</span> <span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">5.7</span><span class="p">,</span><span class="mf">35.5</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">5.7</span><span class="p">,</span><span class="mf">36.5</span><span class="p">))</span> <span class="p">)</span>
+  <span class="n">tmp</span> <span class="o">=</span> <span class="n">ice9</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="p">(</span><span class="mf">4.</span><span class="p">,</span><span class="mf">38.</span><span class="p">))</span>
+  <span class="n">code</span><span class="p">[</span><span class="n">tmp</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">6</span>
+  <span class="n">rmask_od</span><span class="p">[</span><span class="s1">&#39;MedSea&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">code</span> <span class="o">==</span> <span class="mi">6</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+  <span class="n">wet</span> <span class="o">=</span> <span class="n">wet</span> <span class="o">-</span> <span class="n">tmp</span> <span class="c1"># Removed named points</span>
+
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Processing Baltic ...&#39;</span><span class="p">)</span>
+  <span class="n">tmp</span> <span class="o">=</span> <span class="n">wet</span><span class="o">*</span><span class="p">(</span> <span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mf">54.</span><span class="p">),</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mf">63.</span><span class="p">))</span> <span class="p">)</span><span class="c1"># wet*( southOf(x, y, (8.6,56.), (8.6,60.)) )</span>
+  <span class="n">tmp</span> <span class="o">=</span> <span class="n">ice9</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="p">(</span><span class="mf">20.</span><span class="p">,</span><span class="mf">56.</span><span class="p">))</span> <span class="c1"># ice9(x, y, tmp, (10.,58.))</span>
+  <span class="n">code</span><span class="p">[</span><span class="n">tmp</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">9</span>
+  <span class="n">rmask_od</span><span class="p">[</span><span class="s1">&#39;BalticSea&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">code</span> <span class="o">==</span> <span class="mi">9</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+  <span class="n">wet</span> <span class="o">=</span> <span class="n">wet</span> <span class="o">-</span> <span class="n">tmp</span> <span class="c1"># Removed named points</span>
+
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Processing Hudson Bay ...&#39;</span><span class="p">)</span>
+  <span class="n">tmp</span> <span class="o">=</span> <span class="n">wet</span><span class="o">*</span><span class="p">(</span>
+             <span class="p">(</span> <span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">95.</span><span class="p">,</span><span class="mf">66.</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">83.5</span><span class="p">,</span><span class="mf">67.5</span><span class="p">)))</span>
+                <span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">83.5</span><span class="p">,</span><span class="mf">67.5</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">84.</span><span class="p">,</span><span class="mf">71.</span><span class="p">)))</span>
+             <span class="p">)</span><span class="o">*</span><span class="p">(</span> <span class="mi">1</span><span class="o">-</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">70.</span><span class="p">,</span><span class="mf">58.</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">70.</span><span class="p">,</span><span class="mf">65.</span><span class="p">))</span> <span class="p">)</span> <span class="p">)</span>
+  <span class="n">tmp</span> <span class="o">=</span> <span class="n">ice9</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">85.</span><span class="p">,</span><span class="mf">60.</span><span class="p">))</span>
+  <span class="n">code</span><span class="p">[</span><span class="n">tmp</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">8</span>
+  <span class="n">rmask_od</span><span class="p">[</span><span class="s1">&#39;HudsonBay&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">code</span> <span class="o">==</span> <span class="mi">8</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+  <span class="n">wet</span> <span class="o">=</span> <span class="n">wet</span> <span class="o">-</span> <span class="n">tmp</span> <span class="c1"># Removed named points</span>
+
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Processing Arctic ...&#39;</span><span class="p">)</span>
+  <span class="n">tmp</span> <span class="o">=</span> <span class="n">wet</span><span class="o">*</span><span class="p">(</span>
+            <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">171.</span><span class="p">,</span><span class="mf">66.</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">166.</span><span class="p">,</span><span class="mf">65.5</span><span class="p">)))</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">64.</span><span class="p">,</span><span class="mf">66.4</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">50.</span><span class="p">,</span><span class="mf">68.5</span><span class="p">)))</span> <span class="c1"># Lab Sea</span>
+       <span class="o">+</span>    <span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">50.</span><span class="p">,</span><span class="mf">0.</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">50.</span><span class="p">,</span><span class="mf">90.</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span> <span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.</span><span class="p">,</span><span class="mf">65.5</span><span class="p">),</span> <span class="p">(</span><span class="mf">360.</span><span class="p">,</span><span class="mf">65.5</span><span class="p">))</span>  <span class="p">)</span> <span class="c1"># Denmark Strait</span>
+       <span class="o">+</span>    <span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">18.</span><span class="p">,</span><span class="mf">0.</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">18.</span><span class="p">,</span><span class="mf">65.</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span> <span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.</span><span class="p">,</span><span class="mf">64.9</span><span class="p">),</span> <span class="p">(</span><span class="mf">360.</span><span class="p">,</span><span class="mf">64.9</span><span class="p">))</span>  <span class="p">)</span> <span class="c1"># Iceland-Sweden</span>
+       <span class="o">+</span>    <span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="mf">20.</span><span class="p">,</span><span class="mf">0.</span><span class="p">),</span> <span class="p">(</span><span class="mf">20.</span><span class="p">,</span><span class="mf">90.</span><span class="p">))</span> <span class="c1"># Barents Sea</span>
+       <span class="o">+</span>    <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">280.</span><span class="p">,</span><span class="mf">55.</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">200.</span><span class="p">,</span><span class="mf">65.</span><span class="p">)))</span>
+            <span class="p">)</span>
+  <span class="n">tmp</span> <span class="o">=</span> <span class="n">ice9</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.</span><span class="p">,</span><span class="mf">85.</span><span class="p">))</span>
+  <span class="n">code</span><span class="p">[</span><span class="n">tmp</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+  <span class="n">rmask_od</span><span class="p">[</span><span class="s1">&#39;Arctic&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">code</span> <span class="o">==</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+  <span class="n">wet</span> <span class="o">=</span> <span class="n">wet</span> <span class="o">-</span> <span class="n">tmp</span> <span class="c1"># Removed named points</span>
+
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Processing Atlantic ...&#39;</span><span class="p">)</span>
+  <span class="n">tmp</span> <span class="o">=</span> <span class="n">wet</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.</span><span class="p">,</span><span class="n">yCGH</span><span class="p">),</span> <span class="p">(</span><span class="mf">360.</span><span class="p">,</span><span class="n">yCGH</span><span class="p">)))</span>
+  <span class="n">tmp</span> <span class="o">=</span> <span class="n">ice9</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">20.</span><span class="p">,</span><span class="mf">0.</span><span class="p">))</span>
+  <span class="n">code</span><span class="p">[</span><span class="n">tmp</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+  <span class="n">rmask_od</span><span class="p">[</span><span class="s1">&#39;AtlanticOcean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">code</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+  <span class="n">wet</span> <span class="o">=</span> <span class="n">wet</span> <span class="o">-</span> <span class="n">tmp</span> <span class="c1"># Removed named points</span>
+
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Processing Pacific ...&#39;</span><span class="p">)</span>
+  <span class="n">tmp</span> <span class="o">=</span> <span class="n">wet</span><span class="o">*</span><span class="p">(</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.</span><span class="p">,</span><span class="n">yMel</span><span class="p">),</span> <span class="p">(</span><span class="mf">360.</span><span class="p">,</span><span class="n">yMel</span><span class="p">)))</span>
+             <span class="o">-</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="mi">360</span><span class="o">-</span><span class="mi">257</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">360</span><span class="o">-</span><span class="mi">257</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span><span class="o">*</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span><span class="o">*</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+             <span class="o">-</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="mi">360</span><span class="o">-</span><span class="mf">254.25</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">360</span><span class="o">-</span><span class="mf">254.25</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span><span class="o">*</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">))</span><span class="o">*</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+             <span class="o">-</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="mi">360</span><span class="o">-</span><span class="mf">243.7</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">360</span><span class="o">-</span><span class="mf">243.7</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span><span class="o">*</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mf">8.4</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mf">8.4</span><span class="p">))</span><span class="o">*</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+             <span class="o">-</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="mi">360</span><span class="o">-</span><span class="mf">234.5</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">360</span><span class="o">-</span><span class="mf">234.5</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span><span class="o">*</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mf">8.9</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mf">8.9</span><span class="p">))</span><span class="o">*</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+            <span class="p">)</span>
+  <span class="n">tmp</span> <span class="o">=</span> <span class="n">ice9</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="p">(</span><span class="mf">150.</span><span class="p">,</span><span class="mf">0.</span><span class="p">))</span> <span class="c1"># ice9(x, y, tmp, (-150.,0.))</span>
+  <span class="n">code</span><span class="p">[</span><span class="n">tmp</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+  <span class="n">rmask_od</span><span class="p">[</span><span class="s1">&#39;PacificOcean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">code</span> <span class="o">==</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+  <span class="n">wet</span> <span class="o">=</span> <span class="n">wet</span> <span class="o">-</span> <span class="n">tmp</span> <span class="c1"># Removed named points</span>
+
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Processing Indian ...&#39;</span><span class="p">)</span>
+  <span class="n">tmp</span> <span class="o">=</span> <span class="n">wet</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.</span><span class="p">,</span><span class="n">yCGH</span><span class="p">),</span> <span class="p">(</span><span class="mf">360.</span><span class="p">,</span><span class="n">yCGH</span><span class="p">)))</span>
+  <span class="n">tmp</span> <span class="o">=</span> <span class="n">ice9</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="p">(</span><span class="mf">55.</span><span class="p">,</span><span class="mf">0.</span><span class="p">))</span>
+  <span class="n">code</span><span class="p">[</span><span class="n">tmp</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+  <span class="n">rmask_od</span><span class="p">[</span><span class="s1">&#39;IndianOcean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">code</span> <span class="o">==</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+  <span class="n">wet</span> <span class="o">=</span> <span class="n">wet</span> <span class="o">-</span> <span class="n">tmp</span> <span class="c1"># Removed named points</span>
+
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Processing Southern Ocean ...&#39;</span><span class="p">)</span>
+  <span class="n">tmp</span> <span class="o">=</span> <span class="n">ice9</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">wet</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.</span><span class="p">,</span><span class="o">-</span><span class="mf">55.</span><span class="p">))</span>
+  <span class="n">code</span><span class="p">[</span><span class="n">tmp</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">rmask_od</span><span class="p">[</span><span class="s1">&#39;SouthernOcean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">code</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+  <span class="n">wet</span> <span class="o">=</span> <span class="n">wet</span> <span class="o">-</span> <span class="n">tmp</span> <span class="c1"># Removed named points</span>
+    
+  <span class="c1">#if verbose: print(&#39;Remapping Persian Gulf points to the Indian Ocean for OMIP/CMIP6 ...&#39;)</span>
+  <span class="c1">#code[code==11] = 5</span>
+
+  <span class="c1"># code[wet&gt;0] = -9</span>
+  <span class="c1"># (j,i) = np.unravel_index( wet.argmax(), x.shape)</span>
+  <span class="c1"># if j:</span>
+  <span class="c1">#   if verbose: print(&#39;There are leftover points unassigned to a basin code&#39;)</span>
+  <span class="c1">#   while j:</span>
+  <span class="c1">#     print(x[j,i],y[j,i],[j,i])</span>
+  <span class="c1">#     wet[j,i]=0</span>
+  <span class="c1">#     (j,i) = np.unravel_index( wet.argmax(), x.shape)</span>
+  <span class="c1"># else:</span>
+  <span class="c1">#   if verbose: print(&#39;All points assigned a basin code&#39;)</span>
+
+  <span class="c1">################### IMPORTANT ############################</span>
+  <span class="c1"># points from following regions are not &quot;removed&quot; from wet</span>
+  <span class="n">code1</span> <span class="o">=</span> <span class="n">code</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+  <span class="n">wet</span> <span class="o">=</span> <span class="n">ice9</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">35</span><span class="p">))</span> <span class="c1"># All ocean points seeded from South Atlantic</span>
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Processing Labrador Sea ...&#39;</span><span class="p">)</span>
+  <span class="n">tmp</span> <span class="o">=</span> <span class="n">wet</span><span class="o">*</span><span class="p">((</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">65.</span><span class="p">,</span><span class="mf">66.</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">45</span><span class="p">,</span><span class="mf">66.</span><span class="p">)))</span>
+    <span class="o">*</span><span class="p">(</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">65.</span><span class="p">,</span><span class="mf">52.</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">65.</span><span class="p">,</span><span class="mf">66.</span><span class="p">)))</span>
+    <span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">45.</span><span class="p">,</span><span class="mf">52.</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">45</span><span class="p">,</span><span class="mf">66.</span><span class="p">)))</span>
+    <span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">65.</span><span class="p">,</span><span class="mf">52.</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">45</span><span class="p">,</span><span class="mf">52.</span><span class="p">))))</span>
+
+  <span class="n">tmp</span> <span class="o">=</span> <span class="n">ice9</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">50.</span><span class="p">,</span><span class="mf">55.</span><span class="p">))</span>
+  <span class="n">code1</span><span class="p">[</span><span class="n">tmp</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">12</span>
+  <span class="n">rmask_od</span><span class="p">[</span><span class="s1">&#39;LabSea&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">code1</span> <span class="o">==</span> <span class="mi">12</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+  <span class="n">wet1</span> <span class="o">=</span> <span class="n">ice9</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">35</span><span class="p">))</span> <span class="c1"># All ocean points seeded from South Atlantic</span>
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Processing Baffin Bay ...&#39;</span><span class="p">)</span>
+  <span class="n">tmp</span> <span class="o">=</span> <span class="n">wet1</span><span class="o">*</span><span class="p">((</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">94.</span><span class="p">,</span><span class="mf">80.</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">50.</span><span class="p">,</span><span class="mf">80.</span><span class="p">)))</span>
+    <span class="o">*</span><span class="p">(</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">94.</span><span class="p">,</span><span class="mf">66.</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">94.</span><span class="p">,</span><span class="mf">80.</span><span class="p">)))</span>
+    <span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">94.</span><span class="p">,</span><span class="mf">66.</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span><span class="mf">66.</span><span class="p">)))</span>
+    <span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">50.</span><span class="p">,</span><span class="mf">66.</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">50.</span><span class="p">,</span><span class="mf">80.</span><span class="p">))))</span>
+
+  <span class="n">tmp</span> <span class="o">=</span> <span class="n">ice9</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">70.</span><span class="p">,</span><span class="mf">73.</span><span class="p">))</span>
+  <span class="n">code1</span><span class="p">[</span><span class="n">tmp</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">13</span>
+  <span class="c1"># remove Hudson Bay</span>
+  <span class="n">code1</span><span class="p">[</span><span class="n">rmask_od</span><span class="p">[</span><span class="s1">&#39;HudsonBay&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.</span>
+  <span class="n">rmask_od</span><span class="p">[</span><span class="s1">&#39;BaffinBay&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">code1</span> <span class="o">==</span> <span class="mi">13</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+  <span class="n">wet1</span> <span class="o">=</span> <span class="n">ice9</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">35</span><span class="p">))</span> <span class="c1"># All ocean points seeded from South Atlantic</span>
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Processing Gulf of Mexico ...&#39;</span><span class="p">)</span>
+  <span class="n">tmp</span> <span class="o">=</span> <span class="n">wet</span><span class="o">*</span><span class="p">(</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="mf">360.</span><span class="o">-</span><span class="mf">98.</span><span class="p">,</span><span class="mf">18.</span><span class="p">),</span> <span class="p">(</span><span class="mf">360.</span><span class="o">-</span><span class="mf">78.</span><span class="p">,</span><span class="mf">18.</span><span class="p">)))</span>
+                <span class="o">*</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="mf">360.</span><span class="o">-</span><span class="mf">98.</span><span class="p">,</span><span class="mf">32.</span><span class="p">),</span> <span class="p">(</span><span class="mf">360.</span><span class="o">-</span><span class="mf">78.</span><span class="p">,</span><span class="mf">32.</span><span class="p">))</span>
+             <span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">78.</span><span class="p">,</span><span class="mf">0.</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">78.</span><span class="p">,</span><span class="mf">1.</span><span class="p">)))</span>
+             <span class="c1"># -southOf(x, y, (360-254.25,1), (360-254.25,0))*southOf(x, y, (0,-5), (1,-5))*southOf(x, y, (0,0), (0,1))</span>
+             <span class="c1"># -southOf(x, y, (360-243.7,1), (360-243.7,0))*southOf(x, y, (0,-8.4), (1,-8.4))*southOf(x, y, (0,0), (0,1))</span>
+             <span class="c1"># -southOf(x, y, (360-234.5,1), (360-234.5,0))*southOf(x, y, (0,-8.9), (1,-8.9))*southOf(x, y, (0,0), (0,1))</span>
+            <span class="p">)</span>
+  <span class="n">tmp</span> <span class="o">=</span> <span class="n">ice9</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">90.</span><span class="p">,</span><span class="mf">25.</span><span class="p">))</span>
+  <span class="n">code1</span><span class="p">[</span><span class="n">tmp</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">14</span>
+  <span class="n">rmask_od</span><span class="p">[</span><span class="s1">&#39;GoM&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">code1</span> <span class="o">==</span> <span class="mi">14</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Processing Caspian ...&#39;</span><span class="p">)</span>
+  <span class="n">tmp</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">depth</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+  <span class="n">tmp</span> <span class="o">=</span> <span class="n">ice9</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="p">(</span><span class="mf">51.</span><span class="p">,</span> <span class="mf">39.</span><span class="p">))</span>
+  <span class="n">code</span><span class="p">[</span><span class="n">tmp</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">15</span>
+  <span class="n">rmask_od</span><span class="p">[</span><span class="s1">&#39;CaspianSea&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">code</span> <span class="o">==</span> <span class="mi">15</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+  <span class="k">with</span> <span class="n">Dataset</span><span class="p">(</span><span class="s2">&quot;mapmsk_Celebes.nc&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;NETCDF4&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">rootgrp</span><span class="p">:</span>
+      <span class="n">tmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;Celebes&quot;</span><span class="p">][:])</span>
+  <span class="n">code</span><span class="p">[</span><span class="n">tmp</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">16</span>
+  <span class="n">rmask_od</span><span class="p">[</span><span class="s1">&#39;Celebes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">code</span> <span class="o">==</span> <span class="mi">16</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+  <span class="k">with</span> <span class="n">Dataset</span><span class="p">(</span><span class="s2">&quot;mapmsk_Japan.nc&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;NETCDF4&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">rootgrp</span><span class="p">:</span>
+      <span class="n">tmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;Japan&quot;</span><span class="p">][:])</span>
+  <span class="n">code</span><span class="p">[</span><span class="n">tmp</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">17</span>
+  <span class="n">rmask_od</span><span class="p">[</span><span class="s1">&#39;Japan&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">code</span> <span class="o">==</span> <span class="mi">17</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+  <span class="k">with</span> <span class="n">Dataset</span><span class="p">(</span><span class="s2">&quot;mapmsk_Sulu.nc&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;NETCDF4&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">rootgrp</span><span class="p">:</span>
+      <span class="n">tmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;Sulu&quot;</span><span class="p">][:])</span>
+  <span class="n">code</span><span class="p">[</span><span class="n">tmp</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">18</span>
+  <span class="n">rmask_od</span><span class="p">[</span><span class="s1">&#39;Sulu&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">code</span> <span class="o">==</span> <span class="mi">18</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+  <span class="n">wet1</span> <span class="o">=</span> <span class="n">ice9</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">35</span><span class="p">))</span> <span class="c1"># All ocean points seeded from South Atlantic</span>
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Processing CARIB12 ...&#39;</span><span class="p">)</span>
+  <span class="n">tmp</span> <span class="o">=</span> <span class="n">wet</span><span class="o">*</span><span class="p">(</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="mf">360.</span><span class="o">-</span><span class="mf">98.5</span><span class="p">,</span><span class="o">-</span><span class="mf">6.</span><span class="p">),</span> <span class="p">(</span><span class="mf">360.</span><span class="o">-</span><span class="mf">35.5</span><span class="p">,</span><span class="o">-</span><span class="mf">6.</span><span class="p">)))</span>
+                <span class="o">*</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="mf">360.</span><span class="o">-</span><span class="mf">98.5</span><span class="p">,</span><span class="mf">32.</span><span class="p">),</span> <span class="p">(</span><span class="mf">360.</span><span class="o">-</span><span class="mf">35.5</span><span class="p">,</span><span class="mf">32.</span><span class="p">))</span>
+             <span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">35.5</span><span class="p">,</span><span class="mf">0.</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">35.5</span><span class="p">,</span><span class="mf">1.</span><span class="p">)))</span>
+            <span class="p">)</span>
+  <span class="n">tmp</span> <span class="o">=</span> <span class="n">ice9</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">90.</span><span class="p">,</span><span class="mf">25.</span><span class="p">))</span>
+  <span class="n">code1</span><span class="p">[</span><span class="n">tmp</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">19</span>
+  <span class="n">rmask_od</span><span class="p">[</span><span class="s1">&#39;CARIB12&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">code1</span> <span class="o">==</span> <span class="mi">19</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+    
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">  Basin codes:</span>
+<span class="s2">  -----------------------------------------------------------</span>
+<span class="s2">  (0) Global              (9) Pacific Ocean</span>
+<span class="s2">  (1) Persian Gulf        (10) Indian Ocean</span>
+<span class="s2">  (2) Red Sea             (11) Southern Ocean</span>
+<span class="s2">  (3) Black Sea           (12) Labrador Sea</span>
+<span class="s2">  (4) Mediterranean       (11) Persian Gulf</span>
+<span class="s2">  (5) Baltic              (13) Baffin Bay</span>
+<span class="s2">  (6) Hudson Bay          (14) Gulf of Mexico</span>
+<span class="s2">  (7) Arctic &amp; GIN Seas   (15) Caspian Sea</span>
+<span class="s2">  (8) Atlantic            (16) Celebes Sea</span>
+<span class="s2">  (17) Japan/East Sea     (18) Sulu Sea</span>
+<span class="s2">  (19) CARIB12</span>
+<span class="s2">  Important: basin codes overlap. Code 12 and higher are only loaded if xda=True.</span>
+
+<span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span>
+
+  <span class="n">rmask</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">rmask_od</span><span class="p">),</span> <span class="n">depth</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">depth</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])),</span>
+                         <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;region&#39;</span><span class="p">,</span> <span class="s1">&#39;yh&#39;</span><span class="p">,</span> <span class="s1">&#39;xh&#39;</span><span class="p">),</span>
+                         <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;region&#39;</span><span class="p">:</span><span class="nb">list</span><span class="p">(</span><span class="n">rmask_od</span><span class="o">.</span><span class="n">keys</span><span class="p">())})</span>
+
+  <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">rmask_field</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">rmask_od</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
+        <span class="n">rmask</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">,:,:]</span> <span class="o">=</span> <span class="n">rmask_field</span>
+
+  <span class="k">if</span> <span class="n">xda</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">rmask</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">code</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">ice9it</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="n">minD</span><span class="o">=</span><span class="mf">0.</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Recursive implementation of &quot;ice 9&quot;.</span>
+<span class="sd">  Returns 1 where depth&gt;minD and is connected to depth[j,i], 0 otherwise.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">wetMask</span> <span class="o">=</span> <span class="mi">0</span><span class="o">*</span><span class="n">depth</span>
+
+  <span class="p">(</span><span class="n">nj</span><span class="p">,</span><span class="n">ni</span><span class="p">)</span> <span class="o">=</span> <span class="n">wetMask</span><span class="o">.</span><span class="n">shape</span>
+  <span class="n">stack</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+  <span class="n">stack</span><span class="o">.</span><span class="n">add</span><span class="p">(</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">)</span> <span class="p">)</span>
+  <span class="k">while</span> <span class="n">stack</span><span class="p">:</span>
+    <span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">wetMask</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="ow">or</span> <span class="n">depth</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">minD</span><span class="p">:</span> <span class="k">continue</span>
+    <span class="n">wetMask</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">if</span> <span class="n">i</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span> <span class="n">stack</span><span class="o">.</span><span class="n">add</span><span class="p">(</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span> <span class="n">stack</span><span class="o">.</span><span class="n">add</span><span class="p">(</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">ni</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">)</span> <span class="c1"># Periodic beyond i=0</span>
+
+    <span class="k">if</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">ni</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="n">stack</span><span class="o">.</span><span class="n">add</span><span class="p">(</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span> <span class="n">stack</span><span class="o">.</span><span class="n">add</span><span class="p">(</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="p">)</span> <span class="c1"># Periodic beyond i=ni-1</span>
+
+    <span class="k">if</span> <span class="n">j</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span> <span class="n">stack</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">nj</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="n">stack</span><span class="o">.</span><span class="n">add</span><span class="p">(</span> <span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="p">)</span> <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span> <span class="n">stack</span><span class="o">.</span><span class="n">add</span><span class="p">(</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">ni</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">i</span><span class="p">)</span> <span class="p">)</span> <span class="c1"># Tri-polar fold beyond j=nj-1</span>
+
+  <span class="k">return</span> <span class="n">wetMask</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">nearestJI</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Find (j,i) of cell with center nearest to (x0,y0).</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">(</span> <span class="p">((</span><span class="n">x</span><span class="o">-</span><span class="n">x0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">y0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">argmin</span><span class="p">()</span> <span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">ice9</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="n">xy0</span><span class="p">):</span>
+  <span class="n">ji</span> <span class="o">=</span> <span class="n">nearestJI</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">xy0</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">xy0</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+  <span class="k">return</span> <span class="n">ice9it</span><span class="p">(</span><span class="n">ji</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">ji</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">depth</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">southOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">xy0</span><span class="p">,</span> <span class="n">xy1</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Returns 1 for point south/east of the line that passes through xy0-xy1, 0 otherwise.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">x0</span> <span class="o">=</span> <span class="n">xy0</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="n">y0</span> <span class="o">=</span> <span class="n">xy0</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">xy1</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">xy1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+  <span class="n">dx</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">-</span> <span class="n">x0</span><span class="p">;</span> <span class="n">dy</span> <span class="o">=</span> <span class="n">y1</span> <span class="o">-</span> <span class="n">y0</span>
+  <span class="n">Y</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">x0</span><span class="p">)</span><span class="o">*</span><span class="n">dy</span> <span class="o">-</span> <span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">y0</span><span class="p">)</span><span class="o">*</span><span class="n">dx</span>
+  <span class="n">Y</span><span class="p">[</span><span class="n">Y</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">Y</span><span class="p">[</span><span class="n">Y</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="k">return</span> <span class="n">Y</span>
+
+<span class="n">codes</span> <span class="o">=</span> <span class="n">genBasinMasks</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">topo</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="set-min-and-max-z-star-levels">
+<h2>Set min and max z-star levels<a class="headerlink" href="#set-min-and-max-z-star-levels" title="Permalink to this heading">#</a></h2>
+<p>The minimum z-star interface depths correspond to</p>
+<ul class="simple">
+<li><p>Four 2.5 m thick layers</p></li>
+<li><p>Two 3 m layers and one 4 m layer</p></li>
+<li><p>Layers with thicknesses starting at 5 m and increasing gradually at first, then rapidly</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_depth</span> <span class="o">=</span> <span class="mi">6000</span>  <span class="c1"># I got this manually from the MOM6 geometry file</span>
+
+<span class="n">z_min_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">76</span><span class="p">)</span>
+<span class="n">z_min_new</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># Must have 4x 2.5m layers</span>
+<span class="n">z_min_new</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mi">13</span>
+<span class="n">z_min_new</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">z_min_new</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">z_min_new</span><span class="p">[</span><span class="mi">8</span><span class="p">:]</span> <span class="o">=</span> <span class="n">z_min_new</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">69</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">max_depth</span> <span class="o">-</span> <span class="n">z_min_new</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">-</span> <span class="mi">5</span><span class="o">*</span><span class="mi">68</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">69</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span><span class="o">**</span><span class="mi">9</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">z_min_new</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:]</span><span class="o">-</span><span class="n">z_min_new</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[494.39851794 558.48767521 629.80381033 709.03451811]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The cell below sets <code class="docutils literal notranslate"><span class="pre">z_max</span></code>, which is the max depth of an interface. Using this option helps to avoid having one thick layer at the bottom followed by a bunch of vanished layers (thicknesses equal to <code class="docutils literal notranslate"><span class="pre">dz_min</span></code>, which is 0.001 m). The cell below sets <code class="docutils literal notranslate"><span class="pre">z_max</span></code> so that the levels can’t be deeper than an equispaced z-star grid would be. In some regions you’ll get a sequence of 80 m layers at the bottom rather than one thick one and several vanished ones.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z_max_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rint</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_depth</span><span class="p">,</span> <span class="mi">76</span><span class="p">))</span>
+<span class="n">z_max_new</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">max_depth</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="compute-vertical-grid-distribution-functions-at-each-horizontal-location">
+<h2>Compute vertical grid-distribution functions at each horizontal location<a class="headerlink" href="#compute-vertical-grid-distribution-functions-at-each-horizontal-location" title="Permalink to this heading">#</a></h2>
+<p>We are eventually going to compute grid-density functions for each column and then combine them. If we treated all the columns equally, then the shallow columns would try to fit 75 layers, which would tend to produce a shallow grid. To avoid this, when we combine the columns we will weight them using the depth. To be precise, we will weight the columns based on the maximum number of non-vanished layers that could fit into that column. So shallow columns will be down-weighted compared to deep columns. We will also ignore columns that are 20 m deep or shallower, since we will force the grid to be geopotential in those columns anyways.</p>
+<p>The cell below also removes several regions: The Black Sea, the Baltic, Hudson Bay, the Arctic Ocean, Baffin Bay, and the Caspian Sea. We expect these regions to have geopotential coordinates anyways, so they shouldn’t be used to set the isopycnal targets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_skip</span> <span class="o">=</span> <span class="mi">8</span>  <span class="c1"># If the depth does not allow at least num_skip z_min interfaces, then skip that column</span>
+              <span class="c1"># num_skip=8 means at least 20 m depth</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">z_min_new</span><span class="p">[</span><span class="n">num_skip</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">180</span><span class="p">,</span><span class="mi">360</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">180</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">360</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">((</span><span class="n">z_min_new</span> <span class="o">&lt;</span> <span class="n">ds</span><span class="o">.</span><span class="n">topo</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="n">num_skip</span><span class="p">):</span>
+            <span class="n">weights</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">weights</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">z_min_new</span> <span class="o">&lt;</span> <span class="n">ds</span><span class="o">.</span><span class="n">topo</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">-</span> <span class="n">num_skip</span>
+
+<span class="n">weights</span><span class="p">[</span><span class="n">codes</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">0.</span>  <span class="c1"># Black Sea</span>
+<span class="n">weights</span><span class="p">[</span><span class="n">codes</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">0.</span>  <span class="c1"># Baltic</span>
+<span class="n">weights</span><span class="p">[</span><span class="n">codes</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">0.</span>  <span class="c1"># Hudson Bay</span>
+<span class="n">weights</span><span class="p">[</span><span class="n">codes</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">0.</span>  <span class="c1"># Arctic</span>
+<span class="n">weights</span><span class="p">[</span><span class="n">codes</span><span class="p">[</span><span class="mi">13</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">0.</span>  <span class="c1"># Baffin</span>
+<span class="n">weights</span><span class="p">[</span><span class="n">codes</span><span class="p">[</span><span class="mi">15</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">0.</span>  <span class="c1"># Caspian</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20.0
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x14d4fbac5090&gt;
+</pre></div>
+</div>
+<img alt="../_images/6c043b5290e0cc7191c663008b048ccaad09eb65865f6fb7cc7053b422e439ae.png" src="../_images/6c043b5290e0cc7191c663008b048ccaad09eb65865f6fb7cc7053b422e439ae.png" />
+</div>
+</div>
+<section id="get-rho-2-on-an-equispaced-5-m-grid">
+<h3>Get <span class="math notranslate nohighlight">\(\rho_2\)</span> on an equispaced 5 m grid<a class="headerlink" href="#get-rho-2-on-an-equispaced-5-m-grid" title="Permalink to this heading">#</a></h3>
+<p>The cells below interpolates WOA T and S to an equispaced 5 m grid and then evaluate <span class="math notranslate nohighlight">\(\rho_2\)</span> on that grid. (Note that although the variable name is <code class="docutils literal notranslate"><span class="pre">sigma2</span></code> is actually <span class="math notranslate nohighlight">\(\rho_2\)</span>, not <span class="math notranslate nohighlight">\(\sigma_2 = \rho_2 - 1000\)</span>). Interpolation uses a shape-preserving cubic spline. It is more accurate to interpolate T and S and then evaluate the EOS than to evaluate the EOS on the WOA grid and then interpolate to the equispaced grid. This is both slow and high-memory.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">remove_instabilities</span><span class="p">(</span><span class="n">s2</span><span class="p">):</span>
+    <span class="n">S2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">s2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="n">S2</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">s2</span><span class="p">[</span><span class="n">k</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">S2</span><span class="p">[:</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">S2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5500</span><span class="p">,</span><span class="n">num</span><span class="o">=</span><span class="mi">1101</span><span class="p">)</span>  <span class="c1"># 5500 here is the WOA max depth</span>
+<span class="n">sigma2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">12</span><span class="p">,</span><span class="mi">1101</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">360</span><span class="p">))</span>   <span class="c1"># 12 is the number of months in the WOA data set; 1101 is the size of z_grid; 180x360 is the size of the WOA horizontal grid</span>
+<span class="n">sigma2</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="k">for</span> <span class="n">tt</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">jj</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">180</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">360</span><span class="p">):</span>
+            <span class="n">nan_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">theta0</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">tt</span><span class="p">,:,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]))[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">nan_indices</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">first_nan</span> <span class="o">=</span> <span class="n">nan_indices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">first_nan</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">sigma2</span><span class="p">[</span><span class="n">tt</span><span class="p">,:,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">dens_wright_full</span><span class="p">(</span><span class="n">scipy</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">PchipInterpolator</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">depth</span><span class="o">.</span><span class="n">data</span><span class="p">[:</span><span class="n">first_nan</span><span class="p">],</span><span class="n">ds</span><span class="o">.</span><span class="n">theta0</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">tt</span><span class="p">,:</span><span class="n">first_nan</span><span class="p">,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">],</span><span class="n">extrapolate</span><span class="o">=</span><span class="kc">False</span><span class="p">)(</span><span class="n">z_grid</span><span class="p">[:]),</span>
+                                                         <span class="n">scipy</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">PchipInterpolator</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">depth</span><span class="o">.</span><span class="n">data</span><span class="p">[:</span><span class="n">first_nan</span><span class="p">],</span><span class="n">ds</span><span class="o">.</span><span class="n">s_an</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">tt</span><span class="p">,:</span><span class="n">first_nan</span><span class="p">,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">],</span><span class="n">extrapolate</span><span class="o">=</span><span class="kc">False</span><span class="p">)(</span><span class="n">z_grid</span><span class="p">[:]),</span> <span class="n">p_ref</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">sigma2</span><span class="p">[</span><span class="n">tt</span><span class="p">,:,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">dens_wright_full</span><span class="p">(</span><span class="n">scipy</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">PchipInterpolator</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">depth</span><span class="o">.</span><span class="n">data</span><span class="p">[:],</span><span class="n">ds</span><span class="o">.</span><span class="n">theta0</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">tt</span><span class="p">,:,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">],</span><span class="n">extrapolate</span><span class="o">=</span><span class="kc">False</span><span class="p">)(</span><span class="n">z_grid</span><span class="p">[:]),</span>
+                                                     <span class="n">scipy</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">PchipInterpolator</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">depth</span><span class="o">.</span><span class="n">data</span><span class="p">[:],</span><span class="n">ds</span><span class="o">.</span><span class="n">s_an</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">tt</span><span class="p">,:,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">],</span><span class="n">extrapolate</span><span class="o">=</span><span class="kc">False</span><span class="p">)(</span><span class="n">z_grid</span><span class="p">[:]),</span> <span class="n">p_ref</span><span class="p">)</span>
+            <span class="n">sigma2</span><span class="p">[</span><span class="n">tt</span><span class="p">,:,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">remove_instabilities</span><span class="p">(</span><span class="n">sigma2</span><span class="p">[</span><span class="n">tt</span><span class="p">,:,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The cell below evaluates the grid-distribution function</p>
+<div class="math notranslate nohighlight">
+\[S_k = \sum_{i=1}^kh_i(\sigma_i-\sigma_{i-1})\]</div>
+<p>where <span class="math notranslate nohighlight">\(h_k\)</span> is 5 m. It then considers this to be a function of potential density, and interpolates the values to an equispaced grid in potential density, with spacing 0.01 between the floor and ceil.</p>
+<p>We do not include values of density from depths shallower than 20 m to compute the per-column grid-distribution functions. The results should therefore not be used to compute target interface densities for interfaces 0 through 7.</p>
+<p>If the grid-density function for a column wants to have a higher density of grid cells than is allowed by the z-star grid, then we limit the computed grid-density function to the value associated with the z-star grid.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find the range of potential density values that we will interpolate over</span>
+<span class="n">sigma2_floor</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">sigma2</span><span class="p">))</span>
+<span class="n">sigma2_ceil</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">sigma2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sigma2_floor</span><span class="p">,</span><span class="n">sigma2_ceil</span><span class="p">)</span>
+<span class="c1"># dskip = 5 means that the first density difference is between 20 and 25 m.</span>
+<span class="c1"># It should therefore be used to find all but the first 8 interfaces (i.e. use it to find targets [8:] in Python)</span>
+<span class="n">dskip</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">nk</span> <span class="o">=</span> <span class="mi">76</span>
+<span class="n">sigma2_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">sigma2</span><span class="p">[:,</span><span class="n">dskip</span><span class="o">-</span><span class="mi">1</span><span class="p">:,:,:]))</span>
+<span class="n">sigma2_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">sigma2</span><span class="p">[:,</span><span class="n">dskip</span><span class="o">-</span><span class="mi">1</span><span class="p">:,:,:]))</span>
+<span class="n">num_s2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">sigma2_max</span><span class="o">-</span><span class="n">sigma2_min</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>  <span class="c1"># Might help to increase resolution here, but it would cost memory</span>
+<span class="n">s2_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">sigma2_min</span><span class="p">,</span> <span class="n">sigma2_max</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="n">num_s2</span><span class="p">)</span>
+<span class="n">S_interp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">12</span><span class="p">,</span> <span class="n">num_s2</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">360</span><span class="p">))</span>
+<span class="n">S_interp</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+<span class="n">S_lim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_s2</span><span class="p">)</span>
+<span class="n">s_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">12</span><span class="p">,</span><span class="n">nk</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">360</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">tt</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">):</span>
+    <span class="n">Sk</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sigma2</span><span class="p">[</span><span class="n">tt</span><span class="p">,:,:,:])</span>
+    <span class="n">Sk</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">dskip</span><span class="o">+</span><span class="mi">1</span><span class="p">,:,:]</span> <span class="o">=</span> <span class="mf">0.</span>
+    <span class="n">ck</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Sk</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dskip</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">1100</span><span class="p">):</span>
+        <span class="n">ck</span><span class="p">[</span><span class="n">k</span><span class="p">,:,:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,(</span><span class="n">sigma2</span><span class="p">[</span><span class="n">tt</span><span class="p">,</span><span class="n">k</span><span class="p">,:,:]</span><span class="o">-</span><span class="n">sigma2</span><span class="p">[</span><span class="n">tt</span><span class="p">,</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">,:,:])))</span>
+        <span class="n">Sk</span><span class="p">[</span><span class="n">k</span><span class="p">,:,:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">ck</span><span class="p">[:</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">,:,:],</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">ck</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">nskip</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">jj</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">180</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">360</span><span class="p">):</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">weights</span><span class="p">[</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.</span><span class="p">):</span>
+                <span class="n">d</span> <span class="o">=</span> <span class="mi">1100</span>
+                <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">sigma2</span><span class="p">[</span><span class="n">tt</span><span class="p">,:,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">])</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+                    <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">sigma2</span><span class="p">[</span><span class="n">tt</span><span class="p">,:,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span><span class="mi">1</span>
+                <span class="k">if</span> <span class="n">d</span> <span class="o">&gt;</span> <span class="n">dskip</span><span class="p">:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">sigma2</span><span class="p">[</span><span class="n">tt</span><span class="p">,</span><span class="n">dskip</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="n">d</span><span class="p">,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+                            <span class="n">ind_unique</span> <span class="o">=</span> <span class="n">dskip</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">sigma2</span><span class="p">[</span><span class="n">tt</span><span class="p">,</span><span class="n">dskip</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="n">d</span><span class="p">,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">],</span> <span class="n">return_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+                            <span class="n">S_interp</span><span class="p">[</span><span class="n">tt</span><span class="p">,:,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">PchipInterpolator</span><span class="p">(</span><span class="n">sigma2</span><span class="p">[</span><span class="n">tt</span><span class="p">,</span><span class="n">ind_unique</span><span class="p">,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">],</span>
+                                                                                       <span class="n">Sk</span><span class="p">[</span><span class="n">ind_unique</span><span class="p">,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">Sk</span><span class="p">[</span><span class="n">ind_unique</span><span class="p">,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]),</span><span class="n">extrapolate</span><span class="o">=</span><span class="kc">False</span><span class="p">)(</span><span class="n">s2_grid</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">S_interp</span><span class="p">[</span><span class="n">tt</span><span class="p">,:,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">PchipInterpolator</span><span class="p">(</span><span class="n">sigma2</span><span class="p">[</span><span class="n">tt</span><span class="p">,</span><span class="n">dskip</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="n">d</span><span class="p">,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">],</span>
+                                                                                       <span class="n">Sk</span><span class="p">[</span><span class="n">dskip</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="n">d</span><span class="p">,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">Sk</span><span class="p">[</span><span class="n">dskip</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="n">d</span><span class="p">,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]),</span><span class="n">extrapolate</span><span class="o">=</span><span class="kc">False</span><span class="p">)(</span><span class="n">s2_grid</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="n">S_interp</span><span class="p">[</span><span class="n">tt</span><span class="p">,:,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+                            <span class="n">S_interp</span><span class="p">[</span><span class="n">tt</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">S_interp</span><span class="p">[</span><span class="n">tt</span><span class="p">,:,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+                        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">S_interp</span><span class="p">[</span><span class="n">tt</span><span class="p">,:,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                            <span class="n">S_interp</span><span class="p">[</span><span class="n">tt</span><span class="p">,(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">S_interp</span><span class="p">[</span><span class="n">tt</span><span class="p">,:,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">):,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                    <span class="k">except</span><span class="p">:</span>
+                        <span class="n">nskip</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="c1"># The line below applies depth weighting.</span>
+                <span class="n">S_interp</span><span class="p">[</span><span class="n">tt</span><span class="p">,:,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]</span> <span class="o">*=</span> <span class="n">weights</span><span class="p">[</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]</span>
+                <span class="c1"># The lines below apply limiting based on the z* grid.</span>
+                <span class="n">nan_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">theta0</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">tt</span><span class="p">,:,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]))[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">nan_indices</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">first_nan</span> <span class="o">=</span> <span class="n">nan_indices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="n">first_nan</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="n">s_min</span><span class="p">[</span><span class="n">tt</span><span class="p">,:,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">dens_wright_full</span><span class="p">(</span><span class="n">scipy</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">PchipInterpolator</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">depth</span><span class="o">.</span><span class="n">data</span><span class="p">[:</span><span class="n">first_nan</span><span class="p">],</span><span class="n">ds</span><span class="o">.</span><span class="n">theta0</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">tt</span><span class="p">,:</span><span class="n">first_nan</span><span class="p">,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">],</span><span class="n">extrapolate</span><span class="o">=</span><span class="kc">False</span><span class="p">)(</span><span class="n">z_min_new</span><span class="p">[:]),</span>
+                                                             <span class="n">scipy</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">PchipInterpolator</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">depth</span><span class="o">.</span><span class="n">data</span><span class="p">[:</span><span class="n">first_nan</span><span class="p">],</span><span class="n">ds</span><span class="o">.</span><span class="n">s_an</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">tt</span><span class="p">,:</span><span class="n">first_nan</span><span class="p">,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">],</span><span class="n">extrapolate</span><span class="o">=</span><span class="kc">False</span><span class="p">)(</span><span class="n">z_min_new</span><span class="p">[:]),</span> <span class="n">p_ref</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">s_min</span><span class="p">[</span><span class="n">tt</span><span class="p">,:,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">dens_wright_full</span><span class="p">(</span><span class="n">scipy</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">PchipInterpolator</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">depth</span><span class="o">.</span><span class="n">data</span><span class="p">[:],</span><span class="n">ds</span><span class="o">.</span><span class="n">theta0</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">tt</span><span class="p">,:,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">],</span><span class="n">extrapolate</span><span class="o">=</span><span class="kc">False</span><span class="p">)(</span><span class="n">z_min_new</span><span class="p">[:]),</span>
+                                                         <span class="n">scipy</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">PchipInterpolator</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">depth</span><span class="o">.</span><span class="n">data</span><span class="p">[:],</span><span class="n">ds</span><span class="o">.</span><span class="n">s_an</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">tt</span><span class="p">,:,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">],</span><span class="n">extrapolate</span><span class="o">=</span><span class="kc">False</span><span class="p">)(</span><span class="n">z_min_new</span><span class="p">[:]),</span> <span class="n">p_ref</span><span class="p">)</span>
+                <span class="n">s_min</span><span class="p">[</span><span class="n">tt</span><span class="p">,:,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">remove_instabilities</span><span class="p">(</span><span class="n">s_min</span><span class="p">[</span><span class="n">tt</span><span class="p">,:,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">])</span>
+                <span class="n">d</span> <span class="o">=</span> <span class="n">nk</span>
+                <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">s_min</span><span class="p">[</span><span class="n">tt</span><span class="p">,:,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">])</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+                    <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">s_min</span><span class="p">[</span><span class="n">tt</span><span class="p">,:,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span><span class="mi">1</span>
+                <span class="k">if</span> <span class="n">d</span> <span class="o">&gt;</span> <span class="n">num_skip</span><span class="p">:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">S_lim</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">PchipInterpolator</span><span class="p">(</span><span class="n">s_min</span><span class="p">[</span><span class="n">tt</span><span class="p">,</span><span class="n">dskip</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="n">d</span><span class="p">,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">d</span><span class="o">-</span><span class="n">dskip</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">extrapolate</span><span class="o">=</span><span class="kc">False</span><span class="p">)(</span><span class="n">s2_grid</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="n">S_lim</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+                            <span class="n">S_lim</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">S_lim</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">0</span>
+                        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">S_lim</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                            <span class="n">S_lim</span><span class="p">[(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">S_interp</span><span class="p">[</span><span class="n">tt</span><span class="p">,:,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">):]</span> <span class="o">=</span> <span class="n">weights</span><span class="p">[</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]</span>
+                    <span class="k">except</span><span class="p">:</span>
+                        <span class="n">S_lim</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="n">S_interp</span><span class="p">[</span><span class="n">tt</span><span class="p">,:,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fmin</span><span class="p">(</span><span class="n">S_interp</span><span class="p">[</span><span class="n">tt</span><span class="p">,:,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">],</span><span class="n">weights</span><span class="p">[</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]</span><span class="o">*</span><span class="n">S_lim</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">tt</span><span class="p">,</span> <span class="n">nskip</span><span class="p">)</span>
+<span class="n">Sk</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">s_min</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="compute-a-single-global-grid-distribution-function">
+<h2>Compute a single global grid-distribution function<a class="headerlink" href="#compute-a-single-global-grid-distribution-function" title="Permalink to this heading">#</a></h2>
+<p>Next we condense down to a single grid-distribution function <span class="math notranslate nohighlight">\(S(\sigma)\)</span> that goes from 0 to 1.
+First we compute the grid-density for each column.
+Then, for each potential density in our equispaced grid of potential densities, we compute the 99.5th percentile of grid-densities across all columns, and take the result to be the single global value of grid-density at that value of potential density.
+The resulting global grid-density function does not integrate to 1, so we normalize it so that it does.
+The result is the global grid-distribution function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">12</span><span class="p">,</span><span class="n">num_s2</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">360</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">jj</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">180</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">360</span><span class="p">):</span>
+        <span class="n">ps</span><span class="p">[:,:,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">S_interp</span><span class="p">[:,:,</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">s2_grid</span><span class="p">)[:]</span>
+
+<span class="n">S_interp</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 99.5th percentile over x, y, and t</span>
+<span class="n">p95_ps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanquantile</span><span class="p">(</span><span class="n">ps</span><span class="p">[:,:,:,:],</span> <span class="mf">0.995</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">p95_ss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">]),</span><span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">p95_ps</span><span class="p">)))</span>
+<span class="n">p95_ss</span> <span class="o">=</span> <span class="n">p95_ss</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">p95_ss</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="compute-target-densities">
+<h2>Compute target densities<a class="headerlink" href="#compute-target-densities" title="Permalink to this heading">#</a></h2>
+<p>Next we find target potential densities by inverting <span class="math notranslate nohighlight">\(S(\sigma)\)</span> against a half-Chebyshev grid on 0,1.
+Since the data was taken below 20 m, and it takes 8 interfaces to get to 20 m deep, we should not set the first 8 interfaces using this data. The first 8 interfaces are simply set to be linear from the min density in the WOA data to the 9th interface density. The last interface density is set to the densest value in the WOA data, rounded up to the nearest integer. All values are then truncated to 10 bit precision.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_targets</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+    <span class="c1"># Input x should be s2_grid.</span>
+    <span class="c1"># Input y is the grid distribution function evaluated at the s2 grid.</span>
+    <span class="c1"># Output is the rho_pot_2 targets.</span>
+    <span class="n">ind_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="mf">0.</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">ind_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="mf">1.</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">s2_targets</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">76</span><span class="p">)</span>
+    <span class="n">r_grid</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">num</span><span class="o">=</span><span class="mi">68</span><span class="p">))</span>
+    <span class="n">s2_targets</span><span class="p">[</span><span class="mi">8</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">r_grid</span><span class="p">,</span><span class="n">y</span><span class="p">[</span><span class="n">ind_min</span><span class="p">:</span><span class="n">ind_max</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span><span class="n">x</span><span class="p">[</span><span class="n">ind_min</span><span class="p">:</span><span class="n">ind_max</span><span class="o">+</span><span class="mi">1</span><span class="p">])[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">s2_targets</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="n">sigma2_floor</span> <span class="o">+</span> <span class="p">(</span><span class="n">s2_targets</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="o">-</span><span class="n">sigma2_floor</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span><span class="o">/</span><span class="mi">8</span>
+    <span class="n">s2_targets</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">sigma2_ceil</span>
+    <span class="n">s2_targets</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rint</span><span class="p">(</span><span class="n">s2_targets</span><span class="o">*</span><span class="mi">1024</span><span class="p">)</span><span class="o">/</span><span class="mi">1024</span>
+    <span class="k">assert</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">s2_targets</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">s2_targets</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">s2_targets</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s2_targets_p95xy</span> <span class="o">=</span> <span class="n">get_targets</span><span class="p">(</span><span class="n">s2_grid</span><span class="p">,</span> <span class="n">p95_ss</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="set-max-thicknesses">
+<h2>Set max thicknesses<a class="headerlink" href="#set-max-thicknesses" title="Permalink to this heading">#</a></h2>
+<p>At this point we want to set <code class="docutils literal notranslate"><span class="pre">dz_max</span></code>. The first four layers have 2.5 max thickness and then next three have max thicknesses 3, 3, and 4 m. This ensures that the top 20 m will be z-star. After that the max layer thicknesses are all 10 m down to a depth of 100 m. From 100 m down the max thicknesses increase in an ad hoc manner.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dz_max_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">75</span><span class="p">)</span>
+<span class="n">dz_max_new</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.5</span>
+<span class="n">dz_max_new</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">dz_max_new</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">23</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">dz_max_new</span><span class="p">[</span><span class="mi">23</span><span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">((</span><span class="mi">15</span><span class="o">/</span><span class="mi">100</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">15</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="n">dz_max_new</span><span class="p">[</span><span class="mi">23</span><span class="p">:]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span><span class="o">*</span><span class="n">z_min_new</span><span class="p">[</span><span class="mi">23</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">dz_max_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="n">dz_max_new</span><span class="p">)</span>
+<span class="n">dz_max_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">z_min_new</span><span class="p">),</span><span class="n">dz_max_new</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="write-the-results-to-netcdf-files">
+<h2>Write the results to netCDF files<a class="headerlink" href="#write-the-results-to-netcdf-files" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">Dataset</span><span class="p">(</span><span class="s2">&quot;hybrid_75layer_zstar_2.50m-2026-04-28.nc&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;NETCDF4&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">rootgrp</span><span class="p">:</span>
+    <span class="n">rootgrp</span><span class="o">.</span><span class="n">author</span> <span class="o">=</span> <span class="s1">&#39;Ian Grooms (ian.grooms@colorado.edu)&#39;</span>
+    <span class="n">rootgrp</span><span class="o">.</span><span class="n">history</span><span class="o">=</span> <span class="s2">&quot;Created &quot;</span> <span class="o">+</span> <span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span> <span class="o">+</span> <span class="s2">&quot; with cesm3_0_ocn_vgrid.ipynb&quot;</span>
+    <span class="n">rootgrp</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="s1">&#39;layers&#39;</span><span class="p">,</span> <span class="mi">75</span><span class="p">)</span>
+    <span class="n">rootgrp</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="s1">&#39;interfaces&#39;</span><span class="p">,</span> <span class="mi">76</span><span class="p">)</span>
+    <span class="n">rootgrp</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="s1">&#39;sigma2&#39;</span><span class="p">,</span><span class="s1">&#39;f8&#39;</span><span class="p">,(</span><span class="s1">&#39;interfaces&#39;</span><span class="p">,),</span><span class="n">fill_value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;sigma2&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="s2">&quot;kg/m^3&quot;</span>
+    <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;sigma2&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="s2">&quot;Interface target potential density referenced to 2000db&quot;</span>
+    <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;sigma2&quot;</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">s2_targets_p95xy</span><span class="p">[:]</span>
+    <span class="n">rootgrp</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="s1">&#39;dz&#39;</span><span class="p">,</span><span class="s1">&#39;f8&#39;</span><span class="p">,(</span><span class="s1">&#39;layers&#39;</span><span class="p">,),</span><span class="n">fill_value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;dz&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="s2">&quot;m&quot;</span>
+    <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;dz&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="s2">&quot;z* coordinate level thicknesses&quot;</span>
+    <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;dz&quot;</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">z_min_new</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">Dataset</span><span class="p">(</span><span class="s2">&quot;dz_max.nc&quot;</span><span class="p">,</span> <span class="s2">&quot;r+&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;NETCDF4&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">rootgrp</span><span class="p">:</span>
+    <span class="n">rootgrp</span><span class="o">.</span><span class="n">history</span><span class="o">=</span> <span class="s2">&quot;Created &quot;</span> <span class="o">+</span> <span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span> <span class="o">+</span> <span class="s2">&quot; with cesm3_0_ocn_vgrid.ipynb&quot;</span>
+    <span class="n">rootgrp</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s1">&#39;Max layer thicknesses&#39;</span>
+    <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;dz&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="s2">&quot;m&quot;</span>
+    <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;dz&quot;</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">dz_max_new</span><span class="p">[:]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">Dataset</span><span class="p">(</span><span class="s2">&quot;lev.nc&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;NETCDF4&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">rootgrp</span><span class="p">:</span>
+    <span class="n">rootgrp</span><span class="o">.</span><span class="n">history</span><span class="o">=</span> <span class="s2">&quot;Created &quot;</span> <span class="o">+</span> <span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span> <span class="o">+</span> <span class="s2">&quot; with cesm3_0_ocn_vgrid.ipynb&quot;</span>
+    <span class="n">rootgrp</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s1">&#39;Max interface depths&#39;</span>
+    <span class="n">rootgrp</span><span class="o">.</span><span class="n">author</span> <span class="o">=</span> <span class="s1">&#39;Ian Grooms (ian.grooms@colorado.edu)&#39;</span>
+    <span class="n">rootgrp</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="mi">76</span><span class="p">)</span>
+    <span class="n">rootgrp</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="s1">&#39;Z&#39;</span><span class="p">,</span><span class="s1">&#39;f8&#39;</span><span class="p">,(</span><span class="s1">&#39;z&#39;</span><span class="p">,))</span>
+    <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;Z&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="s2">&quot;m&quot;</span>
+    <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;Z&quot;</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">z_max_new</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "npl-2026a"
+        },
+        kernelOptions: {
+            name: "npl-2026a",
+            path: "./hycom1_vgrid"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'npl-2026a'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminaries">Preliminaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-min-and-max-z-star-levels">Set min and max z-star levels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-vertical-grid-distribution-functions-at-each-horizontal-location">Compute vertical grid-distribution functions at each horizontal location</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-rho-2-on-an-equispaced-5-m-grid">Get <span class="math notranslate nohighlight">\(\rho_2\)</span> on an equispaced 5 m grid</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-a-single-global-grid-distribution-function">Compute a single global grid-distribution function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-target-densities">Compute target densities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-max-thicknesses">Set max thicknesses</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-the-results-to-netcdf-files">Write the results to netCDF files</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Ocean Model Working Group
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

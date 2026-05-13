@@ -1,0 +1,727 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Modify and write runoff maps (JRA) &#8212; Nominal 2/3 degree global configuration for CESM/MOM6</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'runoff_mapping/Merge_runoff_maps_JRA';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ncar_logo.png" class="logo__image only-light" alt="Nominal 2/3 degree global configuration for CESM/MOM6 - Home"/>
+    <script>document.write(`<img src="../_static/ncar_logo.png" class="logo__image only-dark" alt="Nominal 2/3 degree global configuration for CESM/MOM6 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Nominal 2/3 degree global configuration for CESM/MOM6
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Model Setup</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../supergrid/orca_gridgen.html">Supergrid</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../topography/topo.html">tx2_3v3 Topography Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mesh/create_mesh.html">Create ESMF mesh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="runoff.html">Runoff mapping files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../state_restoring/state_restoring.html">Sea-surface salinity and potential temperature restoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tidal_energy_dissipation/regrid_tidal_dissipation.html">Tidal Dissipation</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../chlorophyll/Interpolate_and_fill_SeaWIFS.html">Interpolate and fill SeaWIFS data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seaice_files/create_seaice.html">Create CICE grid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geothermal/davies2013_to_tx2_3.html">Remap geothermal dataset (Davies, 2013) to tx2_3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../background_viscosity/background_kh_tx2_3.html">Background harmonic viscosity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cr_mask/mle_cr_labsea_mask.html">Create a 2D mask with zero in the Lab Sea and one elsewhere</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Model Validation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../basin_masks/basin_masks.html">Ocean Basin Masks</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../basin_masks/imbie_basin_to_tx2_3.html">Remap IMBIE basins to tx2_3</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../woa18/woa18_to_tx2_3.html">Remap WOA18 to tx2_3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mld/deBoyer2004/deBoyer2004_to_tx2_3.html">Regrid MLD from deBoyer et al (2004)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mld/deBoyer2023/deBoyer2023_to_tx2_3.html">Regrid MLD from Treguier et al., 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aviso/aviso_to_tx2_3.html">Remap AVISO to tx2_3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oisst/oisst_to_tx2_3.html">Remap OISST to tx2_3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sfc_check/sfc_flux_check_xarray_g01.html">Case: g.e30_a08l.GW_JRA.TL319_t232_wgx3_hycom1_N75.2026.sfc_test01</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../sfc_check/sfc_flux_check_xarray_b01.html">Case: b.e30_alpha08b.B1850C_LTso.ne30_t232_wgx3.sfc_test01</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NCAR/tx2_3" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NCAR/tx2_3/issues/new?title=Issue%20on%20page%20%2Frunoff_mapping/Merge_runoff_maps_JRA.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/runoff_mapping/Merge_runoff_maps_JRA.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Modify and write runoff maps (JRA)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="modify-and-write-runoff-maps-jra">
+<h1>Modify and write runoff maps (JRA)<a class="headerlink" href="#modify-and-write-runoff-maps-jra" title="Permalink to this heading">#</a></h1>
+<p>This notebook merges runoff mapping files using a 250 km radius in the northern hemisphere and a 100 km radius in the southern hemisphere.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import libraries</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">netCDF4</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dataset</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">sparse</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">load_runoff_map</span><span class="p">(</span><span class="n">nc_path</span><span class="p">):</span>
+    <span class="c1"># Load NetCDF data (subtract 1 for 0-based indexing)</span>
+    <span class="k">with</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">nc_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">nc</span><span class="p">:</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;row&#39;</span><span class="p">][:]</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">col</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;col&#39;</span><span class="p">][:]</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">s_vals</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;S&#39;</span><span class="p">][:]</span>
+
+    <span class="c1"># Ocean grid lenght is = Matrix dimensions (540 * 480 = 259200)</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="mi">540</span> <span class="o">*</span> <span class="mi">480</span>
+    <span class="c1"># JRA grid lenght is = Matrix dimensions ( 1440 * 720 = 1036800)</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="mi">1440</span> <span class="o">*</span> <span class="mi">720</span>
+    <span class="c1"># Create CSR sparse matrix</span>
+    <span class="n">S</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">csr_matrix</span><span class="p">((</span><span class="n">s_vals</span><span class="p">,</span> <span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">)),</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">S</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">combine_matrices_efficiently</span><span class="p">(</span><span class="n">S_sh</span><span class="p">,</span> <span class="n">S_nh</span><span class="p">,</span> <span class="n">yc_a</span><span class="p">):</span>
+    <span class="c1"># Define the mask (True for Southern Hemisphere)</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">yc_a</span> <span class="o">&lt;</span> <span class="mf">0.0</span>
+    <span class="n">num_cols</span> <span class="o">=</span> <span class="n">S_nh</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="c1"># 2. Determine the structure (indptr) of the new matrix</span>
+    <span class="c1"># indptr[i+1] - indptr[i] is the number of non-zero entries in column i</span>
+    <span class="n">counts_nh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">S_nh</span><span class="o">.</span><span class="n">indptr</span><span class="p">)</span>
+    <span class="n">counts_sh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">S_sh</span><span class="o">.</span><span class="n">indptr</span><span class="p">)</span>
+    <span class="n">new_counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">counts_sh</span><span class="p">,</span> <span class="n">counts_nh</span><span class="p">)</span>
+    
+    <span class="n">new_indptr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">num_cols</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">S_nh</span><span class="o">.</span><span class="n">indptr</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="n">new_indptr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">new_counts</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">new_indptr</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+    
+    <span class="c1"># 3. Pre-allocate the data and indices arrays</span>
+    <span class="c1"># This is the most memory-efficient way: one allocation for exactly the size needed</span>
+    <span class="n">nnz</span> <span class="o">=</span> <span class="n">new_indptr</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">new_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">nnz</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">S_nh</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="n">new_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">nnz</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">S_nh</span><span class="o">.</span><span class="n">indices</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+    
+    <span class="c1"># 4. Copy data in contiguous blocks to minimize Python loop overhead</span>
+    <span class="c1"># We find where the mask changes (e.g., from NH to SH)</span>
+    <span class="n">changes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mask</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">!=</span> <span class="n">mask</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">boundaries</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(([</span><span class="mi">0</span><span class="p">],</span> <span class="n">changes</span><span class="p">,</span> <span class="p">[</span><span class="n">num_cols</span><span class="p">]))</span>
+    
+    <span class="k">for</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">boundaries</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">boundaries</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
+        <span class="c1"># Determine which source matrix to use for this block of columns</span>
+        <span class="n">src</span> <span class="o">=</span> <span class="n">S_sh</span> <span class="k">if</span> <span class="n">mask</span><span class="p">[</span><span class="n">start</span><span class="p">]</span> <span class="k">else</span> <span class="n">S_nh</span>
+        
+        <span class="c1"># Identify the range of indices in the source&#39;s data/indices arrays</span>
+        <span class="n">src_start_idx</span><span class="p">,</span> <span class="n">src_end_idx</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">indptr</span><span class="p">[</span><span class="n">start</span><span class="p">],</span> <span class="n">src</span><span class="o">.</span><span class="n">indptr</span><span class="p">[</span><span class="n">end</span><span class="p">]</span>
+        <span class="c1"># Identify where to put them in the new arrays</span>
+        <span class="n">tgt_start_idx</span><span class="p">,</span> <span class="n">tgt_end_idx</span> <span class="o">=</span> <span class="n">new_indptr</span><span class="p">[</span><span class="n">start</span><span class="p">],</span> <span class="n">new_indptr</span><span class="p">[</span><span class="n">end</span><span class="p">]</span>
+        
+        <span class="n">new_data</span><span class="p">[</span><span class="n">tgt_start_idx</span><span class="p">:</span><span class="n">tgt_end_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">src_start_idx</span><span class="p">:</span><span class="n">src_end_idx</span><span class="p">]</span>
+        <span class="n">new_indices</span><span class="p">[</span><span class="n">tgt_start_idx</span><span class="p">:</span><span class="n">tgt_end_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">indices</span><span class="p">[</span><span class="n">src_start_idx</span><span class="p">:</span><span class="n">src_end_idx</span><span class="p">]</span>
+        
+    <span class="c1"># 5. Build the final sparse matrix</span>
+    <span class="k">return</span> <span class="n">sparse</span><span class="o">.</span><span class="n">csc_matrix</span><span class="p">((</span><span class="n">new_data</span><span class="p">,</span> <span class="n">new_indices</span><span class="p">,</span> <span class="n">new_indptr</span><span class="p">),</span> <span class="n">shape</span><span class="o">=</span><span class="n">S_nh</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">merge_runoff_maps</span><span class="p">(</span><span class="n">nc_path_sh</span><span class="p">,</span> <span class="n">nc_path_nh</span><span class="p">):</span>
+    <span class="c1"># Load runoff maps</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;loading runoff masks&#39;</span><span class="p">)</span>
+    <span class="n">S_nh</span> <span class="o">=</span> <span class="n">load_runoff_map</span><span class="p">(</span><span class="n">nc_path_nh</span><span class="p">)</span>
+    <span class="n">S_sh</span> <span class="o">=</span> <span class="n">load_runoff_map</span><span class="p">(</span><span class="n">nc_path_sh</span><span class="p">)</span>
+
+    <span class="c1"># Use CSC format for efficient column modification</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;converting to CSC&#39;</span><span class="p">)</span>
+    <span class="n">S_nh</span> <span class="o">=</span> <span class="n">S_nh</span><span class="o">.</span><span class="n">tocsc</span><span class="p">()</span>
+    <span class="n">S_sh</span> <span class="o">=</span> <span class="n">S_sh</span><span class="o">.</span><span class="n">tocsc</span><span class="p">()</span>
+
+    <span class="c1"># Get latitudes in source grid</span>
+    <span class="k">with</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">nc_path_nh</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">nc</span><span class="p">:</span>
+        <span class="n">yc_a</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;yc_a&#39;</span><span class="p">][:]</span>
+
+    <span class="c1"># Create new mask</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Making new mask&#39;</span><span class="p">)</span>
+    <span class="n">S_new</span> <span class="o">=</span> <span class="n">combine_matrices_efficiently</span><span class="p">(</span><span class="n">S_sh</span><span class="p">,</span> <span class="n">S_nh</span><span class="p">,</span> <span class="n">yc_a</span><span class="p">)</span>
+
+    <span class="c1"># Get non-zero elements for saving (Add 1 back to match Fortran 1-based expectations)</span>
+    <span class="n">r_final</span><span class="p">,</span> <span class="n">c_final</span> <span class="o">=</span> <span class="n">S_new</span><span class="o">.</span><span class="n">nonzero</span><span class="p">()</span>
+    <span class="n">s_final</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">S_new</span><span class="p">[</span><span class="n">r_final</span><span class="p">,</span> <span class="n">c_final</span><span class="p">])</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;r_final+1, c_final+1, s_final:&quot;</span><span class="p">,</span><span class="n">r_final</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">c_final</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">s_final</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r_final</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">c_final</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">s_final</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">write_merged_map</span><span class="p">(</span><span class="n">nc_path_sh</span><span class="p">,</span> <span class="n">nc_path_nh</span><span class="p">,</span> <span class="n">new_nc_path</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Modifying the map:&#39;</span><span class="p">)</span>
+    <span class="n">r_modified</span><span class="p">,</span> <span class="n">c_modified</span><span class="p">,</span> <span class="n">s_modified</span> <span class="o">=</span> <span class="n">merge_runoff_maps</span><span class="p">(</span><span class="n">nc_path_sh</span><span class="p">,</span> <span class="n">nc_path_nh</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Writing the modified map:&#39;</span><span class="p">)</span>
+    <span class="n">ds_runoff_map</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">nc_path_sh</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">new_nc_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;NETCDF4&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">rootgrp</span><span class="p">:</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;runoff map: JRA -&gt; tx2_3v3, nearest neighbor and smoothed, merging &quot;</span> <span class="o">+</span> <span class="n">nc_path_sh</span> <span class="o">+</span> <span class="s2">&quot; and &quot;</span> <span class="o">+</span> <span class="n">nc_path_nh</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">author</span> <span class="o">=</span> <span class="s1">&#39;Ian Grooms (ian.grooms@colorado.edu)&#39;</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">history</span><span class="o">=</span> <span class="s2">&quot;File created &quot;</span> <span class="o">+</span> <span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span> <span class="o">+</span> <span class="s2">&quot; using Merge_runoff_maps.ipynb&quot;</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">conventions</span> <span class="o">=</span> <span class="s2">&quot;NCAR-CCSM&quot;</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">domain_a</span> <span class="o">=</span> <span class="s2">&quot;/glade/campaign/cesm/cesmdata/inputdata/lnd/dlnd7/JRA55/domain.roff.JRA025m.190213.nc&quot;</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">domain_b</span> <span class="o">=</span> <span class="s2">&quot;/glade/work/gmarques/cesm/tx2_3/mesh/tx2_3v3_260305_SCRIP.nc&quot;</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="s1">&#39;n_a&#39;</span><span class="p">,</span> <span class="mi">1036800</span><span class="p">)</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="s1">&#39;n_b&#39;</span><span class="p">,</span> <span class="mi">259200</span><span class="p">)</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="s1">&#39;ni_a&#39;</span><span class="p">,</span> <span class="mi">1440</span><span class="p">)</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="s1">&#39;ni_b&#39;</span><span class="p">,</span> <span class="mi">540</span><span class="p">)</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="s1">&#39;nj_a&#39;</span><span class="p">,</span> <span class="mi">720</span><span class="p">)</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="s1">&#39;nj_b&#39;</span><span class="p">,</span> <span class="mi">480</span><span class="p">)</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="s1">&#39;nv_a&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="s1">&#39;nv_b&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="s1">&#39;src_grid_rank&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="s1">&#39;dst_grid_rank&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="s1">&#39;n_s&#39;</span><span class="p">,</span> <span class="n">s_modified</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="s1">&#39;xc_a&#39;</span><span class="p">,</span><span class="s1">&#39;f8&#39;</span><span class="p">,(</span><span class="s1">&#39;n_a&#39;</span><span class="p">,),</span><span class="n">fill_value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;xc_a&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="s2">&quot;degrees east&quot;</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;xc_a&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="s2">&quot;longitude of grid cell center (input)&quot;</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;xc_a&quot;</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">ds_runoff_map</span><span class="o">.</span><span class="n">xc_a</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="s1">&#39;yc_a&#39;</span><span class="p">,</span><span class="s1">&#39;f8&#39;</span><span class="p">,(</span><span class="s1">&#39;n_a&#39;</span><span class="p">,),</span><span class="n">fill_value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;yc_a&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="s2">&quot;degrees north&quot;</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;yc_a&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="s2">&quot;latitude of grid cell center (input)&quot;</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;yc_a&quot;</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">ds_runoff_map</span><span class="o">.</span><span class="n">yc_a</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="s1">&#39;xv_a&#39;</span><span class="p">,</span><span class="s1">&#39;f8&#39;</span><span class="p">,(</span><span class="s1">&#39;n_a&#39;</span><span class="p">,</span><span class="s1">&#39;nv_a&#39;</span><span class="p">),</span><span class="n">fill_value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;xv_a&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="s2">&quot;degrees east&quot;</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;xv_a&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="s2">&quot;longitude of grid cell vertices (input)&quot;</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;xv_a&quot;</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">ds_runoff_map</span><span class="o">.</span><span class="n">xv_a</span><span class="o">.</span><span class="n">data</span><span class="p">[:,:]</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="s1">&#39;yv_a&#39;</span><span class="p">,</span><span class="s1">&#39;f8&#39;</span><span class="p">,(</span><span class="s1">&#39;n_a&#39;</span><span class="p">,</span><span class="s1">&#39;nv_a&#39;</span><span class="p">),</span><span class="n">fill_value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;yv_a&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="s2">&quot;degrees north&quot;</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;yv_a&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="s2">&quot;latitude of grid cell vertices (input)&quot;</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;yv_a&quot;</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">ds_runoff_map</span><span class="o">.</span><span class="n">yv_a</span><span class="o">.</span><span class="n">data</span><span class="p">[:,:]</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="s1">&#39;mask_a&#39;</span><span class="p">,</span><span class="s1">&#39;i4&#39;</span><span class="p">,(</span><span class="s1">&#39;n_a&#39;</span><span class="p">,))</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;mask_a&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="s2">&quot;domain mask (input)&quot;</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;mask_a&quot;</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">ds_runoff_map</span><span class="o">.</span><span class="n">mask_a</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="s1">&#39;area_a&#39;</span><span class="p">,</span><span class="s1">&#39;f8&#39;</span><span class="p">,(</span><span class="s1">&#39;n_a&#39;</span><span class="p">,),</span><span class="n">fill_value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;area_a&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="s2">&quot;area of cell (input)&quot;</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;area_a&quot;</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">ds_runoff_map</span><span class="o">.</span><span class="n">area_a</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="s1">&#39;frac_a&#39;</span><span class="p">,</span><span class="s1">&#39;f8&#39;</span><span class="p">,(</span><span class="s1">&#39;n_a&#39;</span><span class="p">,),</span><span class="n">fill_value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;frac_a&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="s2">&quot;fraction of domain intersection (input)&quot;</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;frac_a&quot;</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">ds_runoff_map</span><span class="o">.</span><span class="n">frac_a</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="s1">&#39;src_grid_dims&#39;</span><span class="p">,</span><span class="s1">&#39;i4&#39;</span><span class="p">,(</span><span class="s1">&#39;src_grid_rank&#39;</span><span class="p">,))</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;src_grid_dims&quot;</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">ds_runoff_map</span><span class="o">.</span><span class="n">src_grid_dims</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span>
+
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="s1">&#39;xc_b&#39;</span><span class="p">,</span><span class="s1">&#39;f8&#39;</span><span class="p">,(</span><span class="s1">&#39;n_b&#39;</span><span class="p">,),</span><span class="n">fill_value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;xc_b&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="s2">&quot;degrees east&quot;</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;xc_b&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="s2">&quot;longitude of grid cell center (output)&quot;</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;xc_b&quot;</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">ds_runoff_map</span><span class="o">.</span><span class="n">xc_b</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="s1">&#39;yc_b&#39;</span><span class="p">,</span><span class="s1">&#39;f8&#39;</span><span class="p">,(</span><span class="s1">&#39;n_b&#39;</span><span class="p">,),</span><span class="n">fill_value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;yc_b&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="s2">&quot;degrees north&quot;</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;yc_b&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="s2">&quot;latitude of grid cell center (output)&quot;</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;yc_b&quot;</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">ds_runoff_map</span><span class="o">.</span><span class="n">yc_b</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="s1">&#39;xv_b&#39;</span><span class="p">,</span><span class="s1">&#39;f8&#39;</span><span class="p">,(</span><span class="s1">&#39;n_b&#39;</span><span class="p">,</span><span class="s1">&#39;nv_b&#39;</span><span class="p">),</span><span class="n">fill_value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;xv_b&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="s2">&quot;degrees east&quot;</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;xv_b&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="s2">&quot;longitude of grid cell vertices (output)&quot;</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;xv_b&quot;</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">ds_runoff_map</span><span class="o">.</span><span class="n">xv_b</span><span class="o">.</span><span class="n">data</span><span class="p">[:,:]</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="s1">&#39;yv_b&#39;</span><span class="p">,</span><span class="s1">&#39;f8&#39;</span><span class="p">,(</span><span class="s1">&#39;n_b&#39;</span><span class="p">,</span><span class="s1">&#39;nv_b&#39;</span><span class="p">),</span><span class="n">fill_value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;yv_b&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="s2">&quot;degrees north&quot;</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;yv_b&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="s2">&quot;latitude of grid cell vertices (output)&quot;</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;yv_b&quot;</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">ds_runoff_map</span><span class="o">.</span><span class="n">yv_b</span><span class="o">.</span><span class="n">data</span><span class="p">[:,:]</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="s1">&#39;mask_b&#39;</span><span class="p">,</span><span class="s1">&#39;i4&#39;</span><span class="p">,(</span><span class="s1">&#39;n_b&#39;</span><span class="p">,))</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;mask_b&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="s2">&quot;domain mask (output)&quot;</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;mask_b&quot;</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">ds_runoff_map</span><span class="o">.</span><span class="n">mask_b</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="s1">&#39;area_b&#39;</span><span class="p">,</span><span class="s1">&#39;f8&#39;</span><span class="p">,(</span><span class="s1">&#39;n_b&#39;</span><span class="p">,),</span><span class="n">fill_value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;area_b&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="s2">&quot;area of cell (output)&quot;</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;area_b&quot;</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">ds_runoff_map</span><span class="o">.</span><span class="n">area_b</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="s1">&#39;frac_b&#39;</span><span class="p">,</span><span class="s1">&#39;f8&#39;</span><span class="p">,(</span><span class="s1">&#39;n_b&#39;</span><span class="p">,),</span><span class="n">fill_value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;frac_b&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="s2">&quot;fraction of domain intersection (output)&quot;</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;frac_b&quot;</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">ds_runoff_map</span><span class="o">.</span><span class="n">frac_b</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="s1">&#39;dst_grid_dims&#39;</span><span class="p">,</span><span class="s1">&#39;i4&#39;</span><span class="p">,(</span><span class="s1">&#39;dst_grid_rank&#39;</span><span class="p">,))</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;dst_grid_dims&quot;</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">ds_runoff_map</span><span class="o">.</span><span class="n">dst_grid_dims</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span>
+
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="s1">&#39;S&#39;</span><span class="p">,</span><span class="s1">&#39;f8&#39;</span><span class="p">,(</span><span class="s1">&#39;n_s&#39;</span><span class="p">,),</span> <span class="n">fill_value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;S&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="s2">&quot;sparse matrix for mapping S:a-&gt;b&quot;</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;S&quot;</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">s_modified</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="s1">&#39;row&#39;</span><span class="p">,</span><span class="s1">&#39;i4&#39;</span><span class="p">,(</span><span class="s1">&#39;n_s&#39;</span><span class="p">,))</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;row&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="s2">&quot;row corresponding to matrix elements&quot;</span>
+        <span class="n">rootgrp</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="s1">&#39;col&#39;</span><span class="p">,</span><span class="s1">&#39;i4&#39;</span><span class="p">,(</span><span class="s1">&#39;n_s&#39;</span><span class="p">,))</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;row&quot;</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">r_modified</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;col&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">long_name</span> <span class="o">=</span> <span class="s2">&quot;column corresponding to matrix elements&quot;</span>
+        <span class="n">rootgrp</span><span class="p">[</span><span class="s2">&quot;col&quot;</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">c_modified</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Done&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make and write merged map:</span>
+<span class="n">nc_path_sh</span> <span class="o">=</span> <span class="s1">&#39;/glade/work/gmarques/cesm/tx2_3/runoff_mapping/map_JRA025m_to_tx2_3v3_nnsm_e100r100_260306.nc&#39;</span>
+<span class="n">nc_path_nh</span> <span class="o">=</span> <span class="s1">&#39;/glade/work/gmarques/cesm/tx2_3/runoff_mapping/map_JRA025m_to_tx2_3v3_nnsm_e250r250_260306.nc&#39;</span>
+<span class="n">new_nc_path</span> <span class="o">=</span> <span class="s1">&#39;map_JRA025m_to_tx2_3v3_nnsm_e100r100sh_e250r250nh_merged_260307.nc&#39;</span>
+<span class="n">write_merged_map</span><span class="p">(</span><span class="n">nc_path_sh</span><span class="p">,</span> <span class="n">nc_path_nh</span><span class="p">,</span> <span class="n">new_nc_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Modifying the map:
+loading runoff masks
+converting to CSC
+Making new mask
+r_final+1, c_final+1, s_final: [ 14225  14225  14225 ... 259136 259136 259136] [ 65568  65569  65570 ... 906050 906051 907491] [0.00771851 0.00771851 0.00866644 ... 0.03910268 0.03910268 0.03723907]
+Writing the modified map:
+Done
+</pre></div>
+</div>
+</div>
+</div>
+<p>The merged map should satisfy <code class="docutils literal notranslate"><span class="pre">S.T&#64;*area_b</span> <span class="pre">=</span> <span class="pre">area_a</span></code>.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "npl-2026a"
+        },
+        kernelOptions: {
+            name: "npl-2026a",
+            path: "./runoff_mapping"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'npl-2026a'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Ocean Model Working Group
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
