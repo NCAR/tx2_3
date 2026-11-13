@@ -1,0 +1,14 @@
+Generating new river nutrient flux files is a two step process:
+
+1. Create river nutrient flux dataset on the CESM runoff grid
+2. Map that dataset from the runoff grid to the ocean grid
+
+Step [1] is complicated -- it involves computing climatologies from the
+GlobalNEWS dataset and mapping them to the runoff grid. Scripts to do that
+exist in https://github.com/NCAR/cgd-os/tree/master/cesm/forcing/river_nutrients
+but those have not been copied to this repository yet -- we will do that when
+we are ready to bring in a new runoff grid.
+
+Users can complete step [2] with  "Map river fluxes to ocean grid.ipynb".
+All that is required is updating the dictionary that contains pointers to
+the rof -> ocn mapping files.

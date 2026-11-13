@@ -11,3 +11,4 @@ dependencies:
     - jupyter
     - jupyterlab
     - netCDF4
+    - scipy
