@@ -1,0 +1,14 @@
+&input_nml
+   gridtype     = 'scrip'
+   file_roff    = '/glade/campaign/cesm/cesmdata/inputdata/glc/cism/griddata/SCRIPgrid_greenland_4km_epsg3413_c170414.nc'
+   file_ocn     = '/glade/work/gmarques/cesm/tx2_3/mesh/tx2_3v3_260305_SCRIP.nc'
+   file_nn      = 'map_gland4km_to_tx2_3_nn.260306.nc'
+   file_smooth  = 'map_gland4km_to_tx2_3_sm_e100r100_260306.nc'
+   file_new     = 'map_gland4km_to_tx2_3_nnsm_e100r100_260306.nc'
+   title        = 'runoff map: gland4km -> tx2_3v3, nearest neighbor and smoothed'
+   eFold        = 100000.0
+   rMax         = 100000.0
+   step1 = .true.
+   step2 = .true.
+   step3 = .true.
+/

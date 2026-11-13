@@ -1,0 +1,27 @@
+netcdf seawifs-clim-1997-2010-tx2_3 {
+dimensions:
+	LON = 540 ;
+	LAT = 480 ;
+	TIME = UNLIMITED ; // (12 currently)
+variables:
+	double LON(LON) ;
+		LON:units = "degrees_east" ;
+		LON:axis = "X" ;
+	double LAT(LAT) ;
+		LAT:units = "degrees_north" ;
+		LAT:axis = "Y" ;
+	double TIME(TIME) ;
+		TIME:units = "days since 0001-01-01 00:00:00" ;
+		TIME:calendar = "NOLEAP" ;
+		TIME:modulo = " " ;
+		TIME:axis = "T" ;
+		TIME:cartesian_axis = "T" ;
+	float CHL_A(TIME, LAT, LON) ;
+		CHL_A:missing_value = -1.e+34f ;
+		CHL_A:_FillValue = -1.e+34f ;
+		CHL_A:long_name = "CHL_A = monthly mean" ;
+		CHL_A:units = "mg/m^3" ;
+data:
+
+ TIME = 15.5, 45, 74.5, 105, 135.5, 166, 196.5, 227.5, 258, 288.5, 319, 349.5 ;
+}

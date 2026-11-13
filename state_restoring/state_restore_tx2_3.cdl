@@ -1,0 +1,31 @@
+netcdf state_restore_tx2_3 {
+dimensions:
+	TIME = UNLIMITED ; // (12 currently)
+	LAT = 480 ;
+	LON = 540 ;
+variables:
+	double TIME(TIME) ;
+		TIME:_FillValue = NaN ;
+		TIME:units = "days since 0001-01-01 00:00:00" ;
+		TIME:calendar = "noleap" ;
+		TIME:cartesian_axis = "T" ;
+		TIME:modulo = " " ;
+	double LAT(LAT) ;
+		LAT:_FillValue = NaN ;
+		LAT:units = "degrees_north" ;
+		LAT:cartesian_axis = "Y" ;
+	double LON(LON) ;
+		LON:_FillValue = NaN ;
+		LON:units = "degrees_east" ;
+		LON:cartesian_axis = "X" ;
+	float salt(TIME, LAT, LON) ;
+		salt:_FillValue = -1.e+34f ;
+		salt:missing_value = -1.e+34f ;
+	double theta0(TIME, LAT, LON) ;
+		theta0:_FillValue = NaN ;
+
+data:
+
+ TIME = 15, 44, 73.5, 104, 134.5, 165, 195.5, 226.5, 257, 287.5, 318.5, 349 ;
+
+}

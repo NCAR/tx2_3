@@ -9,6 +9,16 @@ __pycache__/
 # C extensions
 *.so
 
+# fortran object and module files
+*.o
+*.mod
+
+# misc
+*.o*
+
+# old studd
+*/OLD*
+
 # Distribution / packaging
 .Python
 build/
