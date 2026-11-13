@@ -15,3 +15,8 @@ repository:
 html:
   use_repository_button: true
   use_issues_button: true
+
+# Enable parsing LaTeX-style math blocks with the amsmath MyST extension
+parse:
+  myst_enable_extensions:
+    - amsmath
